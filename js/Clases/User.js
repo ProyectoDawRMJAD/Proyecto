@@ -1,7 +1,7 @@
 import { Direccion } from "./Direccion.js";
 import { Empresa } from "./Empresa.js";
 
-class Users{
+class User{
     constructor(id,name,username,email,street,suite,city,zipcode,lat,lng,phone,website,companyName,catchPhrase,bs){
         this.id = id;
         this.name = name;
@@ -15,5 +15,5 @@ class Users{
     }
 }
 export{
-    Users
+    User
 }

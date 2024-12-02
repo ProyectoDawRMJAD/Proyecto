@@ -6,3 +6,6 @@ class Post{
         this.body = body;
     }
 }
+export{
+    Post
+}
