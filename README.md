@@ -1,4 +1,4 @@
-# Proyecto CRUD basado en JSON 📚🌟  
+# Proyecto CRUD basado en JSON 📚🌟🚀
 
 ## Descripción General 🌍  
 Este proyecto en equipo tiene como objetivo desarrollar una **aplicación web CRUD (Crear, Leer, Actualizar y Borrar)** que gestione datos almacenados en formato **JSON**. El proyecto será presentado al resto de la clase, ofreciendo la oportunidad de mostrar creatividad, habilidades técnicas y colaboración. 🚀  
