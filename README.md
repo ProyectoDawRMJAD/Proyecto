@@ -44,4 +44,6 @@ Juntos colaboraremos en el desarrollo y en la presentación final, dividiendo ta
 ## Requisitos Técnicos ✔️  
 1. Los datos serán almacenados en un archivo **JSON** e importados a la aplicación web.  
 2. La interfaz será clara, funcional y accesible desde navegadores modernos.  
-3. Se implementarán las acciones CRUD (Crear, Leer, Actualizar y Borrar) con las mejores prácticas.  
+3. Se implementarán las acciones CRUD (Crear, Leer, Actualizar y Borrar) con las mejores prácticas.
+
+---
