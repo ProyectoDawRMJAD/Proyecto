@@ -31,8 +31,7 @@ Se pueden emplear las herramientas estudiadas durante el curso, tales como:
 
 ## Equipo 👨‍💻👩‍💻  
 Los integrantes del proyecto somos:  
-- **Raúl**  
-- **Juan**  
+- **Raúl Juan**  
 - **Moisés**  
 - **Ángel**  
 - **Jesús**  
