@@ -4,6 +4,10 @@ class Post{
         this.id = id;
         this.title = title;
         this.body = body;
+        this.comments = [];
+    }
+    addComment(comment){
+        this.comments.push(comment);
     }
 }
 export{
