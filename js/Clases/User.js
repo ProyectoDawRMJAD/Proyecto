@@ -1,4 +1,3 @@
-import { Direccion } from "./Direccion.js";
 import { Empresa } from "./Empresa.js";
 
 class User extends HTMLElement{
@@ -12,7 +11,6 @@ class User extends HTMLElement{
         this.phone = phone;
         this.website = website;
         this.empresa = new Empresa(companyName,catchPhrase,bs);
-
     }
     connectedCallBack(){
         let shadow=this.attachShadow({mode:"open"});
