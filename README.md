@@ -33,7 +33,7 @@ Se pueden emplear las herramientas estudiadas durante el curso, tales como:
 Los integrantes del proyecto somos:  
 - **Raúl Juan**  
 - **Moisés**  
-- **Ángel**  
+- **Ángel Alexander Aguirre **  
 - **Jesús Canicio Ruiz**  
 - **David**  
 
