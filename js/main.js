@@ -13,7 +13,6 @@ console.log(posts);
 console.log(todos);
 console.log(users);
 console.log(comments);
-
 customElements.define("template-user",User);
 customElements.define("template-comentario",Comentario);
 customElements.define("template-post",Post);

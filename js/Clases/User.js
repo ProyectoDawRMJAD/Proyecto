@@ -24,11 +24,6 @@ class User extends HTMLElement{
         shadow.append(user);
 
     }
-
-    
-
-
-
 }
 export{
     User
