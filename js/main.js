@@ -20,8 +20,6 @@ let imagenes = [];
 
 cargarDatos();
 
-
-
 function cargarDatos(){
     //JSON de users a Array de objetos USER
     users.forEach(usuario => {
