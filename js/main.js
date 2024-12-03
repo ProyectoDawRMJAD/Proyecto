@@ -20,7 +20,6 @@ let imagenes = [];
 
 cargarDatos();
 
-usuarios[0].listar();
 
 
 function cargarDatos(){
@@ -52,6 +51,11 @@ function cargarDatos(){
                 usuario.addTarea(nuevaTarea);
             }
         });
+    });
+    //JSON de fotos a Objetos FOTO
+    fotos.forEach(foto => {
+        let imagen = new Foto(foto.albumID,foto.id,foto.title,foto.url,foto.thumbnailUrl);
+        imagenes.push(imagen);
     });
 }
 
