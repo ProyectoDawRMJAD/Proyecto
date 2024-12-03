@@ -1,3 +1,4 @@
+export const fotos=
 [
   {
     "albumId": 1,

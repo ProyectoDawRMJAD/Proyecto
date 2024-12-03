@@ -1,3 +1,4 @@
+export const posts=
 [
   {
     "userId": 1,
