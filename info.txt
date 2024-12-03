@@ -1,0 +1,18 @@
+Display parecido a Twitter
+--------------------------
+(Relación con Posts y Todos) User = id(Relacion con UserId),name,username,email,geo,lat,lng,phone,website
+
+(Relación con User) Posts = userid(Relacion con Id del user),id(Relacion con PostID),title,body
+
+(Relación con Posts) Comments = postId,id,name,email,body
+----------------------------------------------------------------------------------------------------------
+Display de Tareas
+------------------
+(Relación con User) Todos = userId(Relacion con Id del user),ID,title,completed
+----------------------------------------------------------------------------------------------------------
+Display de Fotos
+------------------
+(Aislado) Photos = albumID,ID,title,url,thumbnail
+----------------------------------------------------------------------------------------------------------
+
+Combinar Posts con comentarios
