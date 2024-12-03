@@ -47,5 +47,3 @@ Juntos colaboraremos en el desarrollo y en la presentación final, dividiendo ta
 3. Se implementarán las acciones CRUD (Crear, Leer, Actualizar y Borrar) con las mejores prácticas.
 
 ---
-
-Commit Moi
