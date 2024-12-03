@@ -1,0 +1,73 @@
+*{
+    font-family: "Sour Gummy", sans-serif;
+}
+
+#contenedor{
+    font-family: "Sour Gummy", sans-serif;
+    width: 373.1px;
+    height: fit-content;
+    border: solid black 2px;
+    border-radius: 0.5rem 0.5rem 0 0;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+#info{
+    display: flex;
+    padding: 0px 20px 0px 0px;
+}
+
+p{
+    margin: 5px;
+}
+
+h3,h4{
+    margin: 0;
+}
+
+#data{
+    margin-top: 15px;
+}
+
+#userName{
+    color: rgb(0, 162, 255);
+}
+
+#btnPost{
+    transition: 0.3s;
+    border-right: solid 2px black;
+}
+#btnTarea{
+
+}
+
+#btnPost:hover{
+    background-color: rgb(0, 162, 255);
+    color: white;
+}
+#btnTarea:hover{
+    background-color: rgb(0, 162, 255);
+    color: white;
+}
+
+button{
+    width: 50%;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    padding: 0;
+    border: 0;
+}
+
+#botones{
+    border-top: solid black 2px;
+    display: flex;
+    gap: 0;
+}
+#data{
+    display: flex;
+    flex-direction: column;
+}
+img{
+    height: 140px;
+    width: 140px;
+}

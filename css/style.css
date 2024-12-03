@@ -1,0 +1,14 @@
+#prueba{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: fit-content;
+    width: 800px;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+   
+}

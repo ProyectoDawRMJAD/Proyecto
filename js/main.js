@@ -17,8 +17,15 @@ customElements.define("template-foto",Foto);
 
 let usuarios = [];
 let imagenes = [];
+let contenedor = document.getElementById("prueba");
 
 cargarDatos();
+
+usuarios.forEach(usuario => {
+    contenedor.appendChild(usuario);
+});
+
+
 
 function cargarDatos(){
     //JSON de users a Array de objetos USER
