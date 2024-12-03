@@ -33,8 +33,8 @@ Se pueden emplear las herramientas estudiadas durante el curso, tales como:
 Los integrantes del proyecto somos:  
 - **Raúl Juan**  
 - **Moisés**  
-- **Ángel**  
-- **Jesús**  
+- **Ángel Alexander Aguirre **  
+- **Jesús Canicio Ruiz**  
 - **David**  
 
 Juntos colaboraremos en el desarrollo y en la presentación final, dividiendo tareas y mostrando nuestro trabajo al resto de la clase en **10 minutos**.  
