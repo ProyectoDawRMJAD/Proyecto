@@ -69,3 +69,12 @@ header{
     height: 80px;
     border-bottom: solid black 2px;
 }
+#btnAdd{
+    width: 45px;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+#btnAdd:hover{
+    scale: 1.15;
+}
