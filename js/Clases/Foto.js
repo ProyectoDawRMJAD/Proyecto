@@ -8,16 +8,22 @@ class Foto extends HTMLElement{
         this.thumbnail = thumbnail;
     }
     connectedCallback(){
-        let shadow = this.attachShadow({mode:"open"});
-        let plantilla = document.getElementById("foto");
-        let contenido = plantilla.content;
-
-        let clon = contenido.cloneNode(true);
-
-        clon.querySelector("#titulo").textContent = this.title;
-        clon.querySelector("#imagen").src = this.url;
-
-        shadow.appendChild(clon);
+        if(!this.shadowRoot){
+            let shadow = this.attachShadow({mode:"open"});
+            let plantilla = document.getElementById("foto");
+            let estilo = document.createElement("link");
+            estilo.setAttribute("rel","stylesheet");
+            estilo.setAttribute("href","./css/foto.css");
+    
+            let contenido = plantilla.content;
+            let clon = contenido.cloneNode(true);
+    
+            clon.querySelector("#imagen").src = this.url;
+    
+            shadow.appendChild(estilo);
+            shadow.appendChild(clon);
+        }
+       
     }
 }
 export{

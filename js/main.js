@@ -20,14 +20,28 @@ let imagenes = [];
 let contenedor = document.getElementById("prueba");
 let buscador = document.getElementById("searchBar");
 let textNotFound = document.getElementById("notFound");
+let btnImg = document.getElementById("btnImg");
+let btnUsers = document.getElementById("btnUsarios");
 
 //EVENTLISTENERS
 buscador.addEventListener("input",(event)=>{
     busqueda("name",event.target.value);
 });
 
+btnImg.addEventListener("click",()=>{
+    contenedor.replaceChildren();
+    mostrarDatos(imagenes);
+})
+
+btnUsers.addEventListener("click",()=>{
+    contenedor.replaceChildren();
+    mostrarDatos(usuarios);
+})
+
 cargarDatos();
 mostrarDatos(usuarios);
+console.log(imagenes);
+
 
 function mostrarDatos(usuarios){
     usuarios.forEach(usuario => {
@@ -79,7 +93,12 @@ function cargarDatos(){
     //JSON de fotos a Objetos FOTO
     fotos.forEach(foto => {
         let imagen = new Foto(foto.albumID,foto.id,foto.title,foto.url,foto.thumbnailUrl);
-        imagenes.push(imagen);
+        let img = document.createElement("img");
+        img.src = imagen.url;
+        img.alt = imagen.title;
+        img.onload = () => {
+            imagenes.push(imagen);
+        };
     });
 
 
