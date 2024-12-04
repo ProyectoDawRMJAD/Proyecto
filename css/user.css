@@ -9,6 +9,12 @@
     border: solid black 2px;
     border-radius: 0.5rem 0.5rem 0 0;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    transition: 0.5s;
+}
+
+#contenedor:hover{
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    scale: 1.03;
 }
 
 #info{
@@ -33,26 +39,24 @@ h3,h4{
 }
 
 #btnPost{
-    transition: 0.3s;
     border-right: solid 2px black;
-}
-#btnTarea{
-
 }
 
 #btnPost:hover{
-    background-color: rgb(0, 162, 255);
+    background-color: rgb(3, 121, 189);
     color: white;
 }
 #btnTarea:hover{
-    background-color: rgb(0, 162, 255);
+    background-color: rgb(2, 76, 119);
     color: white;
 }
 
 button{
+    background-color: rgb(0, 162, 255);
+    color: white;
+    transition: 0.2s;
     width: 50%;
     border: none;
-    background-color: white;
     cursor: pointer;
     padding: 0;
     border: 0;

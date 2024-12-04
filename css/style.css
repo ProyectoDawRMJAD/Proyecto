@@ -2,13 +2,28 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    width: fit-content;
-    width: 800px;
+    width: 775px;
+    padding: 20px 0 0 0;
+    justify-content: center;
 }
-body{
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+#contenido{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-   
+}
+body{
+    margin: 0
+}
+header{
+    width: auto;
+    position: sticky;
+    height: 80px;
+    border-bottom: solid black 2px;
 }

@@ -9,7 +9,16 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div id="prueba"></div>
+    <header>
+        <button id="btnUsuarios">USUARIOS</button>
+        <button id="btnTareas">TAREAS</button>
+        <button id="btnFotos">FOTOS</button>
+        <button id="btnPosts">POSTS</button>
+    </header>
+    <div id="contenido">
+        <div id="prueba"></div>
+    </div>
+
 </body>
 
 <template id="user">
@@ -18,8 +27,10 @@
             <img src="img/user.png">
             <div id="data">
                 <h3 id="name"></h3>
-                <h4 id="userName"></h4>
+                <h4 id="userName"></h4><br><br>
+                <img src="img/botonEliminar.png" id="btnEliminar">
             </div>
+            
         </div>
         <div id="botones">
             <button id="btnPost">

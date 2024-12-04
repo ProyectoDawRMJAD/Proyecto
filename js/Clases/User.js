@@ -40,8 +40,6 @@ class User extends HTMLElement{
     addTarea(tarea){
         this.tareas.push(tarea);
     }
-
-
 }
 export{
     User
