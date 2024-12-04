@@ -80,3 +80,20 @@ header{
 #btnAdd:hover{
     scale: 1.15;
 }
+#btnSend{
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+#btnSend:hover{
+    scale: 1.15;
+}
+
+#btn-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
