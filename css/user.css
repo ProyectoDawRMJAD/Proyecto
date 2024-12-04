@@ -12,6 +12,14 @@
     transition: 0.5s;
 }
 
+#btnEliminar{
+    height: 30px;
+    width: 30px; 
+}
+#btnEditar{
+    height: 30px;
+    width: 30px; 
+}
 #contenedor:hover{
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     scale: 1.03;
@@ -19,7 +27,10 @@
 
 #info{
     display: flex;
-    padding: 0px 20px 0px 0px;
+    padding: 5px 5px 0px 0px;
+    justify-content: space-between;
+    width: auto;
+    gap: 2px;
 }
 
 p{

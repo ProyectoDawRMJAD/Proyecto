@@ -1,7 +1,6 @@
-import { Empresa } from "./Empresa.js";
 class User extends HTMLElement{
     //Constructor User
-    constructor(id,name,username,email,phone,website,companyName,catchPhrase,bs){
+    constructor(id,name,username,email,phone,website){
         super();
         this.id = id;
         this.name = name;
@@ -9,7 +8,6 @@ class User extends HTMLElement{
         this.email = email;
         this.phone = phone;
         this.website = website;
-        this.empresa = new Empresa(companyName,catchPhrase,bs);
         this.posts = [];
         this.tareas = [];
     }
@@ -32,11 +30,12 @@ class User extends HTMLElement{
 
         shadow.appendChild(estilo);
         shadow.appendChild(user);
-        
     }
+
     addPost(post){
         this.posts.push(post);
     }
+    
     addTarea(tarea){
         this.tareas.push(tarea);
     }

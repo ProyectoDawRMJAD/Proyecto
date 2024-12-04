@@ -30,7 +30,7 @@ usuarios.forEach(usuario => {
 function cargarDatos(){
     //JSON de users a Array de objetos USER
     users.forEach(usuario => {
-        let nuevoUsuario = new User(usuario.id,usuario.name,usuario.username,usuario.email,usuario.phone,usuario.website,usuario.company.name,usuario.company.catchPhrase,usuario.company.bs);
+        let nuevoUsuario = new User(usuario.id,usuario.name,usuario.username,usuario.email,usuario.phone,usuario.website);
         usuarios.push(nuevoUsuario);
     });
     //JSON de POSTS a Array dentro de USER de POSTS
@@ -62,6 +62,9 @@ function cargarDatos(){
         let imagen = new Foto(foto.albumID,foto.id,foto.title,foto.url,foto.thumbnailUrl);
         imagenes.push(imagen);
     });
+
+
+
 }
 
 
