@@ -20,12 +20,17 @@ let imagenes = [];
 let contenedor = document.getElementById("prueba");
 let buscador = document.getElementById("searchBar");
 
+
+
 cargarDatos();
+mostrarDatos();
 
-usuarios.forEach(usuario => {
-    contenedor.appendChild(usuario);
-});
 
+function mostrarDatos(){
+    usuarios.forEach(usuario => {
+        contenedor.appendChild(usuario);
+    });
+}
 
 
 
