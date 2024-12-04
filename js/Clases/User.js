@@ -22,6 +22,8 @@ class User extends HTMLElement{
         let plantilla = document.getElementById("user");
         let contenido = plantilla.content;
         let user = contenido.cloneNode(true);
+        
+        let btnEliminar = user.querySelector("#btnEliminar");
 
         user.querySelector("#name").textContent = this.name;
         user.querySelector("#userName").textContent = "@"+this.username;
@@ -30,6 +32,10 @@ class User extends HTMLElement{
 
         shadow.appendChild(estilo);
         shadow.appendChild(user);
+
+        btnEliminar.addEventListener('click',() =>{
+            this.remove();
+        });
     }
 
     addPost(post){
