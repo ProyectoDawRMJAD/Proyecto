@@ -4,6 +4,7 @@
 
 #contenedor{
     font-family: "Sour Gummy", sans-serif;
+    background-color: white;
     width: 373.1px;
     height: fit-content;
     border: solid black 2px;
@@ -14,7 +15,12 @@
 
 #btnEliminar{
     height: 30px;
-    width: 30px; 
+    width: 30px;
+    cursor: pointer;
+    transition: 0.1s;
+}
+#btnEliminar:hover{
+    scale: 1.15;
 }
 #btnEditar{
     height: 30px;
@@ -58,7 +64,7 @@ h3,h4{
     color: white;
 }
 #btnTarea:hover{
-    background-color: rgb(2, 76, 119);
+    background-color: rgb(3, 121, 189);
     color: white;
 }
 
