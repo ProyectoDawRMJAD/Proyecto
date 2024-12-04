@@ -18,7 +18,7 @@ class Tarea extends HTMLElement{
         let tarea = contenido.cloneNode(true);
         
         shadow.appendChild(estilo);
-        shadow.appendChild(user);
+        shadow.appendChild(tarea);
     }
 }
 export{

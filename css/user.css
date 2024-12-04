@@ -4,7 +4,7 @@
 
 #contenedor{
     font-family: "Sour Gummy", sans-serif;
-    width: 373.1px;
+    width: 350px;
     height: fit-content;
     border: solid black 2px;
     border-radius: 0.5rem 0.5rem 0 0;
@@ -14,7 +14,12 @@
 
 #btnEliminar{
     height: 30px;
-    width: 30px; 
+    width: 30px;
+    cursor: pointer;
+    transition: 0.1s;
+}
+#btnEliminar:hover{
+    scale: 1.10;
 }
 #btnEditar{
     height: 30px;
@@ -37,7 +42,7 @@ p{
     margin: 5px;
 }
 
-h3,h4{
+h4,h5{
     margin: 0;
 }
 
