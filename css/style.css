@@ -31,6 +31,9 @@
     padding: 10px 20px 10px 20px;
     border: solid black 2px;
 }
+#searchBar:focus {
+    outline: none;
+}
 
 nav{
     display: flex;

@@ -24,7 +24,7 @@ let textNotFound = document.getElementById("notFound");
 //EVENTLISTENERS
 buscador.addEventListener("input",(event)=>{
     busqueda("name",event.target.value);
-})
+});
 
 cargarDatos();
 mostrarDatos(usuarios);
