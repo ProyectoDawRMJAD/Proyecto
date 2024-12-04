@@ -19,22 +19,32 @@ let usuarios = [];
 let imagenes = [];
 let contenedor = document.getElementById("prueba");
 let buscador = document.getElementById("searchBar");
+let textNotFound = document.getElementById("notFound");
 
-
+//EVENTLISTENERS
+buscador.addEventListener("input",(event)=>{
+    busqueda("name",event.target.value);
+})
 
 cargarDatos();
-mostrarDatos();
+mostrarDatos(usuarios);
 
-
-function mostrarDatos(){
+function mostrarDatos(usuarios){
     usuarios.forEach(usuario => {
         contenedor.appendChild(usuario);
-    });
+    }); 
 }
 
-
-
-
+function busqueda(tipo,busqueda){
+    contenedor.replaceChildren();
+    let buscados = usuarios.filter(usuario => usuario[tipo].includes(busqueda));
+    if(buscados.length == 0){
+        textNotFound.classList.remove("hidden");
+    }else{
+        textNotFound.classList.add("hidden");
+    }
+    mostrarDatos(buscados);
+}
 
 function cargarDatos(){
     //JSON de users a Array de objetos USER

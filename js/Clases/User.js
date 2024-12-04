@@ -13,23 +13,31 @@ class User extends HTMLElement{
     }
 
     connectedCallback(){
-        let shadow = this.attachShadow({mode:"open"});
+        if(!this.shadowRoot){
+            let shadow = this.attachShadow({mode:"open"});
+            let estilo = document.createElement("link");
+            estilo.setAttribute("rel","stylesheet");
+            estilo.setAttribute("href","./css/user.css");
 
-        let estilo = document.createElement("link");
-        estilo.setAttribute("rel","stylesheet");
-        estilo.setAttribute("href","./css/user.css");
+            let plantilla = document.getElementById("user");
+            let contenido = plantilla.content;
+            let user = contenido.cloneNode(true);
 
-        let plantilla = document.getElementById("user");
-        let contenido = plantilla.content;
-        let user = contenido.cloneNode(true);
+            let btnEliminar = user.querySelector("#btnEliminar");
 
-        user.querySelector("#name").textContent = this.name;
-        user.querySelector("#userName").textContent = "@"+this.username;
-        user.querySelector("#posts").textContent = this.posts.length;   
-        user.querySelector("#tareas").textContent = this.tareas.length;
+            user.querySelector("#name").textContent = this.name;
+            user.querySelector("#userName").textContent = "@"+this.username;
+            user.querySelector("#posts").textContent = this.posts.length;   
+            user.querySelector("#tareas").textContent = this.tareas.length;
 
-        shadow.appendChild(estilo);
-        shadow.appendChild(user);
+            shadow.appendChild(estilo);
+            shadow.appendChild(user);
+
+            btnEliminar.addEventListener('click',() =>{
+                this.remove();
+            });
+        }
+        
     }
 
     addPost(post){

@@ -6,7 +6,9 @@
     padding: 20px 0 20px 0;
     justify-content: center;
 }
-
+.hidden{
+    display: none;
+}
 .btn{
     font-family: "Sour Gummy", sans-serif;
     font-size: 17px;
