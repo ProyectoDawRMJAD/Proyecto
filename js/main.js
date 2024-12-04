@@ -18,12 +18,16 @@ customElements.define("template-foto",Foto);
 let usuarios = [];
 let imagenes = [];
 let contenedor = document.getElementById("prueba");
+let buscador = document.getElementById("searchBar");
 
 cargarDatos();
 
 usuarios.forEach(usuario => {
     contenedor.appendChild(usuario);
 });
+
+
+
 
 
 
