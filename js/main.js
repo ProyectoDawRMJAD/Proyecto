@@ -95,7 +95,6 @@ function cargarDatos(){
         let imagen = new Foto(fotos.albumID,fotos.id,fotos.title,fotos.url,fotos.thumbnailUrl);
         imagenes.push(imagen);  
     });
-        
 }
 
 
