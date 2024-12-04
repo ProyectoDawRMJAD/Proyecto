@@ -90,18 +90,13 @@ function cargarDatos(){
             }
         });
     });
-    //JSON de fotos a Objetos FOTO solo 500 !con mas de 1000 afecta a la carga
-    for (let i = 0; i < 100; i++) {
-        let imagen = new Foto(fotos[i].albumID,fotos[i].id,fotos[i].title,fotos[i].url,fotos[i].thumbnailUrl);
-        let img = document.createElement("img");
-        img.src = imagen.url;
-        img.alt = imagen.title;
-        img.onload = () => {
-            imagenes.push(imagen);
-        };
+    //JSON de fotos a Objetos FOTO
+    fotos.forEach(fotos => {
+        let imagen = new Foto(fotos.albumID,fotos.id,fotos.title,fotos.url,fotos.thumbnailUrl);
+        imagenes.push(imagen);  
+    });
         
-    }
-
 }
+
 
 
