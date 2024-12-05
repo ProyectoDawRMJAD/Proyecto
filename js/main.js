@@ -18,14 +18,47 @@ customElements.define("template-foto",Foto);
 let usuarios = [];
 let imagenes = [];
 let contenedor = document.getElementById("prueba");
+let buscador = document.getElementById("searchBar");
+let textNotFound = document.getElementById("notFound");
+let btnImg = document.getElementById("btnImg");
+let btnUsers = document.getElementById("btnUsarios");
 
-cargarDatos();
-
-usuarios.forEach(usuario => {
-    contenedor.appendChild(usuario);
+//EVENTLISTENERS
+buscador.addEventListener("input",(event)=>{
+    busqueda("name",event.target.value);
 });
 
+btnImg.addEventListener("click",()=>{
+    contenedor.replaceChildren();
+    mostrarDatos(imagenes);
+})
 
+btnUsers.addEventListener("click",()=>{
+    contenedor.replaceChildren();
+    mostrarDatos(usuarios);
+})
+
+cargarDatos();
+mostrarDatos(usuarios);
+console.log(imagenes);
+
+
+function mostrarDatos(usuarios){
+    usuarios.forEach(usuario => {
+        contenedor.appendChild(usuario);
+    }); 
+}
+
+function busqueda(tipo,busqueda){
+    contenedor.replaceChildren();
+    let buscados = usuarios.filter(usuario => usuario[tipo].includes(busqueda));
+    if(buscados.length == 0){
+        textNotFound.classList.remove("hidden");
+    }else{
+        textNotFound.classList.add("hidden");
+    }
+    mostrarDatos(buscados);
+}
 
 function cargarDatos(){
     //JSON de users a Array de objetos USER
@@ -58,13 +91,11 @@ function cargarDatos(){
         });
     });
     //JSON de fotos a Objetos FOTO
-    fotos.forEach(foto => {
-        let imagen = new Foto(foto.albumID,foto.id,foto.title,foto.url,foto.thumbnailUrl);
-        imagenes.push(imagen);
+    fotos.forEach(fotos => {
+        let imagen = new Foto(fotos.albumID,fotos.id,fotos.title,fotos.url,fotos.thumbnailUrl);
+        imagenes.push(imagen);  
     });
-
-
-
 }
+
 
 
