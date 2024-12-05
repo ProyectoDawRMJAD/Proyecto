@@ -91,10 +91,11 @@ function cargarDatos(){
         });
     });
     //JSON de fotos a Objetos FOTO
-    fotos.forEach(fotos => {
-        let imagen = new Foto(fotos.albumID,fotos.id,fotos.title,fotos.url,fotos.thumbnailUrl);
-        imagenes.push(imagen);  
-    });
+    for (let i = 0; i < 500; i++) {
+        let imagen = new Foto(fotos[i].albumID,fotos[i].id,fotos[i].title,fotos[i].url,fotos[i].thumbnailUrl);
+        imagenes.push(imagen);
+        
+    }
 }
 
 

@@ -2,5 +2,9 @@ img{
     height: 150px;
     width: 150px;
     border-radius: 1rem;
-    border: solid black 2px;
+    transition: 0.3s;
+}
+
+img:hover{
+    scale: 1.15;
 }

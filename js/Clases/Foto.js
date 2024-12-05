@@ -17,9 +17,12 @@ class Foto extends HTMLElement{
     
             let contenido = plantilla.content;
             let clon = contenido.cloneNode(true);
-    
-            clon.querySelector("#imagen").src = this.url;
-    
+
+            let imagen = clon.querySelector("#imagen");
+            imagen.src = this.url;
+            imagen.onerror = ()=>{
+                imagen.src = "/img/error.png";
+            }
             shadow.appendChild(estilo);
             shadow.appendChild(clon);
         }
