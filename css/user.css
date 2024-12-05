@@ -4,12 +4,9 @@
 
 #contenedor{
     font-family: "Sour Gummy", sans-serif;
-<<<<<<< HEAD
     width: 350px;
-=======
     background-color: white;
     width: 373.1px;
->>>>>>> ebc2be2a79cc6f64b84c0784cf09054606d0e70d
     height: fit-content;
     border: solid black 2px;
     border-radius: 0.5rem 0.5rem 0 0;
@@ -24,11 +21,7 @@
     transition: 0.1s;
 }
 #btnEliminar:hover{
-<<<<<<< HEAD
-    scale: 1.10;
-=======
     scale: 1.15;
->>>>>>> ebc2be2a79cc6f64b84c0784cf09054606d0e70d
 }
 #btnEditar{
     height: 30px;
