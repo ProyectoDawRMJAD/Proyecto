@@ -7,18 +7,20 @@ class Tarea extends HTMLElement{
         this.completed = completed;
     }
     connectedCallback(){
-        let shadow = this.attachShadow({mode:"open"});
+        if(!this.shadowRoot){
+            let shadow = this.attachShadow({mode:"open"});
 
-        let estilo = document.createElement("link");
-        estilo.setAttribute("rel","stylesheet");
-        estilo.setAttribute("href","./css/tarea.css");
+            let estilo = document.createElement("link");
+            estilo.setAttribute("rel","stylesheet");
+            estilo.setAttribute("href","./css/tarea.css");
 
-        let plantilla = document.getElementById("todo");
-        let contenido = plantilla.content;
-        let tarea = contenido.cloneNode(true);
-        
-        shadow.appendChild(estilo);
-        shadow.appendChild(tarea);
+            let plantilla = document.getElementById("todo");
+            let contenido = plantilla.content;
+            let tarea = contenido.cloneNode(true);
+
+            shadow.appendChild(estilo);
+            shadow.appendChild(tarea);
+        }
     }
 }
 export{

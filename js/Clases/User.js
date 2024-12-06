@@ -1,3 +1,5 @@
+import{contenedorTareas,contenedorPosts} from "../main.js";
+
 class User extends HTMLElement{
     //Constructor User
     constructor(id,name,username,email,phone,website){
@@ -24,18 +26,61 @@ class User extends HTMLElement{
             let user = contenido.cloneNode(true);
 
             let btnEliminar = user.querySelector("#btnEliminar");
+            let btnPosts = user.querySelector("#btnPost");
+            let btnTareas = user.querySelector("#btnTarea");
 
             user.querySelector("#name").textContent = this.name;
             user.querySelector("#userName").textContent = "@"+this.username;
-            user.querySelector("#posts").textContent = this.posts.length;   
-            user.querySelector("#tareas").textContent = this.tareas.length;
+            btnPosts.textContent = "Posts "+this.posts.length+"\n"; 
+            btnTareas.textContent = "Tareas "+this.tareas.length;
+            
 
             shadow.appendChild(estilo);
             shadow.appendChild(user);
 
+            //Eliminar
             btnEliminar.addEventListener('click',() =>{
                 this.remove();
+                contenedorTareas.classList.remove("active");
+                contenedorPosts.classList.remove("active");
             });
+
+            //Mostrar posts y tareas
+            btnTareas.addEventListener('click',()=>{
+                contenedorTareas.replaceChildren();
+                contenedorTareas.classList.remove("active");
+                setTimeout(()=>{
+                    let btnEsconder = document.createElement("button");
+                    contenedorTareas.appendChild(btnEsconder);
+                    btnEsconder.addEventListener("click",()=>{
+                        contenedorTareas.classList.remove("active");
+                    },{once:true});
+                    this.tareas.forEach(tarea => {
+                        contenedorTareas.appendChild(tarea);
+                    });
+                    contenedorTareas.classList.toggle("active");
+                },200);
+                
+            });
+
+            btnPosts.addEventListener('click',()=>{
+                contenedorPosts.replaceChildren();
+                contenedorPosts.classList.remove("active");
+                setTimeout(()=>{
+                    let btnEsconder = document.createElement("button");
+                    contenedorPosts.appendChild(btnEsconder);
+                    btnEsconder.addEventListener("click",()=>{
+                        contenedorPosts.classList.remove("active");
+                    },{once:true});
+
+                    this.posts.forEach(post => {
+                        contenedorPosts.appendChild(post);
+                    });
+
+                    contenedorPosts.classList.toggle("active");
+                },200);
+            });
+            
         }
     }
 

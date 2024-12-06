@@ -22,6 +22,8 @@ let buscador = document.getElementById("searchBar");
 let textNotFound = document.getElementById("notFound");
 let btnImg = document.getElementById("btnImg");
 let btnUsers = document.getElementById("btnUsarios");
+export let contenedorTareas = document.getElementById("tareas");
+export let contenedorPosts = document.getElementById("posts");
 
 //EVENTLISTENERS
 buscador.addEventListener("input",(event)=>{

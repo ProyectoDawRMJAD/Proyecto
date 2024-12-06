@@ -39,11 +39,6 @@
     width: auto;
     gap: 2px;
 }
-
-p{
-    margin: 5px;
-}
-
 h4,h5{
     margin: 0;
 }
@@ -58,6 +53,7 @@ h4,h5{
 
 #btnPost{
     border-right: solid 2px black;
+    padding: 10px;
 }
 
 #btnPost:hover{
