@@ -18,12 +18,18 @@ class Tarea extends HTMLElement{
             let tarea = contenido.cloneNode(true);
             let contenedor = tarea.querySelector("#contenedor");
             let titulo = tarea.querySelector("#name");
+            let checkBox = tarea.querySelector("#checkPost");
             
             shadow.appendChild(estilo);
             shadow.appendChild(tarea);
 
+            checkBox.addEventListener("click",()=>{
+                contenedor.classList.toggle("completed");
+            });
+
             if(this.completed){
                 contenedor.classList.toggle("completed");
+                checkBox.setAttribute("checked","checked");
             }
             titulo.textContent = this.title;
 
