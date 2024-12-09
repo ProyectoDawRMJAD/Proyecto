@@ -9,6 +9,39 @@
 .hidden{
     display: none;
 }
+
+.hiddenModal{
+    animation-name: desaparece;
+    animation-duration: 0.5s;
+}
+.modalDivSend{
+    animation-name: aparece;
+    animation-duration: 0.3s;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 1000vh;
+    width: 100vw;
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+.modalFormularioSend{
+    background: rgba(255, 255, 255);
+    border-radius: 0.3rem;
+    height: 1000vh;
+    width: 100vw;
+    height: 180px;
+    width:600px;
+    margin: 300px;
+    padding: 100px;
+    margin-left: 550px;
+    transition: 0.5s;
+}
+.modalFormularioSend:hover{
+    scale: 1.10;
+}
 .btn{
     font-family: "Sour Gummy", sans-serif;
     font-size: 17px;
@@ -124,7 +157,6 @@ header{
     width: auto;
     gap: 5px;
     height: 800px;
-    width: 350px;
     left: -400px;
     top: 100px;
     border-radius: 0.4rem;
@@ -138,4 +170,10 @@ header{
 }
 #posts.active{
     left: 125px;
+}
+@keyframes aparece {
+    from{opacity: 0;}to{opacity: 1;}
+}
+@keyframes desaparece {
+    from{opacity: 1;}to{opacity: 0;}
 }

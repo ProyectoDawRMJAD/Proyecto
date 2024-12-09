@@ -23,6 +23,7 @@ let textNotFound = document.getElementById("notFound");
 let btnImg = document.getElementById("btnImg");
 let btnUsers = document.getElementById("btnUsarios");
 let btnSend = document.getElementById("btnSend");
+let modalBtnSend = document.getElementById("modalBtnSend");
 export let contenedorTareas = document.getElementById("tareas");
 export let contenedorPosts = document.getElementById("posts");
 
@@ -30,10 +31,24 @@ export let contenedorPosts = document.getElementById("posts");
 buscador.addEventListener("input",(event)=>{
     busqueda("name",event.target.value);
 });
+modalBtnSend.addEventListener("click",(event)=>{
+    let divModal = document.getElementById("modalBtnSend");
+    let divModalForm = document.getElementById("formularioSend");
+    if(event.target == divModal){
+        divModal.classList.add("hiddenModal");
+        divModalForm.classList.add("hiddenModal");
+        setTimeout(()=>{
+            divModal.classList.add("hidden");
+        },300);
+    }
+})
 
 btnSend.addEventListener("click",()=>{
-    let divModal= document.getElementById("modalBtnSend");
+    let divModal = document.getElementById("modalBtnSend");
+    let divModalForm = document.getElementById("formularioSend");
     divModal.classList.remove("hidden");
+    divModal.classList.add("modalDivSend");
+    divModalForm.classList.remove("hiddenModal");
 })
 
 btnImg.addEventListener("click",()=>{
@@ -61,6 +76,7 @@ function mostrarDatos(usuarios){
 
 function busqueda(tipo,busqueda){
     contenedor.replaceChildren();
+
     let buscados = usuarios.filter(usuario => usuario[tipo].includes(busqueda));
     if(buscados.length == 0){
         textNotFound.classList.remove("hidden");
