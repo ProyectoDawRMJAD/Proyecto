@@ -20,8 +20,17 @@ class Post extends HTMLElement{
             let contenido = plantilla.content;
             let tarea = contenido.cloneNode(true);
 
+            let postContent = tarea.querySelector("#postContent");
+            let contenedorPost = tarea.querySelector("#titulos");
+
             shadow.appendChild(estilo);
             shadow.appendChild(tarea);
+
+            let p = document.createElement("p");
+            p.textContent = "Post";
+
+            contenedorPost.appendChild(p);
+            postContent.textContent = "Post"+this.title;
         }
     }
 

@@ -1,10 +1,26 @@
-div{
-    padding: 0 0 0 10px;
-    background-color:#f1f1f1;
-    width: 320px;
-    height: 10px;
-    border: solid black 2px;
-    border-radius: 0.3rem;
+#contenedorPost{
+    padding: 2rem 4rem 6rem 3rem;
+    background: #fff;
+    width: auto;
+    height: 80px;
     display: flex;
-    gap:20px
+    border-radius: 10px;
+    box-shadow: 1px 1px 2rem rgba(0, 0, 0, 0.3);
+}
+
+#contenedorPost{
+    margin-bottom: 20px;
+    font-family: "Sour Gummy", sans-serif;
+    flex-direction: column;
+}
+
+#contenedorPost p{
+    margin: 0 0 0.5rem 0;
+    color: #999;
+    font-size: 1.25rem;
+}
+
+#contenedorPost h4{
+    padding: 0;
+    margin: 0;
 }
