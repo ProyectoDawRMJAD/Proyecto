@@ -8,11 +8,11 @@ class Tarea extends HTMLElement{
     }
     connectedCallback(){
         if(!this.shadowRoot){
-            let shadow = this.attachShadow({mode:"open"});
+            let shadow = this.attachShadow({mode: "open"});
             let estilo = document.createElement("link");
-            estilo.setAttribute("rel","stylesheet");
-            estilo.setAttribute("href","./css/tarea.css");
-
+            estilo.setAttribute("rel", "stylesheet");
+            estilo.setAttribute("href", "./css/tarea.css");
+            
             let plantilla = document.getElementById("todo");
             let contenido = plantilla.content;
             let tarea = contenido.cloneNode(true);
@@ -22,19 +22,28 @@ class Tarea extends HTMLElement{
             
             shadow.appendChild(estilo);
             shadow.appendChild(tarea);
-
-            checkBox.addEventListener("click",()=>{
+            
+            // Función para alternar estado
+            const toggleCompletion = () => {
                 contenedor.classList.toggle("completed");
-                if(this.completed){
-                    this.completed = false;
-                }else{
-                    this.completed = true;
-                }
+                this.completed = !this.completed;
+                checkBox.checked = this.completed; // Sincroniza el estado del checkbox
+            };
+            
+            // Evento para el checkbox
+            checkBox.addEventListener("click", (event) => {
+                event.stopPropagation(); // Evita que el evento "click" del contenedor se dispare
+                toggleCompletion();
             });
-
-            if(this.completed){
-                contenedor.classList.toggle("completed");
-                checkBox.setAttribute("checked","checked");
+            
+            // Evento para el contenedor
+            contenedor.addEventListener("click", () => {
+                toggleCompletion();
+            });
+            
+            if (this.completed) {
+                contenedor.classList.add("completed");
+                checkBox.setAttribute("checked", "checked");
             }
             titulo.textContent = this.title;
 
