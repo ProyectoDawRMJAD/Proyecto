@@ -103,13 +103,9 @@ header{
 
 #tareas{
     position: fixed;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    justify-content: center;
-    align-items: center;
+    padding: 10px;
     height: 800px;
-    width: 350px;
+    width: auto;
     right: -400px;
     border-radius: 0.4rem;
     top: 100px;
@@ -123,10 +119,9 @@ header{
 }
 #posts{
     position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    padding: 10px;
+    height: 800px;
+    width: auto;
     gap: 5px;
     height: 800px;
     width: 350px;
