@@ -50,11 +50,6 @@ class User extends HTMLElement{
                 contenedorTareas.replaceChildren();
                 contenedorTareas.classList.remove("active");
                 setTimeout(()=>{
-                    let btnEsconder = document.createElement("button");
-                    contenedorTareas.appendChild(btnEsconder);
-                    btnEsconder.addEventListener("click",()=>{
-                        contenedorTareas.classList.remove("active");
-                    },{once:true});
                     this.tareas.forEach(tarea => {
                         contenedorTareas.appendChild(tarea);
                     });
@@ -67,12 +62,6 @@ class User extends HTMLElement{
                 contenedorPosts.replaceChildren();
                 contenedorPosts.classList.remove("active");
                 setTimeout(()=>{
-                    let btnEsconder = document.createElement("button");
-                    contenedorPosts.appendChild(btnEsconder);
-                    btnEsconder.addEventListener("click",()=>{
-                        contenedorPosts.classList.remove("active");
-                    },{once:true});
-
                     this.posts.forEach(post => {
                         contenedorPosts.appendChild(post);
                     });

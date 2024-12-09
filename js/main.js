@@ -38,6 +38,8 @@ btnSend.addEventListener("click",()=>{
 
 btnImg.addEventListener("click",()=>{
     contenedor.replaceChildren();
+    contenedorTareas.classList.remove("active");
+    contenedorPosts.classList.remove("active");
     mostrarDatos(imagenes);
 })
 

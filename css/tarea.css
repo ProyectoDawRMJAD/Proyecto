@@ -1,7 +1,16 @@
 div{
-    background-color:#fafafa;
+    background-color:#fa9595;
     width: 320px;
-    height: 30px;
+    height: auto;
     border: solid black 2px;
     border-radius: 0.3rem;
+    display: flex;
+}
+
+div.completed{
+    background-color: rgb(93, 252, 93);
+}
+
+#name{
+    font-size: 10px;
 }
