@@ -9,6 +9,29 @@
 .hidden{
     display: none;
 }
+.modalDivSend{
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 1000vh;
+    width: 100vw;
+    z-index: 1000;
+    transition: 1s;
+    justify-content: center;
+    align-items: center;
+}
+.modalFormularioSend{
+    background: rgba(255, 255, 255);
+    height: 1000vh;
+    width: 100vw;
+    height: 180px;
+    width:600px;
+    margin: 300px;
+    padding: 100px;
+    margin-left: 550px;
+}
 .btn{
     font-family: "Sour Gummy", sans-serif;
     font-size: 17px;

@@ -23,6 +23,7 @@ let textNotFound = document.getElementById("notFound");
 let btnImg = document.getElementById("btnImg");
 let btnUsers = document.getElementById("btnUsarios");
 let btnSend = document.getElementById("btnSend");
+let modalBtnSend = document.getElementById("modalBtnSend");
 export let contenedorTareas = document.getElementById("tareas");
 export let contenedorPosts = document.getElementById("posts");
 
@@ -30,10 +31,18 @@ export let contenedorPosts = document.getElementById("posts");
 buscador.addEventListener("input",(event)=>{
     busqueda("name",event.target.value);
 });
+modalBtnSend.addEventListener("click",()=>{
+    let divModal = document.getElementById("modalBtnSend");
+    let divModalForm = document.getElementById("formularioSend");
+    divModal.classList.add("hidden");
+    divModalForm.classList.add("hidden");
+})
 
 btnSend.addEventListener("click",()=>{
-    let divModal= document.getElementById("modalBtnSend");
+    let divModal = document.getElementById("modalBtnSend");
+    let divModalForm = document.getElementById("formularioSend");
     divModal.classList.remove("hidden");
+    divModalForm.classList.remove("hidden");
 })
 
 btnImg.addEventListener("click",()=>{
