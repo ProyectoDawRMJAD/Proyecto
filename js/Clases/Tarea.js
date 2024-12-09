@@ -24,7 +24,7 @@ class Tarea extends HTMLElement{
             shadow.appendChild(tarea);
             
             // Función para alternar estado
-            const toggleCompletion = () => {
+            let toggleCompletion = () => {
                 contenedor.classList.toggle("completed");
                 this.completed = !this.completed;
                 checkBox.checked = this.completed; // Sincroniza el estado del checkbox
