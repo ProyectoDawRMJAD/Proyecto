@@ -22,6 +22,7 @@ let buscador = document.getElementById("searchBar");
 let textNotFound = document.getElementById("notFound");
 let btnImg = document.getElementById("btnImg");
 let btnUsers = document.getElementById("btnUsarios");
+let btnSend = document.getElementById("btnSend");
 export let contenedorTareas = document.getElementById("tareas");
 export let contenedorPosts = document.getElementById("posts");
 
@@ -29,6 +30,11 @@ export let contenedorPosts = document.getElementById("posts");
 buscador.addEventListener("input",(event)=>{
     busqueda("name",event.target.value);
 });
+
+btnSend.addEventListener("click",()=>{
+    let divModal= document.getElementById("modalBtnSend");
+    divModal.classList.remove("hidden");
+})
 
 btnImg.addEventListener("click",()=>{
     contenedor.replaceChildren();
@@ -98,7 +104,6 @@ function cargarDatos(){
     for (let i = 0; i < 500; i++) {
         let imagen = new Foto(fotos[i].albumID,fotos[i].id,fotos[i].title,fotos[i].url,fotos[i].thumbnailUrl);
         imagenes.push(imagen);
-        
     }
 }
 
