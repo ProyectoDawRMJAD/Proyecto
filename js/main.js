@@ -31,18 +31,24 @@ export let contenedorPosts = document.getElementById("posts");
 buscador.addEventListener("input",(event)=>{
     busqueda("name",event.target.value);
 });
-modalBtnSend.addEventListener("click",()=>{
+modalBtnSend.addEventListener("click",(event)=>{
     let divModal = document.getElementById("modalBtnSend");
     let divModalForm = document.getElementById("formularioSend");
-    divModal.classList.add("hidden");
-    divModalForm.classList.add("hidden");
+    if(event.target == divModal){
+        divModal.classList.add("hiddenModal");
+        divModalForm.classList.add("hiddenModal");
+        setTimeout(()=>{
+            divModal.classList.add("hidden");
+        },300);
+    }
 })
 
 btnSend.addEventListener("click",()=>{
     let divModal = document.getElementById("modalBtnSend");
     let divModalForm = document.getElementById("formularioSend");
     divModal.classList.remove("hidden");
-    divModalForm.classList.remove("hidden");
+    divModal.classList.add("modalDivSend");
+    divModalForm.classList.remove("hiddenModal");
 })
 
 btnImg.addEventListener("click",()=>{
@@ -70,6 +76,7 @@ function mostrarDatos(usuarios){
 
 function busqueda(tipo,busqueda){
     contenedor.replaceChildren();
+
     let buscados = usuarios.filter(usuario => usuario[tipo].includes(busqueda));
     if(buscados.length == 0){
         textNotFound.classList.remove("hidden");
