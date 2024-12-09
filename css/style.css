@@ -9,6 +9,24 @@
 .hidden{
     display: none;
 }
+.modalBtnSend{
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    position: fixed;
+    height: 1000vh;
+    width: 100vw;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.formularioBtnSend{
+    background: #fff;
+    color: #fff;
+    position: fixed;
+    height: 50vh;
+    width: 50vw;
+}
 .btn{
     font-family: "Sour Gummy", sans-serif;
     font-size: 17px;
