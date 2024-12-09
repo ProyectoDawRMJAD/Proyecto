@@ -26,29 +26,28 @@ let btnSend = document.getElementById("btnSend");
 let modalBtnSend = document.getElementById("modalBtnSend");
 export let contenedorTareas = document.getElementById("tareas");
 export let contenedorPosts = document.getElementById("posts");
+let divModal = document.getElementById("modalBtnSend");
+ let divModalForm = document.getElementById("formularioSend");
 
 //EVENTLISTENERS
 buscador.addEventListener("input",(event)=>{
     busqueda("name",event.target.value);
 });
 modalBtnSend.addEventListener("click",(event)=>{
-    let divModal = document.getElementById("modalBtnSend");
-    let divModalForm = document.getElementById("formularioSend");
     if(event.target == divModal){
         divModal.classList.add("hiddenModal");
         divModalForm.classList.add("hiddenModal");
         setTimeout(()=>{
             divModal.classList.add("hidden");
+            divModalForm.classList.remove("hiddenModal");
         },300);
     }
 })
 
 btnSend.addEventListener("click",()=>{
-    let divModal = document.getElementById("modalBtnSend");
-    let divModalForm = document.getElementById("formularioSend");
     divModal.classList.remove("hidden");
+    divModalForm.classList.remove("hidden");
     divModal.classList.add("modalDivSend");
-    divModalForm.classList.remove("hiddenModal");
 })
 
 btnImg.addEventListener("click",()=>{

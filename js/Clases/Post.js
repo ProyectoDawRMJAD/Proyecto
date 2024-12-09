@@ -27,10 +27,10 @@ class Post extends HTMLElement{
             shadow.appendChild(tarea);
 
             let p = document.createElement("p");
-            p.textContent = "Post";
+            p.textContent = this.title;
 
             contenedorPost.appendChild(p);
-            postContent.textContent = "Post"+this.title;
+            postContent.textContent = this.body;
         }
     }
 

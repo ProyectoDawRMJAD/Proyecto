@@ -25,6 +25,11 @@ class Tarea extends HTMLElement{
 
             checkBox.addEventListener("click",()=>{
                 contenedor.classList.toggle("completed");
+                if(this.completed){
+                    this.completed = false;
+                }else{
+                    this.completed = true;
+                }
             });
 
             if(this.completed){

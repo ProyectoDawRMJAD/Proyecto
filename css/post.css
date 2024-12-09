@@ -1,18 +1,21 @@
 #contenedorPost{
-    padding: 2rem 4rem 6rem 3rem;
+    padding: 2rem 3rem 2rem 3rem;
     background: #fff;
-    width: auto;
-    height: 80px;
+    width: 240px;
+    height: auto;
     display: flex;
     border-radius: 10px;
-    box-shadow: 1px 1px 2rem rgba(0, 0, 0, 0.3);
-}
-
-#contenedorPost{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     margin-bottom: 20px;
     font-family: "Sour Gummy", sans-serif;
     flex-direction: column;
+    transition: 0.2s;
 }
+
+#contenedorPost:hover{
+    box-shadow: rgba(50, 50, 93, 0.8) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
 
 #contenedorPost p{
     margin: 0 0 0.5rem 0;
