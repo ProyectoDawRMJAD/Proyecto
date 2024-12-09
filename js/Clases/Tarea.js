@@ -17,12 +17,15 @@ class Tarea extends HTMLElement{
             let contenido = plantilla.content;
             let tarea = contenido.cloneNode(true);
             let contenedor = tarea.querySelector("#contenedor");
+            let titulo = tarea.querySelector("#name");
             
             shadow.appendChild(estilo);
             shadow.appendChild(tarea);
+
             if(this.completed){
                 contenedor.classList.toggle("completed");
             }
+            titulo.textContent = this.title;
 
         }
     }
