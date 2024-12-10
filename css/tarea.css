@@ -1,4 +1,5 @@
 div{
+    font-family: "Sour Gummy", sans-serif;
     padding: 0 0 0 10px;
     background-color:#fa9595;
     width: 320px;
@@ -7,11 +8,15 @@ div{
     border-radius: 0.3rem;
     display: flex;
     gap:20px;
+<<<<<<< HEAD
     font-family: "Sour Gummy", sans-serif;
     transition: 0.1s;
 }
 div:hover{
     scale: 1.03;
+=======
+    cursor: pointer;
+>>>>>>> 7624873a90df520a53c18a8dceab2c8f93284312
 }
 input{
     cursor: pointer;

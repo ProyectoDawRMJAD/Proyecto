@@ -137,7 +137,7 @@ header{
 #tareas{
     position: fixed;
     padding: 10px;
-    height: 800px;
+    height: 700px;
     width: auto;
     right: -400px;
     border-radius: 0.4rem;
@@ -153,10 +153,9 @@ header{
 #posts{
     position: fixed;
     padding: 10px 20px 10px 20px;
-    height: 800px;
+    height: 700px;
     width: auto;
     gap: 5px;
-    height: 800px;
     left: -400px;
     top: 100px;
     border-radius: 0.4rem;
