@@ -36,6 +36,14 @@ export let contenedorPosts = document.getElementById("posts");
 buscador.addEventListener("input",(event)=>{
     busqueda("name",event.target.value);
 });
+
+buscador.addEventListener("focus",(event)=>{
+    event.target.style.border = "solid rgb(0, 162, 255) 2px";
+})
+
+buscador.addEventListener("focusout",(event)=>{
+    event.target.style.border = "solid black 2px";
+})
 modalBtnSend.addEventListener("click",(event)=>{
     if(event.target == divModal){
         divModal.classList.add("hiddenModal");
