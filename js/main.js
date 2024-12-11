@@ -23,11 +23,14 @@ let textNotFound = document.getElementById("notFound");
 let btnImg = document.getElementById("btnImg");
 let btnUsers = document.getElementById("btnUsarios");
 let btnSend = document.getElementById("btnSend");
+let btnCreate = document.getElementById("btnAdd");
 let modalBtnSend = document.getElementById("modalBtnSend");
+let divModal = document.getElementById("modalBtnSend");
+let divModalForm = document.getElementById("formularioSend");
+let divPublicar = document.getElementById("publicacion");
+let divCrear = document.getElementById("crear");
 export let contenedorTareas = document.getElementById("tareas");
 export let contenedorPosts = document.getElementById("posts");
-let divModal = document.getElementById("modalBtnSend");
- let divModalForm = document.getElementById("formularioSend");
 
 //EVENTLISTENERS
 buscador.addEventListener("input",(event)=>{
@@ -39,12 +42,26 @@ modalBtnSend.addEventListener("click",(event)=>{
         divModalForm.classList.add("hiddenModal");
         setTimeout(()=>{
             divModal.classList.add("hidden");
+            divModalForm.classList.add("hidden");
+            divModal.classList.remove("modalDivSend");
             divModalForm.classList.remove("hiddenModal");
+            divPublicar.classList.add("hidden");
+            divCrear.classList.add("hidden");
         },300);
     }
 })
 
 btnSend.addEventListener("click",()=>{
+    divPublicar.classList.remove("hidden");
+    //MODULARIZAR
+    divModal.classList.remove("hidden");
+    divModalForm.classList.remove("hidden");
+    divModal.classList.add("modalDivSend");
+})
+
+btnCreate.addEventListener("click",()=>{
+    divCrear.classList.remove("hidden");
+    //MODULARIZAR
     divModal.classList.remove("hidden");
     divModalForm.classList.remove("hidden");
     divModal.classList.add("modalDivSend");

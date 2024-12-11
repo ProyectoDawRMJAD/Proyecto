@@ -19,11 +19,12 @@
 
 #contenedorPost p{
     margin: 0 0 0.5rem 0;
-    color: #999;
     font-size: 1.25rem;
 }
 
 #contenedorPost h4{
+    color: #999;
     padding: 0;
     margin: 0;
+    font-weight: bold;
 }
