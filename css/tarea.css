@@ -10,6 +10,9 @@ div{
     gap:20px;
     cursor: pointer;
 }
+div:hover{
+    scale: 1.03;
+}
 input{
     cursor: pointer;
 }
