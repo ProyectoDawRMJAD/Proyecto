@@ -29,12 +29,20 @@ let divModal = document.getElementById("modalBtnSend");
 let divModalForm = document.getElementById("formularioSend");
 let divPublicar = document.getElementById("publicacion");
 let divCrear = document.getElementById("crear");
+let buscar = "usuarios";
 export let contenedorTareas = document.getElementById("tareas");
 export let contenedorPosts = document.getElementById("posts");
 
 //EVENTLISTENERS
 buscador.addEventListener("input",(event)=>{
-    busqueda("name",event.target.value);
+    switch(buscar){
+        case "usuarios":
+            busqueda("name",event.target.value,usuarios);
+            break;
+        case "imagenes":
+            busqueda("title",event.target.value,imagenes);
+    }
+    
 });
 
 buscador.addEventListener("focus",(event)=>{
@@ -44,6 +52,7 @@ buscador.addEventListener("focus",(event)=>{
 buscador.addEventListener("focusout",(event)=>{
     event.target.style.border = "solid black 2px";
 })
+
 modalBtnSend.addEventListener("click",(event)=>{
     if(event.target == divModal){
         divModal.classList.add("hiddenModal");
@@ -80,11 +89,15 @@ btnImg.addEventListener("click",()=>{
     contenedorTareas.classList.remove("active");
     contenedorPosts.classList.remove("active");
     mostrarDatos(imagenes);
+    buscador.setAttribute("placeholder","Buscar Imágen");
+    buscar = "imagenes";
 })
 
 btnUsers.addEventListener("click",()=>{
     contenedor.replaceChildren();
     mostrarDatos(usuarios);
+    buscador.setAttribute("placeholder","Buscar Usuario");
+    buscar = "usuarios";
 })
 
 cargarDatos();
@@ -92,16 +105,16 @@ mostrarDatos(usuarios);
 console.log(imagenes);
 
 
-function mostrarDatos(usuarios){
-    usuarios.forEach(usuario => {
-        contenedor.appendChild(usuario);
+function mostrarDatos(datos){
+    datos.forEach(dato => {
+        contenedor.appendChild(dato);
     }); 
 }
 
-function busqueda(tipo,busqueda){
+function busqueda(tipo,busqueda,conjunto){
     contenedor.replaceChildren();
 
-    let buscados = usuarios.filter(usuario => usuario[tipo].includes(busqueda));
+    let buscados = conjunto.filter(dato => dato[tipo].includes(busqueda));
     if(buscados.length == 0){
         textNotFound.classList.remove("hidden");
     }else{

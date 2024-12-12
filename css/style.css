@@ -140,7 +140,7 @@ header{
     border-radius: 0.4rem;
     top: 100px;
     background-color: white;
-    border: solid black 2px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     transition: right 0.2s ease;
     overflow-y: scroll;
 }
@@ -157,12 +157,21 @@ header{
     top: 100px;
     border-radius: 0.4rem;
     background-color: white;
-    border: solid black 2px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     transition: left 0.2s ease;
     overflow-y: scroll;
 }
 ::-webkit-scrollbar {
     display: none;
+}
+#tareaTitulo,#postTitulo{
+    font-family: "Sour Gummy", sans-serif;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    width: auto;
+    margin: 0;
+    height: 70px;
 }
 #posts.active{
     left: 125px;

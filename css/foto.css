@@ -1,10 +1,26 @@
 img{
-    height: 150px;
-    width: 150px;
-    border-radius: 1rem;
+    height: 100px;
+    width: 100px;
+    border-radius: 0.5rem;
     transition: 0.3s;
 }
 
-img:hover{
-    scale: 1.15;
+#contenedorFoto{
+    font-family: "Sour Gummy", sans-serif;
+    width: 350px;
+    display: flex;
+    background-color: #FAFAFA;
+    width: 373.1px;
+    height: 100px;
+    padding: 2px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 0.5rem;
+    transition: 0.5s;
+}
+h3,h4{
+    margin: 0;
+    margin-left: 5px;
+}
+#contenedorFoto:hover{
+    scale: 1.10;
 }

@@ -31,8 +31,8 @@ class User extends HTMLElement{
 
             user.querySelector("#name").textContent = this.name;
             user.querySelector("#userName").textContent = "@"+this.username;
-            btnPosts.textContent = "Posts "+this.posts.length+"\n"; 
-            btnTareas.textContent = "Tareas "+this.tareas.length;
+            btnPosts.textContent = "POSTS 📰"+this.posts.length+"\n"; 
+            btnTareas.textContent = "TAREAS 📋"+this.tareas.length;
             
 
             shadow.appendChild(estilo);
@@ -50,6 +50,10 @@ class User extends HTMLElement{
                 contenedorTareas.replaceChildren();
                 contenedorTareas.classList.remove("active");
                 setTimeout(()=>{
+                    let titulo = document.createElement("h1");
+                    titulo.textContent = "TAREAS";
+                    titulo.setAttribute("id","tareaTitulo");
+                    contenedorTareas.appendChild(titulo);
                     this.tareas.forEach(tarea => {
                         contenedorTareas.appendChild(tarea);
                     });
@@ -62,6 +66,10 @@ class User extends HTMLElement{
                 contenedorPosts.replaceChildren();
                 contenedorPosts.classList.remove("active");
                 setTimeout(()=>{
+                    let titulo = document.createElement("h1");
+                    titulo.textContent = "POSTS";
+                    titulo.setAttribute("id","postTitulo");
+                    contenedorPosts.appendChild(titulo);
                     this.posts.forEach(post => {
                         contenedorPosts.appendChild(post);
                     });
