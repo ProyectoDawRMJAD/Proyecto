@@ -24,6 +24,7 @@ let btnImg = document.getElementById("btnImg");
 let btnUsers = document.getElementById("btnUsarios");
 let btnSend = document.getElementById("btnSend");
 let btnCreate = document.getElementById("btnAdd");
+let formularioCrearUsuario = document.getElementById("crear");
 let modalBtnSend = document.getElementById("modalBtnSend");
 let divModal = document.getElementById("modalBtnSend");
 let divModalForm = document.getElementById("formularioSend");
@@ -44,6 +45,31 @@ buscador.addEventListener("input",(event)=>{
     }
     
 });
+
+// Evento crear Usuario
+formularioCrearUsuario.addEventListener("submit",(event)=>{
+    event.preventDefault();
+    let nombre=document.getElementById("name").value;
+    let username=document.getElementById("username").value;
+    let email=document.getElementById("email").value;
+    let phone=document.getElementById("phone").value;
+    let website=document.getElementById("website").value;
+    let newUser= new User(usuarios.length,nombre,username,email,phone,website);
+    usuarios.push(newUser);
+    formularioCrearUsuario.reset();
+    mostrarDatos(usuarios);
+    divModal.classList.add("hiddenModal");
+    divModalForm.classList.add("hiddenModal");
+    setTimeout(()=>{
+        divModal.classList.add("hidden");
+        divModalForm.classList.add("hidden");
+        divModal.classList.remove("modalDivSend");
+        divModalForm.classList.remove("hiddenModal");
+        divPublicar.classList.add("hidden");
+        divCrear.classList.add("hidden");
+    },300);
+    
+})
 
 buscador.addEventListener("focus",(event)=>{
     event.target.style.border = "solid rgb(0, 162, 255) 2px";
