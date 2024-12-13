@@ -54,6 +54,7 @@ formularioCrearUsuario.addEventListener("submit",(event)=>{
     let email=document.getElementById("email").value;
     let phone=document.getElementById("phone").value;
     let website=document.getElementById("website").value;
+    //comprobar datos regex
     let newUser= new User(usuarios.length,nombre,username,email,phone,website);
     usuarios.push(newUser);
     formularioCrearUsuario.reset();
