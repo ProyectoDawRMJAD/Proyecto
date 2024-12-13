@@ -43,7 +43,6 @@ buscador.addEventListener("input",(event)=>{
         case "imagenes":
             busqueda("title",event.target.value,imagenes);
     }
-    
 });
 
 // Evento crear Usuario
@@ -152,7 +151,6 @@ function mostrarDatos(datos){
 
 function busqueda(tipo,busqueda,conjunto){
     contenedor.replaceChildren();
-
     let buscados = conjunto.filter(dato => dato[tipo].includes(busqueda));
     if(buscados.length == 0){
         textNotFound.classList.remove("hidden");
