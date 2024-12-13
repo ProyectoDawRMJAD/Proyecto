@@ -55,6 +55,7 @@ formularioCrearUsuario.addEventListener("submit",(event)=>{
     let phone=document.getElementById("phone").value;
     let website=document.getElementById("website").value;
     //comprobar datos regex
+    comprobarDatosCrearUsuario(nombre,username,email,phone,website);
     let newUser= new User(usuarios.length,nombre,username,email,phone,website);
     usuarios.push(newUser);
     formularioCrearUsuario.reset();
@@ -71,6 +72,17 @@ formularioCrearUsuario.addEventListener("submit",(event)=>{
     },300);
     
 })
+function comprobarDatosCrearUsuario(nombre,username,email,phone,website){
+    comprobarRegex(nombre,/^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(\s[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)?$/)
+    comprobarRegex(username,/^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$/);
+    comprobarRegex(email,/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
+    comprobarRegex(phone,/^(\+?\d{2,3}\s\d{3}\-\d{3}\-\d{3})$/);
+    comprobarRegex(website,/^\w+.\w+$/);
+}
+function comprobarRegex(campo,regex){
+    return regex.test(campo);
+
+}
 
 buscador.addEventListener("focus",(event)=>{
     event.target.style.border = "solid rgb(0, 162, 255) 2px";
