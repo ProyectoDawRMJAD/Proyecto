@@ -24,6 +24,7 @@ let btnImg = document.getElementById("btnImg");
 let btnUsers = document.getElementById("btnUsarios");
 let btnSend = document.getElementById("btnSend");
 let btnCreate = document.getElementById("btnAdd");
+let formularioCrearUsuario = document.getElementById("crear");
 let modalBtnSend = document.getElementById("modalBtnSend");
 let divModal = document.getElementById("modalBtnSend");
 let divModalForm = document.getElementById("formularioSend");
@@ -44,6 +45,49 @@ buscador.addEventListener("input",(event)=>{
     }
 });
 
+formularioCrearUsuario.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    let nombre = document.getElementById("nameForm");
+    let username = document.getElementById("username");
+    let email = document.getElementById("email");
+    let phone = document.getElementById("phone");
+    let website = document.getElementById("website");
+    let valido = true;
+
+    // Comprobar datos con regex
+    if(!comprobarRegex(nombre, /^[A-Z][a-z]+(\s[A-Z][a-z]+)?$/)){
+        valido = false;
+    }
+    if(!comprobarRegex(username, /^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$/)){
+        valido = false;
+    }
+
+    if(!comprobarRegex(email, /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)){
+        valido = false;
+    }
+    
+    if(!comprobarRegex(phone, /^(\+?\d{2,3}\s\d{3}\d{3}\d{3})$/)){
+        valido = false;
+    }
+    
+    if(!comprobarRegex(website, /^\w+\.\w+$/)){
+        valido = false;
+    }
+    
+    if(!valido){
+        return;
+    }
+
+    let newUser = new User(usuarios.length, nombre.value, username.value, email.value, phone.value, website.value);
+    usuarios.push(newUser);
+    mostrarDatos(usuarios);
+    formularioCrearUsuario.reset();
+    esconderModal();
+});
+
+
+
 buscador.addEventListener("focus",(event)=>{
     event.target.style.border = "solid rgb(0, 162, 255) 2px";
 })
@@ -54,16 +98,7 @@ buscador.addEventListener("focusout",(event)=>{
 
 modalBtnSend.addEventListener("click",(event)=>{
     if(event.target == divModal){
-        divModal.classList.add("hiddenModal");
-        divModalForm.classList.add("hiddenModal");
-        setTimeout(()=>{
-            divModal.classList.add("hidden");
-            divModalForm.classList.add("hidden");
-            divModal.classList.remove("modalDivSend");
-            divModalForm.classList.remove("hiddenModal");
-            divPublicar.classList.add("hidden");
-            divCrear.classList.add("hidden");
-        },300);
+        esconderModal();
     }
 })
 
@@ -103,7 +138,18 @@ cargarDatos();
 mostrarDatos(usuarios);
 console.log(imagenes);
 
-
+function esconderModal(){
+    divModal.classList.add("hiddenModal");
+        divModalForm.classList.add("hiddenModal");
+        setTimeout(()=>{
+            divModal.classList.add("hidden");
+            divModalForm.classList.add("hidden");
+            divModal.classList.remove("modalDivSend");
+            divModalForm.classList.remove("hiddenModal");
+            divPublicar.classList.add("hidden");
+            divCrear.classList.add("hidden");
+        },300);
+}
 function mostrarDatos(datos){
     datos.forEach(dato => {
         contenedor.appendChild(dato);
@@ -112,7 +158,6 @@ function mostrarDatos(datos){
 
 function busqueda(tipo,busqueda,conjunto){
     contenedor.replaceChildren();
-
     let buscados = conjunto.filter(dato => dato[tipo].includes(busqueda));
     if(buscados.length == 0){
         textNotFound.classList.remove("hidden");
@@ -120,6 +165,16 @@ function busqueda(tipo,busqueda,conjunto){
         textNotFound.classList.add("hidden");
     }
     mostrarDatos(buscados);
+}
+
+function comprobarRegex(inputElement, regex) {
+    if (regex.test(inputElement.value)) {
+        inputElement.style.border = ""; 
+        return true;
+    } else {
+        inputElement.style.border = "2px solid red";
+        return false;
+    }
 }
 
 function cargarDatos(){

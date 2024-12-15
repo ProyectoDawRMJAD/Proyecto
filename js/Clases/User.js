@@ -47,34 +47,37 @@ class User extends HTMLElement{
 
             //Mostrar posts y tareas
             btnTareas.addEventListener('click',()=>{
-                contenedorTareas.replaceChildren();
-                contenedorTareas.classList.remove("active");
-                setTimeout(()=>{
-                    let titulo = document.createElement("h1");
-                    titulo.textContent = "TAREAS";
-                    titulo.setAttribute("id","tareaTitulo");
-                    contenedorTareas.appendChild(titulo);
-                    this.tareas.forEach(tarea => {
-                        contenedorTareas.appendChild(tarea);
-                    });
-                    contenedorTareas.classList.toggle("active");
-                },200);
-                
+                if(this.tareas.length>0){
+                    contenedorTareas.replaceChildren();
+                    contenedorTareas.classList.remove("active");
+                    setTimeout(()=>{
+                        let titulo = document.createElement("h1");
+                        titulo.textContent = "TAREAS";
+                        titulo.setAttribute("id","tareaTitulo");
+                        contenedorTareas.appendChild(titulo);
+                        this.tareas.forEach(tarea => {
+                            contenedorTareas.appendChild(tarea);
+                        });
+                        contenedorTareas.classList.toggle("active");
+                    },200);
+                }  
             });
 
             btnPosts.addEventListener('click',()=>{
-                contenedorPosts.replaceChildren();
-                contenedorPosts.classList.remove("active");
-                setTimeout(()=>{
-                    let titulo = document.createElement("h1");
-                    titulo.textContent = "POSTS";
-                    titulo.setAttribute("id","postTitulo");
-                    contenedorPosts.appendChild(titulo);
-                    this.posts.forEach(post => {
-                        contenedorPosts.appendChild(post);
-                    });
-                    contenedorPosts.classList.toggle("active");
-                },200);
+                if(this.posts.length>0){
+                    contenedorPosts.replaceChildren();
+                    contenedorPosts.classList.remove("active");
+                    setTimeout(()=>{
+                        let titulo = document.createElement("h1");
+                        titulo.textContent = "POSTS";
+                        titulo.setAttribute("id","postTitulo");
+                        contenedorPosts.appendChild(titulo);
+                        this.posts.forEach(post => {
+                            contenedorPosts.appendChild(post);
+                        });
+                        contenedorPosts.classList.toggle("active");
+                    },200);
+                }
             });
             
         }
