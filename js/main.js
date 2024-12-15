@@ -42,7 +42,6 @@ buscador.addEventListener("input",(event)=>{
         case "imagenes":
             busqueda("title",event.target.value,imagenes);
     }
-    
 });
 
 buscador.addEventListener("focus",(event)=>{
@@ -159,6 +158,3 @@ function cargarDatos(){
         imagenes.push(imagen);
     }
 }
-
-
-
