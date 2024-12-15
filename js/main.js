@@ -169,7 +169,7 @@ function busqueda(tipo,busqueda,conjunto){
 
 function comprobarRegex(inputElement, regex) {
     if (regex.test(inputElement.value)) {
-        inputElement.style.border = ""; 
+        inputElement.style.border = "2px solid green"; 
         return true;
     } else {
         inputElement.style.border = "2px solid red";
