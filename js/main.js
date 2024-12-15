@@ -45,43 +45,55 @@ buscador.addEventListener("input",(event)=>{
     }
 });
 
-// Evento crear Usuario
-formularioCrearUsuario.addEventListener("submit",(event)=>{
+formularioCrearUsuario.addEventListener("submit", (event) => {
     event.preventDefault();
-    let nombre=document.getElementById("name").value;
-    let username=document.getElementById("username").value;
-    let email=document.getElementById("email").value;
-    let phone=document.getElementById("phone").value;
-    let website=document.getElementById("website").value;
-    //comprobar datos regex
-    comprobarDatosCrearUsuario(nombre,username,email,phone,website);
-    let newUser= new User(usuarios.length,nombre,username,email,phone,website);
+
+    let nombre = document.getElementById("name");
+    let username = document.getElementById("username");
+    let email = document.getElementById("email");
+    let phone = document.getElementById("phone");
+    let website = document.getElementById("website");
+
+    let isValid = true;
+
+    // Comprobar datos con regex
+    isValid &= comprobarRegex(nombre, /^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(\s[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)?$/);
+    isValid &= comprobarRegex(username, /^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$/);
+    isValid &= comprobarRegex(email, /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
+    isValid &= comprobarRegex(phone, /^(\+?\d{2,3}\s\d{3}-\d{3}-\d{3})$/);
+    isValid &= comprobarRegex(website, /^\w+\.\w+$/);
+
+    // Si hay algún error, no se procesa el formulario
+    if (!isValid) {
+        return;
+    }
+
+    let newUser = new User(usuarios.length, nombre.value, username.value, email.value, phone.value, website.value);
     usuarios.push(newUser);
     formularioCrearUsuario.reset();
     mostrarDatos(usuarios);
     divModal.classList.add("hiddenModal");
     divModalForm.classList.add("hiddenModal");
-    setTimeout(()=>{
+    setTimeout(() => {
         divModal.classList.add("hidden");
         divModalForm.classList.add("hidden");
         divModal.classList.remove("modalDivSend");
         divModalForm.classList.remove("hiddenModal");
         divPublicar.classList.add("hidden");
         divCrear.classList.add("hidden");
-    },300);
-    
-})
-function comprobarDatosCrearUsuario(nombre,username,email,phone,website){
-    comprobarRegex(nombre,/^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(\s[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)?$/)
-    comprobarRegex(username,/^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$/);
-    comprobarRegex(email,/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
-    comprobarRegex(phone,/^(\+?\d{2,3}\s\d{3}\-\d{3}\-\d{3})$/);
-    comprobarRegex(website,/^\w+.\w+$/);
-}
-function comprobarRegex(campo,regex){
-    return regex.test(campo);
+    }, 300);
+});
 
+function comprobarRegex(inputElement, regex) {
+    if (regex.test(inputElement.value)) {
+        inputElement.style.border = ""; 
+        return true;
+    } else {
+        inputElement.style.border = "2px solid red"; // Marcar el borde en rojo
+        return false;
+    }
 }
+
 
 buscador.addEventListener("focus",(event)=>{
     event.target.style.border = "solid rgb(0, 162, 255) 2px";
