@@ -83,6 +83,9 @@ formularioCrearUsuario.addEventListener("submit", (event) => {
     usuarios.push(newUser);
     mostrarDatos(usuarios);
     formularioCrearUsuario.reset();
+    formularioCrearUsuario.querySelectorAll("input").forEach(element => {
+        element.style.border = "";
+    });
     esconderModal();
 });
 
