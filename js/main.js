@@ -44,7 +44,6 @@ buscador.addEventListener("input",(event)=>{
             busqueda("title",event.target.value,imagenes);
     }
 });
-
 formularioCrearUsuario.addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -93,8 +92,6 @@ function comprobarRegex(inputElement, regex) {
         return false;
     }
 }
-
-
 buscador.addEventListener("focus",(event)=>{
     event.target.style.border = "solid rgb(0, 162, 255) 2px";
 })
