@@ -24,19 +24,19 @@ let btnImg = document.getElementById("btnImg");
 let btnUsers = document.getElementById("btnUsarios");
 let btnSend = document.getElementById("btnSend");
 let btnCreate = document.getElementById("btnAdd");
-let formularioCrearUsuario = document.getElementById("crear");
+let formularioCrearUsuario = document.getElementById("crearUsuario");
+let formularioCrearImagen = document.getElementById("crearImagen");
 let modalBtnSend = document.getElementById("modalBtnSend");
 let divModal = document.getElementById("modalBtnSend");
 let divModalForm = document.getElementById("formularioSend");
 let divPublicar = document.getElementById("publicacion");
-let divCrear = document.getElementById("crear");
-let buscar = "usuarios";
+let ubicacion = "usuarios";
 export let contenedorTareas = document.getElementById("tareas");
 export let contenedorPosts = document.getElementById("posts");
 
 //EVENTLISTENERS
 buscador.addEventListener("input",(event)=>{
-    switch(buscar){
+    switch(ubicacion){
         case "usuarios":
             busqueda("name",event.target.value,usuarios);
             break;
@@ -47,7 +47,69 @@ buscador.addEventListener("input",(event)=>{
 
 formularioCrearUsuario.addEventListener("submit", (event) => {
     event.preventDefault();
+    switch(ubicacion){
+        case "usuarios":
+            crearUsuario();
+            break;
+    }
+});
 
+buscador.addEventListener("focus",(event)=>{
+    event.target.style.border = "solid rgb(0, 162, 255) 2px";
+})
+
+buscador.addEventListener("focusout",(event)=>{
+    event.target.style.border = "solid black 2px";
+})
+
+modalBtnSend.addEventListener("click",(event)=>{
+    if(event.target == divModal){
+        esconderModal();
+    }
+})
+
+btnSend.addEventListener("click",()=>{
+    divPublicar.classList.remove("hidden");
+    mostrarModal();
+    
+})
+
+btnCreate.addEventListener("click",()=>{
+    switch(ubicacion){
+        case "usuarios":
+            formularioCrearUsuario.classList.remove("hidden");
+            formularioCrearImagen.classList.add("hidden");
+            break;
+        case "imagenes":
+            formularioCrearUsuario.classList.add("hidden");
+            formularioCrearImagen.classList.remove("hidden");
+            break;
+    }
+    mostrarModal();
+    
+    
+})
+
+btnImg.addEventListener("click",()=>{
+    contenedor.replaceChildren();
+    contenedorTareas.classList.remove("active");
+    contenedorPosts.classList.remove("active");
+    mostrarDatos(imagenes);
+    buscador.setAttribute("placeholder","Buscar Imágen");
+    ubicacion = "imagenes";
+})
+
+btnUsers.addEventListener("click",()=>{
+    contenedor.replaceChildren();
+    mostrarDatos(usuarios);
+    buscador.setAttribute("placeholder","Buscar Usuario");
+    ubicacion = "usuarios";
+})
+
+cargarDatos();
+mostrarDatos(usuarios);
+
+function crearUsuario(){
     let nombre = document.getElementById("nameForm");
     let username = document.getElementById("username");
     let email = document.getElementById("email");
@@ -82,64 +144,11 @@ formularioCrearUsuario.addEventListener("submit", (event) => {
     let newUser = new User(usuarios.length, nombre.value, username.value, email.value, phone.value, website.value);
     usuarios.push(newUser);
     mostrarDatos(usuarios);
-    formularioCrearUsuario.reset();
     formularioCrearUsuario.querySelectorAll("input").forEach(element => {
         element.style.border = "";
     });
     esconderModal();
-});
-
-
-
-buscador.addEventListener("focus",(event)=>{
-    event.target.style.border = "solid rgb(0, 162, 255) 2px";
-})
-
-buscador.addEventListener("focusout",(event)=>{
-    event.target.style.border = "solid black 2px";
-})
-
-modalBtnSend.addEventListener("click",(event)=>{
-    if(event.target == divModal){
-        esconderModal();
-    }
-})
-
-btnSend.addEventListener("click",()=>{
-    divPublicar.classList.remove("hidden");
-    //MODULARIZAR
-    divModal.classList.remove("hidden");
-    divModalForm.classList.remove("hidden");
-    divModal.classList.add("modalDivSend");
-})
-
-btnCreate.addEventListener("click",()=>{
-    divCrear.classList.remove("hidden");
-    //MODULARIZAR
-    divModal.classList.remove("hidden");
-    divModalForm.classList.remove("hidden");
-    divModal.classList.add("modalDivSend");
-})
-
-btnImg.addEventListener("click",()=>{
-    contenedor.replaceChildren();
-    contenedorTareas.classList.remove("active");
-    contenedorPosts.classList.remove("active");
-    mostrarDatos(imagenes);
-    buscador.setAttribute("placeholder","Buscar Imágen");
-    buscar = "imagenes";
-})
-
-btnUsers.addEventListener("click",()=>{
-    contenedor.replaceChildren();
-    mostrarDatos(usuarios);
-    buscador.setAttribute("placeholder","Buscar Usuario");
-    buscar = "usuarios";
-})
-
-cargarDatos();
-mostrarDatos(usuarios);
-console.log(imagenes);
+}
 
 function esconderModal(){
     divModal.classList.add("hiddenModal");
@@ -150,14 +159,22 @@ function esconderModal(){
             divModal.classList.remove("modalDivSend");
             divModalForm.classList.remove("hiddenModal");
             divPublicar.classList.add("hidden");
-            divCrear.classList.add("hidden");
+            formularioCrearImagen.classList.add("hidden");
+            formularioCrearUsuario.classList.add("hidden");
         },300);
 }
+function mostrarModal(){
+    divModal.classList.remove("hidden");
+    divModalForm.classList.remove("hidden");
+    divModal.classList.add("modalDivSend");
+}
+
 function mostrarDatos(datos){
     datos.forEach(dato => {
         contenedor.appendChild(dato);
     }); 
 }
+
 
 function busqueda(tipo,busqueda,conjunto){
     contenedor.replaceChildren();
