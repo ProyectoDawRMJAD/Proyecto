@@ -18,7 +18,8 @@ class Comentario extends HTMLElement{
             let plantilla = document.getElementById("comentario");
             let contenido = plantilla.content;
             let comentario = contenido.cloneNode(true);
-    
+            
+
             shadow.appendChild(estilo);
             shadow.appendChild(comentario);
         }

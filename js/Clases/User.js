@@ -74,6 +74,7 @@ class User extends HTMLElement{
                         contenedorPosts.appendChild(titulo);
                         this.posts.forEach(post => {
                             contenedorPosts.appendChild(post);
+                            post.mostrarPrincipal();
                         });
                         contenedorPosts.classList.toggle("active");
                     },200);

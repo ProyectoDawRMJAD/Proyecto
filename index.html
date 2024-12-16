@@ -22,27 +22,7 @@
     </nav>
     <div id="contenido">
         <div id="prueba" class="prueba"></div>
-        <div id="pgnPosts" class="hidden">
-            <form id="formPublicar">
-                <input type="text" id="tituloPost" placeholder="Titulo">
-                <textarea id="bodyPost" placeholder="What is happening.." style="height:200px"></textarea>
-                <select class="mostrarUsuariosSelect"></select>
-                <button id="submitPost">PUBLICAR</button>
-            </form>
-            <div id="contenedorPublicaciones"></div>
-        </div>
         <div id="tareas"></div>
-        <div id="pgnTareas" class="hidden">
-            <select class="mostrarUsuariosSelect"></select>
-            <div id="divTituloTarea">
-                <form id="formGuardarTarea">
-                    <label>Título: </label>
-                    <input id="tituloTareaGuardar">
-                    <button id="submitTarea">Guardar tarea</button>
-                </form>
-            </div>
-            <div id="divMostrarTareas"></div>
-        </div>
         <div id="posts"></div>
         <p id="notFound" class="hidden">No hay registros</p>
 
@@ -152,14 +132,26 @@
 </template>
 
 <template id="post">
-    <div id="contenedorPost">
+    <div id="contenedorPost" class="contenedorPost">
         <div id="titulos"></div>
         <h4 id="postContent"></h4>
     </div>
 </template>
+
+<template id="postSecundario">
+    <div id="contenedorPostSecundario" class="hidden">
+        <h1 id="tituloPostSecundario"></h1>
+        <h2 id="autorPostSecundario"></h2>
+        <h4 id="contentPostSecundario"></h4>
+        <div id="comentarios"></div>
+    </div>
+</template>
 <template id="comentario">
-    <h4 id="titulo"></h4>
-    <img id="imagen">
+    <div id="contenedorComentario">
+        <h3 id="tituloComentario"></h3>
+        <h4 id="autorComentario"></h4>
+        <h5 id="contentComentario"></h5>
+    </div>
 </template>
 <template id="todo">
     <div id="contenedor">

@@ -17,17 +17,27 @@ class Post extends HTMLElement{
             estilo.setAttribute("href","./css/post.css");
 
             let plantilla = document.getElementById("post");
+            let plantillaSecundaria = document.getElementById("postSecundario");
             let contenido = plantilla.content;
-            let tarea = contenido.cloneNode(true);
+            let contenido2 = plantillaSecundaria.content;
+            let post = contenido.cloneNode(true);
+            let postSecundario = contenido2.cloneNode(true);
 
-            let postContent = tarea.querySelector("#postContent");
-            let contenedorPost = tarea.querySelector("#titulos");
+            let postContent = post.querySelector("#postContent");
+            let contenedorPost = post.querySelector("#titulos");
+
+            postSecundario.querySelector("#tituloPostSecundario").textContent = this.title;
+            postSecundario.querySelector("#contentPostSecundario").textContent = this.body;
+            let comentarios = postSecundario.querySelector("#comentarios");
+            this.comments.forEach(comment => {
+                comentarios.appendChild(comment);
+            });
 
             shadow.appendChild(estilo);
-            shadow.appendChild(tarea);
+            shadow.appendChild(post);
+            shadow.appendChild(postSecundario);
 
             let p = document.createElement("p");
-            let autor = document.createElement("p");
             p.textContent = this.title;
 
             contenedorPost.appendChild(p);
@@ -37,6 +47,20 @@ class Post extends HTMLElement{
 
     addComment(comment){
         this.comments.push(comment);
+    }
+    mostrarPrincipal(){
+        this.shadowRoot.querySelector("#contenedorPostSecundario").classList.add("hidden");
+        this.shadowRoot.querySelector("#contenedorPostSecundario").classList.remove("contenedorPostSecundario");
+        this.shadowRoot.querySelector("#contenedorPost").classList.remove("hidden");
+        this.shadowRoot.querySelector("#contenedorPost").classList.add("contenedorPost");
+    }
+
+    mostrarSecundario(){
+        this.shadowRoot.querySelector("#contenedorPostSecundario").classList.add("contenedorPostSecundario");
+        this.shadowRoot.querySelector("#contenedorPostSecundario").classList.remove("hidden");
+        this.shadowRoot.querySelector("#contenedorPost").classList.add("hidden");
+        this.shadowRoot.querySelector("#contenedorPost").classList.remove("contenedorPost");
+        
     }
 }
 export{

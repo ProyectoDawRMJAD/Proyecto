@@ -17,6 +17,8 @@ customElements.define("template-foto",Foto);
 
 let usuarios = [];
 let imagenes = [];
+let publicaciones = [];
+let tareas = [];
 let contenedor = document.getElementById("prueba");
 let buscador = document.getElementById("searchBar");
 let textNotFound = document.getElementById("notFound");
@@ -26,19 +28,13 @@ let btnSend = document.getElementById("btnSend");
 let btnPosts = document.getElementById("btnPosts")
 let btnCreate = document.getElementById("btnAdd");
 let btnTareas = document.getElementById("btnTareas");
-let formGuardarTarea = document.getElementById("formGuardarTarea");
 let contenedorformularioCrearUsuario = document.getElementById("crearUsuario");
 let contenedorformularioCrearImagen = document.getElementById("crearImagen");
-let contenedorPublicaciones = document.getElementById("contenedorPublicaciones");
-let divMostrarTareas = document.getElementById("divMostrarTareas");
 let modalBtnSend = document.getElementById("modalBtnSend");
 let divModal = document.getElementById("modalBtnSend");
-let formularioPublicar = document.getElementById("formPublicar")
 let mostrarUsuariosSelect = document.getElementsByClassName("mostrarUsuariosSelect");
 let divModalForm = document.getElementById("formularioSend");
 let divPublicar = document.getElementById("publicacion");
-let pgnPosts = document.getElementById("pgnPosts");
-let pgnTareas = document.getElementById("pgnTareas");
 let ubicacion = "usuarios";
 export let contenedorTareas = document.getElementById("tareas");
 export let contenedorPosts = document.getElementById("posts");
@@ -46,34 +42,24 @@ export let contenedorPosts = document.getElementById("posts");
 //EVENTLISTENERS
 //Boton Tareas
 btnTareas.addEventListener("click",()=>{
-    pgnTareas.classList.remove("hidden");
-    contenedor.classList.remove("prueba");
     textNotFound.classList.add("hidden");
-    contenedor.classList.add("hidden");
-    pgnPosts.classList.add("hidden");
     contenedorTareas.classList.remove("active");
     contenedorPosts.classList.remove("active");
-    pgnPosts.classList.remove("pgnPosts");
-    cargarUsuariosSelect();
-    cargarTareas();
+    contenedor.replaceChildren();
+    mostrarDatos(tareas);
+    ubicacion = "tareas";
 });
 
 btnPosts.addEventListener("click",()=>{
-    pgnPosts.classList.remove("hidden");
     textNotFound.classList.add("hidden");
-    pgnPosts.classList.add("pgnPosts");
-    contenedor.classList.remove("prueba");
-    contenedor.classList.add("hidden");
-    pgnTareas.classList.add("hidden");
     contenedorTareas.classList.remove("active");
     contenedorPosts.classList.remove("active");
-    cargarUsuariosSelect();
-    cargarPosts();
-});
-
-
-formularioPublicar.addEventListener("submit",(e)=>{
-    e.preventDefault();
+    contenedor.replaceChildren();
+    publicaciones.forEach(post => {
+        contenedor.appendChild(post);
+        post.mostrarSecundario();
+    });
+    ubicacion = "posts";
 });
 
 buscador.addEventListener("input",(event)=>{
@@ -83,6 +69,13 @@ buscador.addEventListener("input",(event)=>{
             break;
         case "imagenes":
             busqueda("title",event.target.value,imagenes);
+            break;
+        case "tareas":
+            busqueda("title",event.target.value,tareas);
+            break;
+        case "posts":
+            busqueda("title",event.target.value,publicaciones);
+            break;
     }
 });
 
@@ -112,7 +105,6 @@ modalBtnSend.addEventListener("click",(event)=>{
 btnSend.addEventListener("click",()=>{
     divPublicar.classList.remove("hidden");
     mostrarModal();
-    
 });
 
 btnCreate.addEventListener("click",()=>{
@@ -130,9 +122,6 @@ btnCreate.addEventListener("click",()=>{
 });
 
 btnImg.addEventListener("click",()=>{
-    pgnPosts.classList.add("hidden");
-    pgnPosts.classList.remove("pgnPosts");
-    pgnTareas.classList.add("hidden");
     contenedor.classList.add("prueba");
     contenedor.classList.remove("hidden");
     textNotFound.classList.add("hidden");
@@ -146,10 +135,7 @@ btnImg.addEventListener("click",()=>{
 
 
 btnUsers.addEventListener("click",()=>{
-    pgnPosts.classList.remove("pgnPosts");
-    pgnPosts.classList.add("hidden");
     textNotFound.classList.add("hidden");
-    pgnTareas.classList.add("hidden");
     contenedor.classList.add("prueba");
     contenedor.classList.remove("hidden");
     contenedor.replaceChildren();
@@ -158,11 +144,7 @@ btnUsers.addEventListener("click",()=>{
     ubicacion = "usuarios";
 });
 
-
-
-
 let btn = document.getElementById('myBtn');
-
 
 window.addEventListener('scroll', () => {
   if (window.scrollY > 300) {  
@@ -227,19 +209,6 @@ window.addEventListener('beforeunload', () => {
     });
 })
 
-// Cargar usuarios a todos los select
-function cargarUsuariosSelect(){
-    for (const select of mostrarUsuariosSelect) {
-        select.replaceChildren();
-        usuarios.forEach(usuario => {
-            let option=document.createElement("option");
-            option.setAttribute("value",usuario.username);
-            option.textContent=usuario.username;
-            select.add(option);
-        });
-    }
-}
-
 function esconderModal(){
     divModal.classList.add("hiddenModal");
         divModalForm.classList.add("hiddenModal");
@@ -263,21 +232,6 @@ function mostrarDatos(datos){
     datos.forEach(dato => {
         contenedor.appendChild(dato);
     }); 
-}
-
-function cargarPosts(){
-    usuarios.forEach(usuario => {
-        usuario.getPosts().forEach(post => {
-            contenedorPublicaciones.appendChild(post);
-        });
-    });
-}
-function cargarTareas(){
-    usuarios.forEach(usuario => {
-        usuario.getTareas().forEach(tarea => {
-            divMostrarTareas.appendChild(tarea);
-        });
-    })
 }
 
 function busqueda(tipo,busqueda,conjunto){
@@ -310,6 +264,7 @@ function cargarDatos(){
     //JSON de POSTS a Array dentro de USER de POSTS
     posts.forEach(post => {
         let publicacion = new Post(post.userId,post.id,post.title,post.body);
+        publicaciones.push(publicacion);
         comments.forEach(comment => {
             let comentario = new Comentario(comment.postId,comment.id,comment.name,comment.email,comment.body);
             if(publicacion.id == comment.postId){
@@ -325,6 +280,7 @@ function cargarDatos(){
     //JSON de POSTS a Array dentro de USER de POSTS
     todos.forEach(tarea => {
         let nuevaTarea = new Tarea(tarea.userId,tarea.id,tarea.title,tarea.completed);
+        tareas.push(nuevaTarea);
         usuarios.forEach(usuario => {
             if(usuario.id == nuevaTarea.userId){
                 usuario.addTarea(nuevaTarea);

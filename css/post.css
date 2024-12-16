@@ -1,4 +1,4 @@
-#contenedorPost{
+.contenedorPost{
     padding: 2rem 3rem 2rem 3rem;
     background: #fff;
     width: 240px;
@@ -11,18 +11,30 @@
     flex-direction: column;
     transition: 0.2s;
 }
+.contenedorPostSecundario{
+    width: 800px;
+    padding: 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.hidden{
+    display: none;
+}
 
-#contenedorPost:hover{
+.secundario{
+    display: flex;
+}
+
+.contenedorPost:hover{
     box-shadow: rgba(50, 50, 93, 0.8) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 
-#contenedorPost p{
+.contenedorPost p{
     margin: 0 0 0.5rem 0;
     font-size: 1.25rem;
 }
 
-#contenedorPost h4{
+.contenedorPost h4{
     color: #999;
     padding: 0;
     margin: 0;
