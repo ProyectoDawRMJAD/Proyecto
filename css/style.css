@@ -229,7 +229,8 @@ header{
     z-index: 2;
   }
 
-  .input-field .input:focus ~ .label{
+  .input-field .input:focus ~ .label,
+  .input-field .input:user-valid ~ .label {
     top: 5px;
     left: 5px;
     font-size: 12px;
