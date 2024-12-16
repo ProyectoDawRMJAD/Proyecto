@@ -26,11 +26,13 @@ let btnSend = document.getElementById("btnSend");
 let btnPosts = document.getElementById("btnPosts")
 let btnCreate = document.getElementById("btnAdd");
 let btnTareas = document.getElementById("btnTareas");
-let formularioCrearUsuario = document.getElementById("crearUsuario");
-let formularioCrearImagen = document.getElementById("crearImagen");
+let contenedorformularioCrearUsuario = document.getElementById("crearUsuario");
+let contenedorformularioCrearImagen = document.getElementById("crearImagen");
+let contenedorPublicaciones = document.getElementById("contenedorPublicaciones");
 let modalBtnSend = document.getElementById("modalBtnSend");
 let divModal = document.getElementById("modalBtnSend");
-let mostrarUsuariosSelect = document.getElementById("mostrarUsuariosSelect");
+let formularioPublicar = document.getElementById("formPublicar")
+let mostrarUsuariosSelect = document.getElementsByClassName("mostrarUsuariosSelect");
 let divModalForm = document.getElementById("formularioSend");
 let divPublicar = document.getElementById("publicacion");
 let pgnPosts = document.getElementById("pgnPosts");
@@ -48,16 +50,24 @@ btnTareas.addEventListener("click",()=>{
     pgnPosts.classList.add("hidden");
     contenedorTareas.classList.remove("active");
     contenedorPosts.classList.remove("active");
+    pgnPosts.classList.remove("pgnPosts");
     cargarUsuariosSelect();
 })
 
 btnPosts.addEventListener("click",()=>{
     pgnPosts.classList.remove("hidden");
+    pgnPosts.classList.add("pgnPosts");
     contenedor.classList.remove("prueba");
     contenedor.classList.add("hidden");
     pgnTareas.classList.add("hidden");
     contenedorTareas.classList.remove("active");
     contenedorPosts.classList.remove("active");
+    cargarUsuariosSelect();
+    cargarPosts();
+})
+
+formularioPublicar.addEventListener("submit",(e)=>{
+    e.preventDefault();
 })
 
 buscador.addEventListener("input",(event)=>{
@@ -70,7 +80,7 @@ buscador.addEventListener("input",(event)=>{
     }
 });
 
-formularioCrearUsuario.addEventListener("submit", (event) => {
+contenedorformularioCrearUsuario.addEventListener("submit", (event) => {
     event.preventDefault();
     switch(ubicacion){
         case "usuarios":
@@ -102,21 +112,21 @@ btnSend.addEventListener("click",()=>{
 btnCreate.addEventListener("click",()=>{
     switch(ubicacion){
         case "usuarios":
-            formularioCrearUsuario.classList.remove("hidden");
-            formularioCrearImagen.classList.add("hidden");
+            contenedorformularioCrearUsuario.classList.remove("hidden");
+            contenedorformularioCrearImagen.classList.add("hidden");
             break;
         case "imagenes":
-            formularioCrearUsuario.classList.add("hidden");
-            formularioCrearImagen.classList.remove("hidden");
+            contenedorformularioCrearUsuario.classList.add("hidden");
+            contenedorformularioCrearImagen.classList.remove("hidden");
             break;
     }
     mostrarModal();
-    
-    
 })
 
 btnImg.addEventListener("click",()=>{
     pgnPosts.classList.add("hidden");
+    pgnPosts.classList.remove("pgnPosts");
+    pgnTareas.classList.add("hidden");
     contenedor.classList.add("prueba");
     contenedor.classList.remove("hidden");
     contenedor.replaceChildren();
@@ -128,7 +138,9 @@ btnImg.addEventListener("click",()=>{
 })
 
 btnUsers.addEventListener("click",()=>{
+    pgnPosts.classList.remove("pgnPosts");
     pgnPosts.classList.add("hidden");
+    pgnTareas.classList.add("hidden");
     contenedor.classList.add("prueba");
     contenedor.classList.remove("hidden");
     contenedor.replaceChildren();
@@ -175,20 +187,31 @@ function crearUsuario(){
     let newUser = new User(usuarios.length, nombre.value, username.value, email.value, phone.value, website.value);
     usuarios.push(newUser);
     mostrarDatos(usuarios);
-    formularioCrearUsuario.querySelectorAll("input").forEach(element => {
+    contenedorformularioCrearUsuario.querySelector("form").reset();
+    contenedorformularioCrearUsuario.querySelectorAll("input").forEach(element => {
         element.style.border = "";
     });
     esconderModal();
 }
 
-// Cargar usuarios a un select
-function cargarUsuariosSelect(){
-    usuarios.forEach(usuario => {
-        let option=document.createElement("option");
-        option.setAttribute("value",usuario.username);
-        option.textContent=usuario.username;
-        mostrarUsuariosSelect.add(option);
+window.addEventListener('beforeunload', (event) => {
+    let formularios = modalBtnSend.querySelectorAll("form");
+    formularios.forEach(formulario => {
+        formulario.reset();
     });
+})
+
+// Cargar usuarios a todos los select
+function cargarUsuariosSelect(){
+    for (const select of mostrarUsuariosSelect) {
+        select.replaceChildren();
+        usuarios.forEach(usuario => {
+            let option=document.createElement("option");
+            option.setAttribute("value",usuario.username);
+            option.textContent=usuario.username;
+            select.add(option);
+        });
+    }
 }
 
 function esconderModal(){
@@ -200,8 +223,8 @@ function esconderModal(){
             divModal.classList.remove("modalDivSend");
             divModalForm.classList.remove("hiddenModal");
             divPublicar.classList.add("hidden");
-            formularioCrearImagen.classList.add("hidden");
-            formularioCrearUsuario.classList.add("hidden");
+            contenedorformularioCrearImagen.classList.add("hidden");
+            contenedorformularioCrearUsuario.classList.add("hidden");
         },300);
 }
 function mostrarModal(){
@@ -216,6 +239,13 @@ function mostrarDatos(datos){
     }); 
 }
 
+function cargarPosts(){
+    usuarios.forEach(usuario => {
+        usuario.getPosts().forEach(post => {
+            contenedorPublicaciones.appendChild(post);
+        });
+    });
+}
 
 function busqueda(tipo,busqueda,conjunto){
     contenedor.replaceChildren();

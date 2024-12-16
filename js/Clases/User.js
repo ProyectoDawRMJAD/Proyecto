@@ -90,6 +90,12 @@ class User extends HTMLElement{
     addTarea(tarea){
         this.tareas.push(tarea);
     }
+    getTareas(){
+        return this.tareas;
+    }
+    getPosts(){
+        return this.posts;
+    }
 }
 export{
     User

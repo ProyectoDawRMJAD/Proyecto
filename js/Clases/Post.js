@@ -27,6 +27,7 @@ class Post extends HTMLElement{
             shadow.appendChild(tarea);
 
             let p = document.createElement("p");
+            let autor = document.createElement("p");
             p.textContent = this.title;
 
             contenedorPost.appendChild(p);

@@ -22,16 +22,22 @@
     </nav>
     <div id="contenido">
         <div id="prueba" class="prueba"></div>
-        <div id="pgnPosts" class="hidden">
-            <p>Posts</p>
+        <div id="pgnPosts" class="hidden pgnPosts">
+            <form id="formPublicar">
+                <input type="text" id="tituloPost" placeholder="Titulo">
+                <textarea id="bodyPost" placeholder="What is happening.." style="height:200px"></textarea>
+                <select class="mostrarUsuariosSelect"></select>
+                <button id="submitPost">PUBLICAR</button>
+            </form>
+            <div id="contenedorPublicaciones"></div>
         </div>
-        <p id="notFound" class="hidden">No hay registros</p>
         <div id="tareas"></div>
         <div id="pgnTareas" class="hidden">
-            <select id="mostrarUsuariosSelect">
-            </select>
+            <select class="mostrarUsuariosSelect"></select>
         </div>
         <div id="posts"></div>
+        <p id="notFound" class="hidden">No hay registros</p>
+
     </div>
     <div id="modalBtnSend" class="hiddenModal">
         <div id="formularioSend" class="hidden modalFormularioSend">
@@ -39,7 +45,7 @@
                 <h1>PUBLICA</h1>
             </form>
         <div id="crearUsuario" class="hidden">
-            <form id="crearUsuario" class="hidden form-control">
+            <form id="crearUsuarioForm" class="hidden form-control">
                 <p class="title">Crear Usuario</p>
 
                 <div class="input-field">  
@@ -72,32 +78,31 @@
             </form>
         </div>
         <div id="crearImagen" class="hidden">
-            <form id="crearImagen" class="hidden form-control">
+            <form id="crearImagenForm" class="hidden form-control">
                 <p class="title">Crear Imagen</p>
 
                 <div class="input-field">            
                     <input type="text" id="userID" class="input">
-                    <label class="label">User ID: </label>
+                    <label class="label">User ID</label>
                 </div>
 
                 <div class="input-field">  
                     <input type="text" id="identificadorImg" class="input">
-                    <label class="label">ID: </label>
+                    <label class="label">ID</label>
                 </div>
               
                 <div class="input-field">  
                     <input type="mail" id="email" class="input">
-                    <label class="label">Título: </label>
+                    <label class="label">Título</label>
                 </div>
 
                 <div class="input-field">  
                     <input type="text" id="phone" class="input">
-                    <label class="label">Cuerpo: </label>
+                    <label class="label">Cuerpo</label>
                 </div>
 
                 <button type="submit" id="btnCrearImagen" class="submit-btn">Crear imágen</button>
             </form>
-        </div>
         </div>
     </div>
 </body>

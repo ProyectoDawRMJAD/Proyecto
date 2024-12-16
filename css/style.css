@@ -176,6 +176,82 @@ header{
 #posts.active{
     left: 125px;
 }
+
+#notFound{
+    font-family: "Sour Gummy", sans-serif;
+}
+.pgnPosts{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#formPublicar{
+    margin-top: 20px;
+    border-radius: 0.4rem;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: auto;
+    width: 800px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    margin-bottom: 20px;
+}
+.pgnPosts [type=text], textarea {
+    font-family: "Sour Gummy", sans-serif;
+    width: 780px;
+    padding: 12px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+.pgnPosts [type=text]{
+    font-size: 20px;
+}
+.pgnPosts textarea{
+    font-size: 15px;
+}
+#contenedorPublicaciones{
+    display: flex;
+    flex-wrap: wrap;
+    width: 1200px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+#submitPost{
+    font-family: "Sour Gummy", sans-serif;
+    background-color:  rgb(0, 162, 255);
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    color: white;
+    width: 806px;
+    border-radius: 0.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+}
+#submitPost:hover{
+    background-color:  rgb(3, 121, 189);
+}
+.pgnPosts [type=text]:focus, textarea:focus{
+    outline: none;
+    border: 2px solid rgb(0, 162, 255);
+}
+.pgnPosts select{
+    width: 806px;
+    padding: 10px 20px 10px 20px;
+    height: 40px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
 @keyframes aparece {
     from{opacity: 0;}to{opacity: 1;}
 }
@@ -194,72 +270,72 @@ header{
     gap: 10px;
     padding: 25px;
     border-radius: 8px;
-  }
+}
 
-  .title {
-    font-size: 28px;
-    font-weight: 800;
-  }
-  .input-field {
-    position: relative;
-    width: 100%;
-  }
-  
-  .input {
-    margin-top: 15px;
-    width: 100%;
-    outline: none;
-    border-radius: 8px;
-    height: 45px;
-    border: 1.5px solid #ecedec;
-    background: transparent;
-    padding-left: 10px;
-  }
+.title {
+font-size: 28px;
+font-weight: 800;
+}
+.input-field {
+position: relative;
+width: 100%;
+}
+
+.input {
+margin-top: 15px;
+width: 100%;
+outline: none;
+border-radius: 8px;
+height: 45px;
+border: 1.5px solid #ecedec;
+background: transparent;
+padding-left: 10px;
+}
 
 
-  input:focus {
-    border: 1.5px solid #2d79f3;
-  }
-  .input-field .label {
-    position: absolute;
-    top: 30px;
-    left: 10px;
-    color: #ccc;
-    transition: all 0.3s ease;
-    pointer-events: none;
-    z-index: 2;
-  }
+input:focus {
+border: 1.5px solid #2d79f3;
+}
+.input-field .label {
+position: absolute;
+top: 30px;
+left: 10px;
+color: #ccc;
+transition: all 0.3s ease;
+pointer-events: none;
+z-index: 2;
+}
 
-  .input-field .input:focus ~ .label,
-  .input-field .input:user-valid ~ .label {
-    top: 5px;
-    left: 5px;
-    font-size: 12px;
-    color: #2d79f3;
-    background-color: #ffffff;
-    padding-left: 5px;
-    padding-right: 5px;
-  }
+.input-field .input:focus ~ .label,
+.input-field .input:user-valid ~ .label {
+top: 5px;
+left: 5px;
+font-size: 12px;
+color: #2d79f3;
+background-color: #ffffff;
+padding-left: 5px;
+padding-right: 5px;
+}
 
-  .submit-btn {
-    margin-top: 30px;
-    height: 55px;
-    width: 300px;
-    background: #f2f2f2;
-    border-radius: 11px;
-    border: 0;
-    outline: none;
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: 700;
-    background: rgb(0, 162, 255);
-    box-shadow: 0px 0px 0px 0px #ffffff, 0px 0px 0px 0px #000000;
-    transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
-    cursor: pointer;
-  }
+.submit-btn {
+margin-top: 30px;
+height: 55px;
+width: 300px;
+background: #f2f2f2;
+border-radius: 11px;
+border: 0;
+outline: none;
+color: #ffffff;
+font-size: 18px;
+font-weight: 700;
+background: rgb(0, 162, 255);
+box-shadow: 0px 0px 0px 0px #ffffff, 0px 0px 0px 0px #000000;
+transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+cursor: pointer;
+}
 
-  .submit-btn:hover {
-    box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px rgba(3, 121, 189, 0.267);
-    background-color:  rgb(3, 121, 189);
-    scale: 1.05;  
+.submit-btn:hover {
+box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px rgba(3, 121, 189, 0.267);
+background-color:  rgb(3, 121, 189);
+scale: 1.05;  
 }
