@@ -59,7 +59,7 @@ btnPosts.addEventListener("click",()=>{
 buscador.addEventListener("input",(event)=>{
     switch(ubicacion){
         case "usuarios":
-            busqueda("name",event.target.value,usuarios);
+            busqueda("username",event.target.value,usuarios);
             break;
         case "imagenes":
             busqueda("title",event.target.value,imagenes);
