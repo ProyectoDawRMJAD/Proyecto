@@ -41,6 +41,9 @@ btnPosts.addEventListener("click",()=>{
     pgnPosts.classList.remove("hidden");
     contenedor.classList.remove("prueba");
     contenedor.classList.add("hidden");
+    contenedor.replaceChildren();
+    contenedorTareas.classList.remove("active");
+    contenedorPosts.classList.remove("active");
 })
 
 buscador.addEventListener("input",(event)=>{
