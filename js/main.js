@@ -56,7 +56,7 @@ btnTareas.addEventListener("click",()=>{
     pgnPosts.classList.remove("pgnPosts");
     cargarUsuariosSelect();
     cargarTareas();
-})
+});
 
 btnPosts.addEventListener("click",()=>{
     pgnPosts.classList.remove("hidden");
@@ -69,12 +69,12 @@ btnPosts.addEventListener("click",()=>{
     contenedorPosts.classList.remove("active");
     cargarUsuariosSelect();
     cargarPosts();
-})
+});
 
 
 formularioPublicar.addEventListener("submit",(e)=>{
     e.preventDefault();
-})
+});
 
 buscador.addEventListener("input",(event)=>{
     switch(ubicacion){
@@ -97,23 +97,23 @@ contenedorformularioCrearUsuario.addEventListener("submit", (event) => {
 
 buscador.addEventListener("focus",(event)=>{
     event.target.style.border = "solid rgb(0, 162, 255) 2px";
-})
+});
 
 buscador.addEventListener("focusout",(event)=>{
     event.target.style.border = "solid black 2px";
-})
+});
 
 modalBtnSend.addEventListener("click",(event)=>{
     if(event.target == divModal){
         esconderModal();
     }
-})
+});
 
 btnSend.addEventListener("click",()=>{
     divPublicar.classList.remove("hidden");
     mostrarModal();
     
-})
+});
 
 btnCreate.addEventListener("click",()=>{
     switch(ubicacion){
@@ -127,7 +127,7 @@ btnCreate.addEventListener("click",()=>{
             break;
     }
     mostrarModal();
-})
+});
 
 btnImg.addEventListener("click",()=>{
     pgnPosts.classList.add("hidden");
@@ -142,7 +142,7 @@ btnImg.addEventListener("click",()=>{
     mostrarDatos(imagenes);
     buscador.setAttribute("placeholder","Buscar Imágen");
     ubicacion = "imagenes";
-})
+});
 
 
 btnUsers.addEventListener("click",()=>{
@@ -156,7 +156,24 @@ btnUsers.addEventListener("click",()=>{
     mostrarDatos(usuarios);
     buscador.setAttribute("placeholder","Buscar Usuario");
     ubicacion = "usuarios";
-})
+});
+
+
+
+
+let btn = document.getElementById('myBtn');
+
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {  
+    btn.style.opacity = 1;  
+    btn.style.pointerEvents = 'auto'; 
+  } else {
+    btn.style.opacity = 0;  
+    btn.style.pointerEvents = 'none';  
+  }
+});
+
 
 cargarDatos();
 mostrarDatos(usuarios);

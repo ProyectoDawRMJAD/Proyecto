@@ -339,3 +339,73 @@ box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px rgba(3, 121, 189, 0.267);
 background-color:  rgb(3, 121, 189);
 scale: 1.05;  
 }
+
+/* styles.css */
+
+.Btn {
+    width: 45px;
+    height: 45px;
+    background: rgb(0, 162, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;  /* 20px desde el borde inferior */
+    right: 20px;   /* 20px desde el borde derecho */
+    border: none;
+    opacity: 0;    /* Inicialmente invisible */
+    pointer-events: none; /* No interactuable */
+    transition: opacity 0.5s ease;  /* Transición suave para aparecer */
+  }
+  
+  /* Flecha */
+  .arrow path {
+    fill: white;
+  }
+  
+  /* Texto que aparece en hover */
+  .text {
+    font-size: 0.7em;
+    position: absolute;
+    color: white;
+    bottom: -18px;
+    opacity: 0;
+    transition-duration: .7s;
+  }
+  
+  /* Hover para mostrar texto */
+  .Btn:hover .text {
+    opacity: 1;
+    transition-duration: .7s;
+  }
+  
+  /* Animación de la flecha en hover */
+  .Btn:hover .arrow {
+    animation: slide-in-bottom .7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+  
+  @keyframes slide-in-bottom {
+    0% {
+      transform: translateY(10px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Posiciona el contenedor de la flecha */
+  .derecha {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    margin-bottom: 10px;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
