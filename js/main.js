@@ -46,6 +46,7 @@ export let contenedorPosts = document.getElementById("posts");
 btnTareas.addEventListener("click",()=>{
     pgnTareas.classList.remove("hidden");
     contenedor.classList.remove("prueba");
+    textNotFound.classList.add("hidden");
     contenedor.classList.add("hidden");
     pgnPosts.classList.add("hidden");
     contenedorTareas.classList.remove("active");
@@ -54,14 +55,9 @@ btnTareas.addEventListener("click",()=>{
     cargarUsuariosSelect();
 })
 
-// Escucha select tareas
-mostrarUsuariosSelect.addEventListener("change",()=>{
-    let divMostrarTareas=document.getElementById("divMostrarTareas");
-    
-})
-
 btnPosts.addEventListener("click",()=>{
     pgnPosts.classList.remove("hidden");
+    textNotFound.classList.add("hidden");
     pgnPosts.classList.add("pgnPosts");
     contenedor.classList.remove("prueba");
     contenedor.classList.add("hidden");
@@ -135,6 +131,7 @@ btnImg.addEventListener("click",()=>{
     pgnTareas.classList.add("hidden");
     contenedor.classList.add("prueba");
     contenedor.classList.remove("hidden");
+    textNotFound.classList.add("hidden");
     contenedor.replaceChildren();
     contenedorTareas.classList.remove("active");
     contenedorPosts.classList.remove("active");
@@ -146,6 +143,7 @@ btnImg.addEventListener("click",()=>{
 btnUsers.addEventListener("click",()=>{
     pgnPosts.classList.remove("pgnPosts");
     pgnPosts.classList.add("hidden");
+    textNotFound.classList.add("hidden");
     pgnTareas.classList.add("hidden");
     contenedor.classList.add("prueba");
     contenedor.classList.remove("hidden");
@@ -204,7 +202,7 @@ window.addEventListener('beforeunload', (event) => {
     let formularios = modalBtnSend.querySelectorAll("form");
     formularios.forEach(formulario => {
         formulario.reset();
-    })
+    });
 })
 
 // Cargar usuarios a todos los select
