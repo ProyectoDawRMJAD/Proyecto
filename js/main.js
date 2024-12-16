@@ -30,6 +30,7 @@ let formularioCrearUsuario = document.getElementById("crearUsuario");
 let formularioCrearImagen = document.getElementById("crearImagen");
 let modalBtnSend = document.getElementById("modalBtnSend");
 let divModal = document.getElementById("modalBtnSend");
+let mostrarUsuariosSelect = document.getElementById("mostrarUsuariosSelect");
 let divModalForm = document.getElementById("formularioSend");
 let divPublicar = document.getElementById("publicacion");
 let pgnPosts = document.getElementById("pgnPosts");
@@ -45,8 +46,8 @@ btnTareas.addEventListener("click",()=>{
     contenedor.classList.remove("prueba");
     contenedor.classList.add("hidden");
     pgnPosts.classList.add("hidden");
+    cargarUsuariosSelect();
 })
-
 
 btnPosts.addEventListener("click",()=>{
     pgnPosts.classList.remove("hidden");
@@ -134,7 +135,7 @@ btnUsers.addEventListener("click",()=>{
 
 cargarDatos();
 mostrarDatos(usuarios);
-
+// Crear usuario
 function crearUsuario(){
     let nombre = document.getElementById("nameForm");
     let username = document.getElementById("username");
@@ -174,6 +175,16 @@ function crearUsuario(){
         element.style.border = "";
     });
     esconderModal();
+}
+
+// Cargar usuarios a un select
+function cargarUsuariosSelect(){
+    usuarios.forEach(usuario => {
+        let option=document.createElement("option");
+        option.setAttribute("value",usuario.username);
+        option.textContent=usuario.username;
+        mostrarUsuariosSelect.add(option);
+    });
 }
 
 function esconderModal(){
