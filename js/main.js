@@ -54,6 +54,12 @@ btnTareas.addEventListener("click",()=>{
     cargarUsuariosSelect();
 })
 
+// Escucha select tareas
+mostrarUsuariosSelect.addEventListener("change",()=>{
+    let divMostrarTareas=document.getElementById("divMostrarTareas");
+    
+})
+
 btnPosts.addEventListener("click",()=>{
     pgnPosts.classList.remove("hidden");
     pgnPosts.classList.add("pgnPosts");
@@ -198,7 +204,7 @@ window.addEventListener('beforeunload', (event) => {
     let formularios = modalBtnSend.querySelectorAll("form");
     formularios.forEach(formulario => {
         formulario.reset();
-    });
+    })
 })
 
 // Cargar usuarios a todos los select
