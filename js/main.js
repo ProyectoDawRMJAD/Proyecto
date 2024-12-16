@@ -46,6 +46,8 @@ btnTareas.addEventListener("click",()=>{
     contenedor.classList.remove("prueba");
     contenedor.classList.add("hidden");
     pgnPosts.classList.add("hidden");
+    contenedorTareas.classList.remove("active");
+    contenedorPosts.classList.remove("active");
     cargarUsuariosSelect();
 })
 
@@ -54,6 +56,8 @@ btnPosts.addEventListener("click",()=>{
     contenedor.classList.remove("prueba");
     contenedor.classList.add("hidden");
     pgnTareas.classList.add("hidden");
+    contenedorTareas.classList.remove("active");
+    contenedorPosts.classList.remove("active");
 })
 
 buscador.addEventListener("input",(event)=>{
