@@ -51,6 +51,12 @@ btnTareas.addEventListener("click",()=>{
     cargarUsuariosSelect();
 })
 
+// Escucha select tareas
+mostrarUsuariosSelect.addEventListener("change",()=>{
+    let divMostrarTareas=document.getElementById("divMostrarTareas");
+    
+})
+
 btnPosts.addEventListener("click",()=>{
     pgnPosts.classList.remove("hidden");
     contenedor.classList.remove("prueba");
@@ -183,6 +189,7 @@ function crearUsuario(){
 
 // Cargar usuarios a un select
 function cargarUsuariosSelect(){
+    mostrarUsuariosSelect.replaceChildren();
     usuarios.forEach(usuario => {
         let option=document.createElement("option");
         option.setAttribute("value",usuario.username);
