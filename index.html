@@ -28,7 +28,8 @@
         <p id="notFound" class="hidden">No hay registros</p>
         <div id="tareas"></div>
         <div id="pgnTareas" class="hidden">
-            <p>Tareas</p>
+            <select id="mostrarUsuariosSelect">
+            </select>
         </div>
         <div id="posts"></div>
     </div>
@@ -37,66 +38,41 @@
             <form id="publicacion" class="hidden">
                 <h1>PUBLICA</h1>
             </form>
-        <div id="crearUsuario" class="hidden">
-            <form id="crearUsuario" class="hidden form-control">
-                <p class="title">Crear Usuario</p>
+            <form id="crearUsuario" class="hidden">
+                <h1>CREAR USUARIO</h1>
+                <label for="name">Nombre: </label>
+                <input type="text" id="nameForm"><br>
 
-                <div class="input-field">  
-                    <input type="text" id="nameForm" class="input">
-                    <label for="name" class="label">Nombre</label>    
-                </div>
+                <label for="username">Nickname: </label>
+                <input type="text" id="username"><br>
 
-                <div class="input-field">                  
-                    <input type="text" id="username" class="input">
-                    <label for="username" class="label">Nickname</label>
-                </div>
+                <label for="email">Email: </label>
+                <input type="mail" id="email"><br>
 
-                <div class="input-field">  
-                    <input type="mail" id="email" class="input">
-                    <label for="email" class="label">Email</label>
-                </div>
+                <label for="phone">Teléfono: </label>
+                <input type="text" id="phone"><br>
 
-                <div class="input-field">  
-                    <input type="text" id="phone" class="input">
-                    <label for="phone" class="label">Teléfono</label>
-                </div>
+                <label for="phone">Website</label>
+                <input type="text" id="website"><br>
 
-
-                <div class="input-field"> 
-                    <input type="text" id="website" class="input">
-                    <label for="phone" class="label">Website</label>
-                </div>
-
-                <button type="submit" id="btnCrearUsuario" class="submit-btn">Crear usuario</button>
+                <button type="submit" id="btnCrearUsuario">Crear usuario</button>
             </form>
-        </div>
-        <div id="crearImagen" class="hidden">
-            <form id="crearImagen" class="hidden form-control">
-                <p class="title">Crear Imagen</p>
+            <form id="crearImagen" class="hidden">
+                <h1>CREAR IMÁGEN</h1>
+                <label>User ID: </label>
+                <input type="text" id="userID"><br>
 
-                <div class="input-field">            
-                    <input type="text" id="userID" class="input">
-                    <label class="label">User ID: </label>
-                </div>
+                <label>ID: </label>
+                <input type="text" id="identificadorImg"><br>
 
-                <div class="input-field">  
-                    <input type="text" id="identificadorImg" class="input">
-                    <label class="label">ID: </label>
-                </div>
-              
-                <div class="input-field">  
-                    <input type="mail" id="email" class="input">
-                    <label class="label">Título: </label>
-                </div>
+                <label>Título: </label>
+                <input type="mail" id="email"><br>
 
-                <div class="input-field">  
-                    <input type="text" id="phone" class="input">
-                    <label class="label">Cuerpo: </label>
-                </div>
+                <label>Cuerpo: </label>
+                <input type="text" id="phone"><br>
 
-                <button type="submit" id="btnCrearImagen" class="submit-btn">Crear imágen</button>
+                <button type="submit" id="btnCrearImagen">Crear imágen</button>
             </form>
-        </div>
         </div>
     </div>
 </body>
