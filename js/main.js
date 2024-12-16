@@ -23,6 +23,7 @@ let textNotFound = document.getElementById("notFound");
 let btnImg = document.getElementById("btnImg");
 let btnUsers = document.getElementById("btnUsarios");
 let btnSend = document.getElementById("btnSend");
+let btnPosts = document.getElementById("btnPosts")
 let btnCreate = document.getElementById("btnAdd");
 let formularioCrearUsuario = document.getElementById("crearUsuario");
 let formularioCrearImagen = document.getElementById("crearImagen");
@@ -30,11 +31,21 @@ let modalBtnSend = document.getElementById("modalBtnSend");
 let divModal = document.getElementById("modalBtnSend");
 let divModalForm = document.getElementById("formularioSend");
 let divPublicar = document.getElementById("publicacion");
+let pgnPosts = document.getElementById("pgnPosts");
 let ubicacion = "usuarios";
 export let contenedorTareas = document.getElementById("tareas");
 export let contenedorPosts = document.getElementById("posts");
 
 //EVENTLISTENERS
+btnPosts.addEventListener("click",()=>{
+    pgnPosts.classList.remove("hidden");
+    contenedor.classList.remove("prueba");
+    contenedor.classList.add("hidden");
+    contenedor.replaceChildren();
+    contenedorTareas.classList.remove("active");
+    contenedorPosts.classList.remove("active");
+})
+
 buscador.addEventListener("input",(event)=>{
     switch(ubicacion){
         case "usuarios":
@@ -91,6 +102,9 @@ btnCreate.addEventListener("click",()=>{
 })
 
 btnImg.addEventListener("click",()=>{
+    pgnPosts.classList.add("hidden");
+    contenedor.classList.add("prueba");
+    contenedor.classList.remove("hidden");
     contenedor.replaceChildren();
     contenedorTareas.classList.remove("active");
     contenedorPosts.classList.remove("active");
@@ -100,6 +114,9 @@ btnImg.addEventListener("click",()=>{
 })
 
 btnUsers.addEventListener("click",()=>{
+    pgnPosts.classList.add("hidden");
+    contenedor.classList.add("prueba");
+    contenedor.classList.remove("hidden");
     contenedor.replaceChildren();
     mostrarDatos(usuarios);
     buscador.setAttribute("placeholder","Buscar Usuario");
