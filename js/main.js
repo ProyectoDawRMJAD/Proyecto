@@ -26,7 +26,7 @@ let btnSend = document.getElementById("btnSend");
 let btnPosts = document.getElementById("btnPosts")
 let btnCreate = document.getElementById("btnAdd");
 let btnTareas = document.getElementById("btnTareas");
-let btnGuardarTarea = document.getElementById("btnGuardarTarea");
+let formGuardarTarea = document.getElementById("formGuardarTarea");
 let contenedorformularioCrearUsuario = document.getElementById("crearUsuario");
 let contenedorformularioCrearImagen = document.getElementById("crearImagen");
 let contenedorPublicaciones = document.getElementById("contenedorPublicaciones");
@@ -57,6 +57,7 @@ btnTareas.addEventListener("click",()=>{
     cargarUsuariosSelect();
     cargarTareas();
 })
+
 btnPosts.addEventListener("click",()=>{
     pgnPosts.classList.remove("hidden");
     textNotFound.classList.add("hidden");
@@ -69,6 +70,7 @@ btnPosts.addEventListener("click",()=>{
     cargarUsuariosSelect();
     cargarPosts();
 })
+
 
 formularioPublicar.addEventListener("submit",(e)=>{
     e.preventDefault();
@@ -141,6 +143,7 @@ btnImg.addEventListener("click",()=>{
     buscador.setAttribute("placeholder","Buscar Imágen");
     ubicacion = "imagenes";
 })
+
 
 btnUsers.addEventListener("click",()=>{
     pgnPosts.classList.remove("pgnPosts");
