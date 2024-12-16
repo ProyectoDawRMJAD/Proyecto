@@ -26,9 +26,11 @@ let btnSend = document.getElementById("btnSend");
 let btnPosts = document.getElementById("btnPosts")
 let btnCreate = document.getElementById("btnAdd");
 let btnTareas = document.getElementById("btnTareas");
+let btnGuardarTarea = document.getElementById("btnGuardarTarea");
 let contenedorformularioCrearUsuario = document.getElementById("crearUsuario");
 let contenedorformularioCrearImagen = document.getElementById("crearImagen");
 let contenedorPublicaciones = document.getElementById("contenedorPublicaciones");
+let divMostrarTareas = document.getElementById("divMostrarTareas");
 let modalBtnSend = document.getElementById("modalBtnSend");
 let divModal = document.getElementById("modalBtnSend");
 let formularioPublicar = document.getElementById("formPublicar")
@@ -53,8 +55,8 @@ btnTareas.addEventListener("click",()=>{
     contenedorPosts.classList.remove("active");
     pgnPosts.classList.remove("pgnPosts");
     cargarUsuariosSelect();
+    cargarTareas();
 })
-
 btnPosts.addEventListener("click",()=>{
     pgnPosts.classList.remove("hidden");
     textNotFound.classList.add("hidden");
@@ -203,8 +205,6 @@ window.addEventListener('beforeunload', () => {
     formularios.forEach(formulario => {
         formulario.reset();
     });
-    
-
 })
 
 // Cargar usuarios a todos los select
@@ -251,6 +251,13 @@ function cargarPosts(){
             contenedorPublicaciones.appendChild(post);
         });
     });
+}
+function cargarTareas(){
+    usuarios.forEach(usuario => {
+        usuario.getTareas().forEach(tarea => {
+            divMostrarTareas.appendChild(tarea);
+        });
+    })
 }
 
 function busqueda(tipo,busqueda,conjunto){
