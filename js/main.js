@@ -155,7 +155,7 @@ function crearUsuario(){
         valido = false;
     }
     
-    if(!comprobarRegex(phone, /^(\+?\d{2,3}\s\d{3}\d{3}\d{3})$/)){
+    if(!comprobarRegex(phone, /^\d{9}$/)){
         valido = false;
     }
     
@@ -215,10 +215,10 @@ function busqueda(tipo,busqueda,conjunto){
 
 function comprobarRegex(inputElement, regex) {
     if (regex.test(inputElement.value)) {
-        inputElement.style.border = "2px solid green"; 
+        inputElement.style.border = "1px solid green"; 
         return true;
     } else {
-        inputElement.style.border = "2px solid red";
+        inputElement.style.border = "1px solid red";
         return false;
     }
 }
