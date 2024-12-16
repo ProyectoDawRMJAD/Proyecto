@@ -198,11 +198,13 @@ function crearUsuario(){
     esconderModal();
 }
 
-window.addEventListener('beforeunload', (event) => {
+window.addEventListener('beforeunload', () => {
     let formularios = modalBtnSend.querySelectorAll("form");
     formularios.forEach(formulario => {
         formulario.reset();
     });
+    
+
 })
 
 // Cargar usuarios a todos los select
