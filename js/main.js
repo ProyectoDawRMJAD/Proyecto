@@ -25,6 +25,7 @@ let btnUsers = document.getElementById("btnUsarios");
 let btnSend = document.getElementById("btnSend");
 let btnPosts = document.getElementById("btnPosts")
 let btnCreate = document.getElementById("btnAdd");
+let btnTareas = document.getElementById("btnTareas");
 let formularioCrearUsuario = document.getElementById("crearUsuario");
 let formularioCrearImagen = document.getElementById("crearImagen");
 let modalBtnSend = document.getElementById("modalBtnSend");
@@ -32,18 +33,26 @@ let divModal = document.getElementById("modalBtnSend");
 let divModalForm = document.getElementById("formularioSend");
 let divPublicar = document.getElementById("publicacion");
 let pgnPosts = document.getElementById("pgnPosts");
+let pgnTareas = document.getElementById("pgnTareas");
 let ubicacion = "usuarios";
 export let contenedorTareas = document.getElementById("tareas");
 export let contenedorPosts = document.getElementById("posts");
 
 //EVENTLISTENERS
+//Boton Tareas
+btnTareas.addEventListener("click",()=>{
+    pgnTareas.classList.remove("hidden");
+    contenedor.classList.remove("prueba");
+    contenedor.classList.add("hidden");
+    pgnPosts.classList.add("hidden");
+})
+
+
 btnPosts.addEventListener("click",()=>{
     pgnPosts.classList.remove("hidden");
     contenedor.classList.remove("prueba");
     contenedor.classList.add("hidden");
-    contenedor.replaceChildren();
-    contenedorTareas.classList.remove("active");
-    contenedorPosts.classList.remove("active");
+    pgnTareas.classList.add("hidden");
 })
 
 buscador.addEventListener("input",(event)=>{
