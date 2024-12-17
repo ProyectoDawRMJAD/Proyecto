@@ -40,3 +40,151 @@
     margin: 0;
     font-weight: bold;
 }
+
+
+.post-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    font-family: Arial, sans-serif;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.user-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.post-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+}
+
+.post-author {
+    font-size: 14px;
+    color: #777;
+    margin: 2px 0 0 0;
+}
+
+.post-content {
+    font-size: 16px;
+    color: #555;
+    margin-top: 10px;
+}
+
+.post-comments {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #666;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+
+
+.post-container {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    margin: 16px 0;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+}
+
+.user-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 16px;
+}
+
+.post-title {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.post-author {
+    font-size: 1em;
+    color: #666;
+    margin: 4px 0 0;
+}
+
+.post-content {
+    margin: 16px 0;
+    font-size: 1.2em;
+}
+
+.toggle-comments-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 8px;
+}
+
+.toggle-comments-button:hover {
+    background-color: #0056b3;
+}
+
+.post-comments {
+    margin-top: 16px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Comentarios */
+.comentario {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 12px;
+}
+
+.tituloComentario {
+    font-size: 1.2em;
+    margin: 0;
+    color: #333;
+}
+
+.autorComentario {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 4px;
+}
+
+.contentComentario {
+    font-size: 1em;
+    margin-top: 8px;
+    color: #555;
+}

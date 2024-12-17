@@ -139,20 +139,30 @@
 </template>
 
 <template id="postSecundario">
-    <div id="contenedorPostSecundario" class="hidden">
-        <h1 id="tituloPostSecundario"></h1>
-        <h2 id="autorPostSecundario"></h2>
-        <h4 id="contentPostSecundario"></h4>
-        <div id="comentarios"></div>
+    <div id="contenedorPostSecundario" class="post-container hidden">
+        <div class="post-header">
+            <img id="fotoUsuario" src="img/user.png" alt="Foto de Usuario" class="user-photo">
+            <div class="post-info">
+                <h1 id="tituloPostSecundario" class="post-title"></h1>
+                <h2 id="autorPostSecundario" class="post-author"></h2>
+            </div>
+        </div>
+        <h4 id="contentPostSecundario" class="post-content"></h4>
+        <button id="toggleComentarios" class="toggle-comments-button">Mostrar comentarios</button>
+        <div id="comentarios" class="post-comments hidden"></div>
     </div>
 </template>
+
 <template id="comentario">
-    <div id="contenedorComentario">
-        <h3 id="tituloComentario"></h3>
-        <h4 id="autorComentario"></h4>
-        <h5 id="contentComentario"></h5>
+    <div class="comentario">
+        <h3 class="tituloComentario"></h3>
+        <h4 class="autorComentario"></h4>
+        <p class="contentComentario"></p>
     </div>
 </template>
+
+
+
 <template id="todo">
     <div id="contenedor">
         <input type="checkbox" id="checkPost">
