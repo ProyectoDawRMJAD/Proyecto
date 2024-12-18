@@ -18,8 +18,7 @@ class Foto extends HTMLElement{
             let contenido = plantilla.content;
             let clon = contenido.cloneNode(true);
             clon.querySelector("#numId").textContent = this.id;
-            clon.querySelector("#nombre").textContent = this.title;
-
+            clon.querySelector("#nombre").textContent = this.title; 
 
             let imagen = clon.querySelector("#imagen");
             imagen.src = this.url;

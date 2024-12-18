@@ -1,0 +1,26 @@
+/* Comentarios */
+.comentario {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 12px;
+}
+
+.tituloComentario {
+    font-size: 1.2em;
+    margin: 0;
+    color: #333;
+}
+
+.autorComentario {
+    font-size: 0.9em;
+    color: rgb(0, 162, 255);
+    margin-top: 4px;
+}
+
+.contentComentario {
+    font-size: 1em;
+    margin-top: 8px;
+    color: #555;
+}

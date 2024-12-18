@@ -11,11 +11,6 @@
     flex-direction: column;
     transition: 0.2s;
 }
-.contenedorPostSecundario{
-    width: 800px;
-    padding: 20px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-}
 .hidden{
     display: none;
 }
@@ -44,6 +39,7 @@
 
 .post-container {
     display: flex;
+    font-family: "Sour Gummy", sans-serif;
     flex-direction: column;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
@@ -56,6 +52,7 @@
 }
 
 .post-header {
+    font-family: "Sour Gummy", sans-serif;
     display: flex;
     align-items: center;
     margin-bottom: 10px;
@@ -70,11 +67,13 @@
 }
 
 .post-info {
+    font-family: "Sour Gummy", sans-serif;
     display: flex;
     flex-direction: column;
 }
 
 .post-title {
+    font-family: "Sour Gummy", sans-serif;
     font-size: 18px;
     font-weight: bold;
     margin: 0;
@@ -82,20 +81,24 @@
 }
 
 .post-author {
-    font-size: 14px;
-    color: #777;
+    font-family: "Sour Gummy", sans-serif;
+    font-size: 18px;
+    color: rgb(0, 162, 255);
     margin: 2px 0 0 0;
 }
 
 .post-content {
+    font-family: "Sour Gummy", sans-serif;
     font-size: 16px;
     color: #555;
     margin-top: 10px;
 }
 
 .post-comments {
+    font-family: "Sour Gummy", sans-serif;
     margin-top: 15px;
     font-size: 14px;
+    padding: 10px;
     color: #666;
     border-top: 1px solid #ddd;
     padding-top: 10px;
@@ -128,12 +131,6 @@
     margin: 0;
 }
 
-.post-author {
-    font-size: 1em;
-    color: #666;
-    margin: 4px 0 0;
-}
-
 .post-content {
     margin: 16px 0;
     font-size: 1.2em;
@@ -162,29 +159,3 @@
     display: none;
 }
 
-/* Comentarios */
-.comentario {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 12px;
-    margin-bottom: 12px;
-}
-
-.tituloComentario {
-    font-size: 1.2em;
-    margin: 0;
-    color: #333;
-}
-
-.autorComentario {
-    font-size: 0.9em;
-    color: #777;
-    margin-top: 4px;
-}
-
-.contentComentario {
-    font-size: 1em;
-    margin-top: 8px;
-    color: #555;
-}
