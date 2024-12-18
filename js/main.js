@@ -34,7 +34,7 @@ let contenedorformularioCrearTarea = document.getElementById("crearTarea");
 let contenedorformularioCrearPost = document.getElementById("crearPost");
 let modalBtnSend = document.getElementById("modalBtnSend");
 let divModal = document.getElementById("modalBtnSend");
-let mostrarUsuariosSelect = document.getElementsByClassName("mostrarUsuariosSelect");
+let mostrarUsuariosSelect = document.getElementsByClassName("mostrarUsuarioSelect");
 let divModalForm = document.getElementById("formularioSend");
 let divPublicar = document.getElementById("publicacion");
 let ubicacion = "usuarios";
@@ -128,14 +128,15 @@ btnCreate.addEventListener("click",()=>{
             contenedorformularioCrearUsuario.classList.add("hidden");
             contenedorformularioCrearImagen.classList.add("hidden");
             contenedorformularioCrearPost.classList.add("hidden");
+            cargarUsuarioSelect();
             break;
         case "posts":
             contenedorformularioCrearUsuario.classList.add("hidden");
             contenedorformularioCrearTarea.classList.add("hidden");
             contenedorformularioCrearImagen.classList.add("hidden");
             contenedorformularioCrearPost.classList.remove("hidden");
+            cargarUsuarioSelect();
             break;
-
     }
     mostrarModal();
 });
@@ -296,6 +297,17 @@ function busqueda(tipo,busqueda,conjunto){
         mostrarDatos(buscados);
     }
     
+}
+function cargarUsuarioSelect(){
+    for (const select of mostrarUsuariosSelect) {
+        select.replaceChildren();
+        usuarios.forEach(usuario => {
+            let option=document.createElement("option");
+            option.setAttribute("value",usuario.username);
+            option.textContent=usuario.username;
+            select.add(option);
+        });
+    }
 }
 
 function comprobarRegex(inputElement, regex) {
