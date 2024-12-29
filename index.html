@@ -17,7 +17,6 @@
         <input type="text" id="searchBar" placeholder="Buscar Usuarios">
         <div id="btn-content">
             <img src="img/botonAñadir.png" id="btnAdd">
-            <img src="img/SendButton1.png" id="btnSend">
         </div>
     </nav>
     <div id="contenido">
@@ -25,7 +24,6 @@
         <div id="tareas"></div>
         <div id="posts"></div>
         <p id="notFound" class="hidden">No hay registros</p>
-
     </div>
     <div id="modalBtnSend" class="hiddenModal">
         <div id="formularioSend" class="hidden modalFormularioSend">
@@ -65,31 +63,54 @@
                 <button type="submit" id="btnCrearUsuario" class="submit-btn">Crear usuario</button>
             </form>
         </div>
-        <div id="crearImagen" class="hidden">
-            <form id="crearImagenForm" class="hidden form-control">
-                <p class="title">Crear Imagen</p>
-
-                <div class="input-field">            
-                    <input type="text" id="userID" class="input">
-                    <label class="label">User ID</label>
-                </div>
-
+        <div id="crearTarea" class="hidden">
+            <form id="crearTareaForm" class="hidden form-control" enctype="multipart/form-data">
+                <p class="title">Crear Tarea</p>
+                <select name="" class="mostrarUsuarioSelect">
+                    
+                </select>
+        
                 <div class="input-field">  
-                    <input type="text" id="identificadorImg" class="input">
-                    <label class="label">ID</label>
+                    <input type="mail" id="tituloTarea" class="input">
+                    <label class="label">Título</label>
                 </div>
+
+                <button type="submit" id="btnCrearTarea" class="submit-btn">Crear tarea</button>
+            </form>
+        </div>
+
+        
+        <div id="crearImagen" class="hidden">
+            <form id="crearImagenForm" class="hidden form-control" enctype="multipart/form-data">
+                <p class="title">Crear Imagen</p>
+                <label class="label">Elige Álbum</label>
+                
               
                 <div class="input-field">  
                     <input type="mail" id="email" class="input">
                     <label class="label">Título</label>
                 </div>
 
-                <div class="input-field">  
-                    <input type="text" id="phone" class="input">
-                    <label class="label">Cuerpo</label>
-                </div>
+                <input type="file" value="Insertar Imágen">
 
                 <button type="submit" id="btnCrearImagen" class="submit-btn">Crear imágen</button>
+            </form>
+        </div>
+
+        <div id="crearPost" class="hidden">
+            <form id="crearPostForm" class="hidden form-control" enctype="multipart/form-data">
+                <p class="title">Crear Post</p>
+                <label class="label">Elige Usuario</label>
+                <select name="" class="mostrarUsuarioSelect">
+                    
+                </select>
+              
+                <div class="input-field">  
+                    <input type="mail" id="email" class="input">
+                    <label class="label">Título</label>
+                </div>
+
+                <button type="submit" id="btnCrearPost" class="submit-btn">Crear Post</button>
             </form>
         </div>
     </div>
@@ -102,6 +123,7 @@
           <div class="text">Subir</div>
         </a> 
     </div>
+
 </body>
 <template id="user">
     <div id="contenedor">

@@ -30,9 +30,11 @@ let btnCreate = document.getElementById("btnAdd");
 let btnTareas = document.getElementById("btnTareas");
 let contenedorformularioCrearUsuario = document.getElementById("crearUsuario");
 let contenedorformularioCrearImagen = document.getElementById("crearImagen");
+let contenedorformularioCrearTarea = document.getElementById("crearTarea");
+let contenedorformularioCrearPost = document.getElementById("crearPost");
 let modalBtnSend = document.getElementById("modalBtnSend");
 let divModal = document.getElementById("modalBtnSend");
-let mostrarUsuariosSelect = document.getElementsByClassName("mostrarUsuariosSelect");
+let mostrarUsuariosSelect = document.getElementsByClassName("mostrarUsuarioSelect");
 let divModalForm = document.getElementById("formularioSend");
 let divPublicar = document.getElementById("publicacion");
 let ubicacion = "usuarios";
@@ -47,6 +49,7 @@ btnTareas.addEventListener("click",()=>{
     contenedorPosts.classList.remove("active");
     contenedor.replaceChildren();
     mostrarDatos(tareas);
+    buscador.setAttribute("placeholder","Buscar Tarea");
     ubicacion = "tareas";
 });
 
@@ -57,8 +60,11 @@ btnPosts.addEventListener("click",()=>{
     contenedor.replaceChildren();
     publicaciones.forEach(post => {
         contenedor.appendChild(post);
+        post.shadowRoot.querySelector("#autorPostSecundario").textContent = "@"+determinarUser(post.userId);
+        contenedor.appendChild(post);
         post.mostrarSecundario();
     });
+    buscador.setAttribute("placeholder","Buscar Post");
     ubicacion = "posts";
 });
 
@@ -79,6 +85,7 @@ buscador.addEventListener("input",(event)=>{
     }
 });
 
+//Comprobaciones
 contenedorformularioCrearUsuario.addEventListener("submit", (event) => {
     event.preventDefault();
     switch(ubicacion){
@@ -102,20 +109,33 @@ modalBtnSend.addEventListener("click",(event)=>{
     }
 });
 
-btnSend.addEventListener("click",()=>{
-    divPublicar.classList.remove("hidden");
-    mostrarModal();
-});
-
 btnCreate.addEventListener("click",()=>{
     switch(ubicacion){
         case "usuarios":
             contenedorformularioCrearUsuario.classList.remove("hidden");
             contenedorformularioCrearImagen.classList.add("hidden");
+            contenedorformularioCrearTarea.classList.add("hidden");
+            contenedorformularioCrearPost.classList.add("hidden");
             break;
         case "imagenes":
             contenedorformularioCrearUsuario.classList.add("hidden");
+            contenedorformularioCrearTarea.classList.add("hidden");
             contenedorformularioCrearImagen.classList.remove("hidden");
+            contenedorformularioCrearPost.classList.add("hidden");
+            break;
+        case "tareas":
+            contenedorformularioCrearTarea.classList.remove("hidden");
+            contenedorformularioCrearUsuario.classList.add("hidden");
+            contenedorformularioCrearImagen.classList.add("hidden");
+            contenedorformularioCrearPost.classList.add("hidden");
+            cargarUsuarioSelect();
+            break;
+        case "posts":
+            contenedorformularioCrearUsuario.classList.add("hidden");
+            contenedorformularioCrearTarea.classList.add("hidden");
+            contenedorformularioCrearImagen.classList.add("hidden");
+            contenedorformularioCrearPost.classList.remove("hidden");
+            cargarUsuarioSelect();
             break;
     }
     mostrarModal();
@@ -128,7 +148,7 @@ btnImg.addEventListener("click",()=>{
     contenedor.replaceChildren();
     contenedorTareas.classList.remove("active");
     contenedorPosts.classList.remove("active");
-    mostrarDatos(imagenes);
+    generarAlbumes();
     buscador.setAttribute("placeholder","Buscar Imágen");
     ubicacion = "imagenes";
 });
@@ -147,19 +167,47 @@ btnUsers.addEventListener("click",()=>{
 let btn = document.getElementById('myBtn');
 
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 300) {  
-    btn.style.opacity = 1;  
-    btn.style.pointerEvents = 'auto'; 
-  } else {
-    btn.style.opacity = 0;  
-    btn.style.pointerEvents = 'none';  
-  }
+    if (window.scrollY > 300) {  
+        btn.style.opacity = 1;  
+        btn.style.pointerEvents = 'auto'; 
+    } else {
+        btn.style.opacity = 0;  
+        btn.style.pointerEvents = 'none';  
+    }
 });
 
 
 cargarDatos();
 mostrarDatos(usuarios);
 // Crear usuario
+
+function determinarUser(userId){
+    let cont = 0;
+    while(cont<usuarios.length-1&&usuarios[cont].id!=userId){
+        cont++;
+    }
+    return usuarios[cont].username;
+}
+
+function generarAlbumes(){
+    let cantidadAlbumes = imagenes[imagenes.length-1].albumId;
+
+    for (let i = 0; i < cantidadAlbumes; i++) {
+        let album = document.createElement("div");
+        let titulo = document.createElement("h2");
+        titulo.textContent = "Albúm "+(i+1);
+        album.classList.add("album");
+        imagenes.forEach(element => {
+            if(element.albumId == (i+1)){
+                album.appendChild(element);
+            }
+        });
+        contenedor.appendChild(titulo);
+        contenedor.appendChild(album);
+        
+    }
+}
+
 function crearUsuario(){
     let nombre = document.getElementById("nameForm");
     let username = document.getElementById("username");
@@ -230,19 +278,36 @@ function mostrarModal(){
 
 function mostrarDatos(datos){
     datos.forEach(dato => {
-        contenedor.appendChild(dato);
+            contenedor.appendChild(dato);
     }); 
+    
 }
 
 function busqueda(tipo,busqueda,conjunto){
     contenedor.replaceChildren();
     let buscados = conjunto.filter(dato => dato[tipo].includes(busqueda));
-    if(buscados.length == 0){
-        textNotFound.classList.remove("hidden");
+    if(busqueda == ""&&conjunto==imagenes){
+        generarAlbumes();
     }else{
-        textNotFound.classList.add("hidden");
+        if(buscados.length == 0){
+            textNotFound.classList.remove("hidden");
+        }else{
+            textNotFound.classList.add("hidden");
+        }
+        mostrarDatos(buscados);
     }
-    mostrarDatos(buscados);
+    
+}
+function cargarUsuarioSelect(){
+    for (const select of mostrarUsuariosSelect) {
+        select.replaceChildren();
+        usuarios.forEach(usuario => {
+            let option=document.createElement("option");
+            option.setAttribute("value",usuario.username);
+            option.textContent=usuario.username;
+            select.add(option);
+        });
+    }
 }
 
 function comprobarRegex(inputElement, regex) {
@@ -289,7 +354,7 @@ function cargarDatos(){
     });
     //JSON de fotos a Objetos FOTO
     for (let i = 0; i < 500; i++) {
-        let imagen = new Foto(fotos[i].albumID,fotos[i].id,fotos[i].title,fotos[i].url,fotos[i].thumbnailUrl);
+        let imagen = new Foto(fotos[i].albumId,fotos[i].id,fotos[i].title,fotos[i].url,fotos[i].thumbnailUrl);
         imagenes.push(imagen);
     }
 }
