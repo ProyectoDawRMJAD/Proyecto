@@ -47,3 +47,89 @@ h4 {
 #contenedorFoto:hover{
     translate: 0 -10px;
 }
+
+#btnEliminarFoto {
+    width: 24px; /* Ajusta el tamaño del botón */
+    height: 24px;
+    position: absolute; /* Si lo necesitas flotante */
+    top: 15px; /* Ajusta según el diseño */
+    right: 15px;
+    cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
+}
+
+#btnEliminarFoto:hover {
+    transform: scale(1.1); /* Efecto al pasar el cursor */
+    opacity: 0.8;
+}
+
+
+/* Modal */
+.modal {
+    font-family: "Sour Gummy", sans-serif;
+    display: none; /* Ocultar por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+}
+
+.modal-content {
+    font-family: "Sour Gummy", sans-serif;
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.modal-content p {
+    font-family: "Sour Gummy", sans-serif;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+
+.modal-content button {
+    font-family: "Sour Gummy", sans-serif;
+    padding: 15px 70px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Transición suave */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content button:hover {
+    transform: scale(1.05); /* Agrandar ligeramente al pasar el cursor */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Sombra más fuerte */
+}
+
+/* Botón Confirmar */
+.modal-content button#confirmarEliminarFoto {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.modal-content button#confirmarEliminarFoto:hover {
+    background-color: #e60000; /* Rojo más oscuro al pasar el cursor */
+}
+
+/* Botón Cancelar */
+.modal-content button#cancelarEliminarFoto {
+    background-color: #ccc;
+    color: black;
+}
+
+.modal-content button#cancelarEliminarFoto:hover {
+    background-color: #bbb; /* Gris más oscuro */
+    color: #000; /* Negro más marcado */
+}
+
+

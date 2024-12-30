@@ -142,12 +142,15 @@
         <div id="contenedorImagen">
             <img id="imagen">
         </div>
-        <div id="cotenedorTexto">
+        <div id="contenedorTexto">
             <h3 id="numId"></h3>
             <h4 id="nombre"></h4>
-        </div> 
+        </div>
+        <img src="./img/botonEliminar.png" id="btnEliminarFoto" alt="Eliminar" class="btn-eliminar">
     </div>
 </template>
+
+
 
 <template id="post">
     <div id="contenedorPost" class="contenedorPost">
@@ -185,6 +188,17 @@
     <div id="contenedor">
         <input type="checkbox" id="checkPost">
         <h2 id="name"></h2>
+        <!-- Botón de eliminar como imagen -->
+        <img src="./img/botonEliminar.png" id="btnEliminarTarea" alt="Eliminar" class="btn-eliminar">
+    </div>
+    <!-- Modal de confirmación -->
+    <div id="modalEliminarTarea" class="modal hidden">
+        <div class="modal-content">
+            <p>¿Estás seguro de que deseas eliminar esta tarea?</p>
+            <button id="confirmarEliminarTarea">Sí</button>
+            <button id="cancelarEliminarTarea">No</button>
+        </div>
     </div>
 </template>
+
 </html>
