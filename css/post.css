@@ -49,6 +49,8 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 600px;
     font-family: Arial, sans-serif;
+    border: solid black 2px;
+    border-radius: 0.3rem;
 }
 
 .post-header {
@@ -102,6 +104,7 @@
     color: #666;
     border-top: 1px solid #ddd;
     padding-top: 10px;
+    
 }
 
 
@@ -159,7 +162,6 @@
     display: none;
 }
 
-<<<<<<< HEAD
 .comentario {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -185,5 +187,3 @@
     margin-top: 8px;
     color: #555;
 }
-=======
->>>>>>> 95a277a83eecdb183e030514be1be4543baf66f5

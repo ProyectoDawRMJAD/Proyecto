@@ -9,6 +9,21 @@
 .hidden{
     display: none;
 }
+.user-tasks{
+    font-family: "Sour Gummy", sans-serif;
+    padding: 20px;
+    background-color: #ffffff;
+    width: 320px;
+    height: auto;
+    border: solid black 2px;
+    border-radius: 0.3rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    display: flex;
+    gap:10px;
+    transition: 0.1s;
+}
 
 .hiddenModal{
     animation-name: desaparece;
@@ -122,7 +137,8 @@ h2{
     align-items: center;
     height: auto;
     width: 773px;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border: solid black 2px;
+    border-radius: 0.3rem;
 }
 
 #btnAdd:hover{
@@ -362,8 +378,6 @@ box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px rgba(3, 121, 189, 0.267);
 background-color:  rgb(3, 121, 189);
 scale: 1.05;  
 }
-
-/* styles.css */
 
 .Btn {
     width: 45px;

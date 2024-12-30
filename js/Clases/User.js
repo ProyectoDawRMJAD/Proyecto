@@ -31,8 +31,8 @@ class User extends HTMLElement{
 
             user.querySelector("#name").textContent = this.name;
             user.querySelector("#userName").textContent = "@"+this.username;
-            btnPosts.textContent = "POSTS 📰"+this.posts.length+"\n"; 
-            btnTareas.textContent = "TAREAS 📋"+this.tareas.length;
+            btnPosts.textContent = "POSTS 📰"; 
+            btnTareas.textContent = "TAREAS 📋";
             
 
             shadow.appendChild(estilo);
@@ -52,7 +52,7 @@ class User extends HTMLElement{
                     contenedorTareas.classList.remove("active");
                     setTimeout(()=>{
                         let titulo = document.createElement("h1");
-                        titulo.textContent = "TAREAS";
+                        titulo.textContent = this.tareas.length + " TAREAS";
                         titulo.setAttribute("id","tareaTitulo");
                         contenedorTareas.appendChild(titulo);
                         this.tareas.forEach(tarea => {
@@ -69,7 +69,7 @@ class User extends HTMLElement{
                     contenedorPosts.classList.remove("active");
                     setTimeout(()=>{
                         let titulo = document.createElement("h1");
-                        titulo.textContent = "POSTS";
+                        titulo.textContent = this.posts.length + " POSTS";
                         titulo.setAttribute("id","postTitulo");
                         contenedorPosts.appendChild(titulo);
                         this.posts.forEach(post => {
