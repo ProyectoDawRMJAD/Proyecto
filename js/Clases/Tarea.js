@@ -1,28 +1,36 @@
-class Tarea extends HTMLElement{
-    constructor(userId,id,title,completed){
+class Tarea extends HTMLElement {
+    constructor(userId, id, title, completed) {
         super();
         this.userId = userId;
         this.id = id;
         this.title = title;
         this.completed = completed;
     }
-    connectedCallback(){
-        if(!this.shadowRoot){
-            let shadow = this.attachShadow({mode: "open"});
+
+    connectedCallback() {
+        if (!this.shadowRoot) {
+            let shadow = this.attachShadow({ mode: "open" });
             let estilo = document.createElement("link");
             estilo.setAttribute("rel", "stylesheet");
             estilo.setAttribute("href", "./css/tarea.css");
             
             let plantilla = document.getElementById("todo");
-            let contenido = plantilla.content;
-            let tarea = contenido.cloneNode(true);
-            let contenedor = tarea.querySelector("#contenedor");
-            let titulo = tarea.querySelector("#name");
-            let checkBox = tarea.querySelector("#checkPost");
+            let contenido = plantilla.content.cloneNode(true);
+            let contenedor = contenido.querySelector("#contenedor");
+            let titulo = contenido.querySelector("#name");
+            let checkBox = contenido.querySelector("#checkPost");
+            let btnEliminarTarea = contenido.querySelector("#btnEliminarTarea");
+            let modal = contenido.querySelector("#modalEliminarTarea");
+            let btnConfirmarEliminar = contenido.querySelector("#confirmarEliminarTarea");
+            let btnCancelarEliminar = contenido.querySelector("#cancelarEliminarTarea");
             
-            shadow.appendChild(estilo);
-            shadow.appendChild(tarea);
-            
+            // Configurar contenido inicial
+            titulo.textContent = this.title;
+            checkBox.checked = this.completed;
+            if (this.completed) {
+                contenedor.classList.add("completed");
+            }
+
             // Función para alternar estado
             let toggleCompletion = () => {
                 contenedor.classList.toggle("completed");
@@ -40,16 +48,30 @@ class Tarea extends HTMLElement{
             contenedor.addEventListener("click", () => {
                 toggleCompletion();
             });
-            
-            if (this.completed) {
-                contenedor.classList.add("completed");
-                checkBox.setAttribute("checked", "checked");
-            }
-            titulo.textContent = this.title;
 
+            // Mostrar modal al hacer clic en el botón de eliminar
+            btnEliminarTarea.addEventListener("click", (event) => {
+                event.stopPropagation(); // Evita que el evento "click" del contenedor se dispare
+                modal.classList.add("active");
+            });
+
+            // Confirmar eliminación
+            btnConfirmarEliminar.addEventListener("click", () => {
+                this.remove(); // Eliminar el componente del DOM
+                modal.classList.remove("active");
+            });
+
+            // Cancelar eliminación
+            btnCancelarEliminar.addEventListener("click", () => {
+                modal.classList.remove("active");
+            });
+
+            shadow.appendChild(estilo);
+            shadow.appendChild(contenido);
         }
     }
 }
-export{
+
+export {
     Tarea
 }
