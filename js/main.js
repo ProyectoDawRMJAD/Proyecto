@@ -15,10 +15,10 @@ customElements.define("template-post",Post);
 customElements.define("template-todo",Tarea);
 customElements.define("template-foto",Foto);
 
-let usuarios = [];
-let imagenes = [];
-let publicaciones = [];
-let tareas = [];
+export let usuarios = [];
+export let imagenes = [];
+export let publicaciones = [];
+export let tareas = [];
 let contenedor = document.getElementById("prueba");
 let buscador = document.getElementById("searchBar");
 let textNotFound = document.getElementById("notFound");
@@ -293,13 +293,14 @@ function mostrarDatos(datos){
         let tareasPorUsuario = [];
 
         // Agrupar tareas por usuario
-        datos.forEach(tarea => {
-            if (!tareasPorUsuario[tarea.userId]) {
-                tareasPorUsuario[tarea.userId] = [];
-            }
-            tareasPorUsuario[tarea.userId].push(tarea);
+        usuarios.forEach(usuario => {
+            usuario.tareas.forEach(tarea => {
+                if (!tareasPorUsuario[tarea.userId]) {
+                    tareasPorUsuario[tarea.userId] = [];
+                }
+                tareasPorUsuario[tarea.userId].push(tarea);
+            });
         });
-
         // Crear elementos para cada usuario y sus tareas
         for (let userId in tareasPorUsuario) {
             let usuario = usuarios.find(user => user.id == userId);

@@ -1,3 +1,5 @@
+import { imagenes } from "../main.js";
+
 class Foto extends HTMLElement {
     constructor(albumId, id, title, url, thumbnail) {
         super();
@@ -48,6 +50,7 @@ class Foto extends HTMLElement {
 
             // Confirmar eliminación
             modal.querySelector("#confirmarEliminarFoto").addEventListener("click", () => {
+                imagenes.splice(imagenes.indexOf(this), 1);
                 this.remove();
                 modal.style.display = "none";
             });
