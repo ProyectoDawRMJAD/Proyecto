@@ -21,10 +21,31 @@ class Comentario extends HTMLElement {
             let plantilla = document.getElementById("comentario");
             let contenido = plantilla.content.cloneNode(true);
 
-            // Rellenar contenido dinámicamente (usando clases)
+            // Elementos de la plantilla
             contenido.querySelector(".tituloComentario").textContent = this.name;
             contenido.querySelector(".autorComentario").textContent = this.email;
             contenido.querySelector(".contentComentario").textContent = this.body;
+
+            let btnEliminar = contenido.querySelector(".btn-eliminar-comentario");
+            let modal = contenido.querySelector("#modalEliminarComentario");
+            let btnConfirmar = contenido.querySelector("#confirmarEliminarComentario");
+            let btnCancelar = contenido.querySelector("#cancelarEliminarComentario");
+
+            // Mostrar modal al hacer clic en eliminar
+            btnEliminar.addEventListener("click", (event) => {
+                event.stopPropagation();
+                modal.classList.add("active");
+            });
+
+            // Confirmar eliminación
+            btnConfirmar.addEventListener("click", () => {
+                this.remove(); // Eliminar el comentario
+            });
+
+            // Cancelar eliminación
+            btnCancelar.addEventListener("click", () => {
+                modal.classList.remove("active");
+            });
 
             // Añadir al Shadow DOM
             shadow.appendChild(estilo);
@@ -32,4 +53,5 @@ class Comentario extends HTMLElement {
         }
     }
 }
+
 export { Comentario };
