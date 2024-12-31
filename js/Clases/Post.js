@@ -27,6 +27,54 @@ class Post extends HTMLElement {
             contenido2.querySelector("#tituloPostSecundario").textContent = this.title;
             contenido2.querySelector("#contentPostSecundario").textContent = this.body;
 
+            // Configuración del modal de eliminación principal
+            const btnEliminar = contenido.querySelector(".btn-eliminar-post");
+            const modal = contenido.querySelector("#modalEliminarPost");
+            const btnConfirmarEliminar = modal.querySelector("#confirmarEliminarPost");
+            const btnCancelarEliminar = modal.querySelector("#cancelarEliminarPost");
+
+            // Lógica para mostrar el modal principal
+            btnEliminar.addEventListener("click", (event) => {
+                event.stopPropagation();
+                modal.classList.add("show");
+            });
+
+            // Confirmar eliminación principal
+            btnConfirmarEliminar.addEventListener("click", () => {
+                this.shadowRoot.innerHTML = ""; // Limpia el shadow DOM
+                this.remove(); // Elimina el componente del DOM
+                modal.classList.remove("show");
+            });
+
+            // Cancelar eliminación principal
+            btnCancelarEliminar.addEventListener("click", () => {
+                modal.classList.remove("show");
+            });
+
+            // Configuración del modal de eliminación secundario
+            const btnEliminarSecundario = contenido2.querySelector(".btn-eliminar-post-secundario");
+            const modalSecundario = contenido2.querySelector("#modalEliminarPostSecundario");
+            const btnConfirmarEliminarSecundario = modalSecundario.querySelector("#confirmarEliminarPostSecundario");
+            const btnCancelarEliminarSecundario = modalSecundario.querySelector("#cancelarEliminarPostSecundario");
+
+            // Lógica para mostrar el modal secundario
+            btnEliminarSecundario.addEventListener("click", (event) => {
+                event.stopPropagation();
+                modalSecundario.classList.add("show");
+            });
+
+            // Confirmar eliminación secundaria
+            btnConfirmarEliminarSecundario.addEventListener("click", () => {
+                this.shadowRoot.innerHTML = ""; // Limpia el shadow DOM
+                this.remove(); // Elimina el componente del DOM
+                modalSecundario.classList.remove("show");
+            });
+
+            // Cancelar eliminación secundaria
+            btnCancelarEliminarSecundario.addEventListener("click", () => {
+                modalSecundario.classList.remove("show");
+            });
+
             // Agregar comentarios al post
             let comentarios = contenido2.querySelector("#comentarios");
             this.comments.forEach(comment => {
@@ -58,17 +106,21 @@ class Post extends HTMLElement {
     }
 
     mostrarPrincipal() {
-        this.shadowRoot.querySelector("#contenedorPostSecundario").classList.add("hidden");
-        this.shadowRoot.querySelector("#contenedorPostSecundario").classList.remove("contenedorPostSecundario");
-        this.shadowRoot.querySelector("#contenedorPost").classList.remove("hidden");
-        this.shadowRoot.querySelector("#contenedorPost").classList.add("contenedorPost");
+        if (this.shadowRoot.querySelector("#contenedorPostSecundario")) {
+            this.shadowRoot.querySelector("#contenedorPostSecundario").classList.add("hidden");
+            this.shadowRoot.querySelector("#contenedorPostSecundario").classList.remove("contenedorPostSecundario");
+            this.shadowRoot.querySelector("#contenedorPost").classList.remove("hidden");
+            this.shadowRoot.querySelector("#contenedorPost").classList.add("contenedorPost");
+        }
     }
 
     mostrarSecundario() {
-        this.shadowRoot.querySelector("#contenedorPostSecundario").classList.add("contenedorPostSecundario");
-        this.shadowRoot.querySelector("#contenedorPostSecundario").classList.remove("hidden");
-        this.shadowRoot.querySelector("#contenedorPost").classList.add("hidden");
-        this.shadowRoot.querySelector("#contenedorPost").classList.remove("contenedorPost");
+        if (this.shadowRoot.querySelector("#contenedorPost")) {
+            this.shadowRoot.querySelector("#contenedorPost").classList.add("hidden");
+            this.shadowRoot.querySelector("#contenedorPost").classList.remove("contenedorPost");
+            this.shadowRoot.querySelector("#contenedorPostSecundario").classList.remove("hidden");
+            this.shadowRoot.querySelector("#contenedorPostSecundario").classList.add("contenedorPostSecundario");
+        }
     }
 }
 

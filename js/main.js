@@ -67,18 +67,28 @@ btnTareas.addEventListener("click",()=>{
     
 });
 
-btnPosts.addEventListener("click",()=>{
+btnPosts.addEventListener("click", () => {
     textNotFound.classList.add("hidden");
     contenedorTareas.classList.remove("active");
     contenedorPosts.classList.remove("active");
     contenedor.replaceChildren();
     publicaciones.forEach(post => {
         contenedor.appendChild(post);
-        post.shadowRoot.querySelector("#autorPostSecundario").textContent = "@"+determinarUser(post.userId);
+        let shadowRoot = post.shadowRoot;
+        if (shadowRoot) {
+            let autorPostSecundario = shadowRoot.querySelector("#autorPostSecundario");
+            if (autorPostSecundario) {
+                autorPostSecundario.textContent = "@" + determinarUser(post.userId);
+            } else {
+                console.error('Elemento #autorPostSecundario no encontrado en el shadowRoot');
+            }
+        } else {
+            console.error('shadowRoot no encontrado en el post');
+        }
         contenedor.appendChild(post);
         post.mostrarSecundario();
     });
-    buscador.setAttribute("placeholder","Buscar Post");
+    buscador.setAttribute("placeholder", "Buscar Post");
     ubicacion = "posts";
 });
 

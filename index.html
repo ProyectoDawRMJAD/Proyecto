@@ -157,6 +157,17 @@
     <div id="contenedorPost" class="contenedorPost">
         <div id="titulos"></div>
         <h4 id="postContent"></h4>
+        <!-- Botón de eliminar -->
+        <img src="img/botonEliminar.png" alt="Eliminar post" class="btn-eliminar-post">
+    </div>
+
+    <!-- Modal para confirmar eliminación -->
+    <div class="modal" id="modalEliminarPost">
+        <div class="modal-content">
+            <p>¿Estás seguro de que quieres eliminar este post?</p>
+            <button id="confirmarEliminarPost">Eliminar</button>
+            <button id="cancelarEliminarPost">Cancelar</button>
+        </div>
     </div>
 </template>
 
@@ -172,6 +183,17 @@
         <h4 id="contentPostSecundario" class="post-content"></h4>
         <button id="toggleComentarios" class="toggle-comments-button">Mostrar comentarios</button>
         <div id="comentarios" class="post-comments hidden"></div>
+        <!-- Botón de eliminar -->
+        <img src="img/botonEliminar.png" alt="Eliminar post" class="btn-eliminar-post-secundario">
+    </div>
+
+    <!-- Modal para confirmar eliminación -->
+    <div class="modal" id="modalEliminarPostSecundario">
+        <div class="modal-content">
+            <p>¿Estás seguro de que quieres eliminar este post?</p>
+            <button id="confirmarEliminarPostSecundario">Eliminar</button>
+            <button id="cancelarEliminarPostSecundario">Cancelar</button>
+        </div>
     </div>
 </template>
 
@@ -195,10 +217,6 @@
         </div>
     </div>
 </template>
-
-
-
-
 
 <template id="todo">
     <div id="contenedor">
