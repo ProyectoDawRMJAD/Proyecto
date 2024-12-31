@@ -251,7 +251,7 @@ function crearUsuario(){
         return;
     }
 
-    let newUser = new User(usuarios.length, nombre.value, username.value, email.value, phone.value, website.value);
+    let newUser = new User(usuarios.length+1, nombre.value, username.value, email.value, phone.value, website.value);
     usuarios.push(newUser);
     mostrarDatos(usuarios);
     contenedorformularioCrearUsuario.querySelector("form").reset();
