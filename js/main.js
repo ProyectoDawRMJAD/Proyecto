@@ -45,7 +45,8 @@ export let contenedorTareas = document.getElementById("tareas");
 export let contenedorPosts = document.getElementById("posts");
 
 formularioCrearPost.addEventListener("submit",(event)=>{
-    event.preventDefault();
+    event.preventDefault(); 
+    
     let userElegido = document.getElementById("usuarioPost");
     let title = document.getElementById("tituloPost");
     let body = document.getElementById("bodyPost");
