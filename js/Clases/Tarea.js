@@ -1,4 +1,4 @@
-import { contenedorTareas, tareas, usuarios } from "../main.js";
+import { obtenerUsuarioPorId,contenedorTareas, tareas, usuarios } from "../main.js";
 
 class Tarea extends HTMLElement {
     constructor(userId, id, title, completed) {
@@ -59,10 +59,11 @@ class Tarea extends HTMLElement {
 
             // Confirmar eliminación
             btnConfirmarEliminar.addEventListener("click", () => {
-                usuarios[this.userId - 1].tareas.splice(usuarios[this.userId - 1].tareas.indexOf(this), 1);
+                console.log(obtenerUsuarioPorId(this.userId));
+                obtenerUsuarioPorId(this.userId).tareas.splice(obtenerUsuarioPorId(this.userId).tareas.indexOf(this), 1);
                 tareas.splice(tareas.indexOf(this), 1);
                 this.remove();
-                contenedorTareas.querySelector("#tareaTitulo").textContent = usuarios[this.userId - 1].tareas.length+" TAREAS";
+                contenedorTareas.querySelector("#tareaTitulo").textContent = usuarios[obtenerUsuarioPorId(this.userId)].tareas.length+" TAREAS";
                 modal.classList.remove("active");
             });
 

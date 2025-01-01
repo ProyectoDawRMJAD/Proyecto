@@ -1,4 +1,4 @@
-import { contenedorPosts, publicaciones, usuarios } from "../main.js";
+import { contenedorPosts, obtenerUsuarioPorId, publicaciones } from "../main.js";
 
 class Post extends HTMLElement {
     constructor(userId, id, title, body) {
@@ -28,32 +28,7 @@ class Post extends HTMLElement {
 
             contenido2.querySelector("#tituloPostSecundario").textContent = this.title;
             contenido2.querySelector("#contentPostSecundario").textContent = this.body;
-            contenido2.querySelector("#autorPostSecundario").textContent = "@"+usuarios[this.userId - 1].username;
-
-            // Configuración del modal de eliminación principal
-            const btnEliminar = contenido.querySelector(".btn-eliminar-post");
-            const modal = contenido.querySelector("#modalEliminarPost");
-            const btnConfirmarEliminar = modal.querySelector("#confirmarEliminarPost");
-            const btnCancelarEliminar = modal.querySelector("#cancelarEliminarPost");
-
-            // Lógica para mostrar el modal principal
-            btnEliminar.addEventListener("click", (event) => {
-                event.stopPropagation();
-                modal.classList.add("show");
-            });
-
-            // Confirmar eliminación principal
-            btnConfirmarEliminar.addEventListener("click", () => {
-                usuarios[this.userId - 1].posts.splice(usuarios[this.userId - 1].posts.indexOf(this), 1);
-                publicaciones.splice(publicaciones.indexOf(this), 1);
-                this.remove(); // Elimina el componente del DOM
-                modal.classList.remove("show");
-            });
-
-            // Cancelar eliminación principal
-            btnCancelarEliminar.addEventListener("click", () => {
-                modal.classList.remove("show");
-            });
+            contenido2.querySelector("#autorPostSecundario").textContent = obtenerUsuarioPorId(this.userId).shadowRoot.querySelector("#userName").textContent;
 
             // Configuración del modal de eliminación secundario
             const btnEliminarSecundario = contenido2.querySelector(".btn-eliminar-post-secundario");
@@ -69,11 +44,9 @@ class Post extends HTMLElement {
 
             // Confirmar eliminación secundaria
             btnConfirmarEliminarSecundario.addEventListener("click", () => {
-                usuarios[this.userId - 1].posts.splice(usuarios[this.userId - 1].posts.indexOf(this), 1);
+                obtenerUsuarioPorId(this.userId).posts.splice(obtenerUsuarioPorId(this.userId).posts.indexOf(this), 1);
                 publicaciones.splice(publicaciones.indexOf(this), 1);
-                this.remove();
-                contenedorPosts.querySelector("#postTitulo").textContent = usuarios[this.userId - 1].posts.length+" POSTS";
-            
+                contenedorPosts.querySelector("#postTitulo").textContent = obtenerUsuarioPorId(this.userId).posts.length+" POSTS";
                 this.remove();
                 modalSecundario.classList.remove("show");
             });
