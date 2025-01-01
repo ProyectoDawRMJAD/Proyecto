@@ -107,6 +107,7 @@ class User extends HTMLElement {
             }, 200);
         }
     }
+    
     showPosts(){
         if (this.posts.length > 0) {
             contenedorPosts.replaceChildren();
