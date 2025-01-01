@@ -309,18 +309,18 @@ function mostrarDatos(datos){
 
         ordenUsuarios.forEach(userId => {
             let usuario = usuarios.find(user => user.id == userId);
-            let userDiv = document.createElement("div");
-            userDiv.classList.add("user-tasks");
-
-            let userTitle = document.createElement("h2");
-            userTitle.textContent = `Tareas de @${usuario.username}`;
-            userDiv.appendChild(userTitle);
-            contenedor.appendChild(userDiv);
-
-            tareasPorUsuario[userId].forEach(tarea => {
-                userDiv.appendChild(tarea);
-                tarea.shadowRoot.querySelector("#btnEliminarTarea").classList.remove("hidden");
-            });
+            if(usuario){
+                let userDiv = document.createElement("div");
+                userDiv.classList.add("user-tasks");
+                let userTitle = document.createElement("h2");
+                userTitle.textContent = `Tareas de @${usuario.username}`;
+                userDiv.appendChild(userTitle);
+                contenedor.appendChild(userDiv);
+                tareasPorUsuario[userId].forEach(tarea => {
+                    userDiv.appendChild(tarea);
+                    tarea.shadowRoot.querySelector("#btnEliminarTarea").classList.remove("hidden");
+                });
+            }
         });
     } else {
         datos.forEach(dato => {
