@@ -81,6 +81,7 @@ class User extends HTMLElement {
                         contenedorTareas.appendChild(titulo);
                         this.tareas.forEach(tarea => {
                             contenedorTareas.appendChild(tarea);
+                            tarea.shadowRoot.querySelector("#btnEliminarTarea").classList.add("hidden");
                         });
                         contenedorTareas.classList.toggle("active");
                     }, 200);

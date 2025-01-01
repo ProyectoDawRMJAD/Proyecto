@@ -67,28 +67,18 @@ btnTareas.addEventListener("click",()=>{
     
 });
 
-btnPosts.addEventListener("click", () => {
+btnPosts.addEventListener("click",()=>{
     textNotFound.classList.add("hidden");
     contenedorTareas.classList.remove("active");
     contenedorPosts.classList.remove("active");
     contenedor.replaceChildren();
     publicaciones.forEach(post => {
         contenedor.appendChild(post);
-        let shadowRoot = post.shadowRoot;
-        if (shadowRoot) {
-            let autorPostSecundario = shadowRoot.querySelector("#autorPostSecundario");
-            if (autorPostSecundario) {
-                autorPostSecundario.textContent = "@" + determinarUser(post.userId);
-            } else {
-                console.error('Elemento #autorPostSecundario no encontrado en el shadowRoot');
-            }
-        } else {
-            console.error('shadowRoot no encontrado en el post');
-        }
+        post.shadowRoot.querySelector("#autorPostSecundario").textContent = "@"+determinarUser(post.userId);
         contenedor.appendChild(post);
         post.mostrarSecundario();
     });
-    buscador.setAttribute("placeholder", "Buscar Post");
+    buscador.setAttribute("placeholder","Buscar Post");
     ubicacion = "posts";
 });
 
@@ -227,8 +217,6 @@ function generarAlbumes(){
     }
 }
 
-
-
 function crearUsuario(){
     let nombre = document.getElementById("nameForm");
     let username = document.getElementById("username");
@@ -301,16 +289,14 @@ function mostrarDatos(datos){
     contenedor.replaceChildren();
     if (ubicacion == "tareas") {
         let tareasPorUsuario = [];
-
         // Agrupar tareas por usuario
-        usuarios.forEach(usuario => {
-            usuario.tareas.forEach(tarea => {
-                if (!tareasPorUsuario[tarea.userId]) {
-                    tareasPorUsuario[tarea.userId] = [];
-                }
-                tareasPorUsuario[tarea.userId].push(tarea);
-            });
+        datos.forEach(tarea => {
+            if (!tareasPorUsuario[tarea.userId]) {
+                tareasPorUsuario[tarea.userId] = [];
+            }
+            tareasPorUsuario[tarea.userId].push(tarea);
         });
+
         // Crear elementos para cada usuario y sus tareas
         for (let userId in tareasPorUsuario) {
             let usuario = usuarios.find(user => user.id == userId);
@@ -320,12 +306,12 @@ function mostrarDatos(datos){
             let userTitle = document.createElement("h2");
             userTitle.textContent = `Tareas de @${usuario.username}`;
             userDiv.appendChild(userTitle);
+            contenedor.appendChild(userDiv);
 
             tareasPorUsuario[userId].forEach(tarea => {
                 userDiv.appendChild(tarea);
-            });
-
-            contenedor.appendChild(userDiv);
+                tarea.shadowRoot.querySelector("#btnEliminarTarea").classList.remove("hidden");
+            });            
         }
     } else {
         datos.forEach(dato => {

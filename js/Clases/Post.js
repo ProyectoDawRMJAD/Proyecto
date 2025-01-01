@@ -1,3 +1,5 @@
+import { contenedorPosts, publicaciones, usuarios } from "../main.js";
+
 class Post extends HTMLElement {
     constructor(userId, id, title, body) {
         super();
@@ -41,7 +43,6 @@ class Post extends HTMLElement {
 
             // Confirmar eliminación principal
             btnConfirmarEliminar.addEventListener("click", () => {
-                this.shadowRoot.innerHTML = ""; // Limpia el shadow DOM
                 this.remove(); // Elimina el componente del DOM
                 modal.classList.remove("show");
             });
@@ -65,8 +66,10 @@ class Post extends HTMLElement {
 
             // Confirmar eliminación secundaria
             btnConfirmarEliminarSecundario.addEventListener("click", () => {
-                this.shadowRoot.innerHTML = ""; // Limpia el shadow DOM
+                usuarios[this.userId - 1].posts.splice(usuarios[this.userId - 1].posts.indexOf(this), 1);
+                publicaciones.splice(publicaciones.indexOf(this), 1);
                 this.remove(); // Elimina el componente del DOM
+                contenedorPosts.querySelector("#postTitulo").textContent = usuarios[this.userId - 1].tareas.length+" POSTS";
                 modalSecundario.classList.remove("show");
             });
 
@@ -85,9 +88,7 @@ class Post extends HTMLElement {
             let toggleButton = contenido2.querySelector("#toggleComentarios");
             toggleButton.addEventListener("click", () => {
                 comentarios.classList.toggle("hidden");
-                toggleButton.textContent = comentarios.classList.contains("hidden")
-                    ? "Mostrar comentarios"
-                    : "Ocultar comentarios";
+                toggleButton.textContent = comentarios.classList.contains("hidden")? "Mostrar comentarios": "Ocultar comentarios";
             });
 
             shadow.appendChild(estilo);
