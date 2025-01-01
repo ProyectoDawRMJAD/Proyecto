@@ -44,7 +44,6 @@ let btn = document.getElementById('myBtn');
 export let contenedorTareas = document.getElementById("tareas");
 export let contenedorPosts = document.getElementById("posts");
 
-
 formularioCrearPost.addEventListener("submit",(event)=>{
     event.preventDefault();
     let userElegido = document.getElementById("usuarioPost");
