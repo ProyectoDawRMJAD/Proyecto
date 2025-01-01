@@ -37,6 +37,7 @@
     justify-content: space-between;
     width: auto;
     gap: 2px;
+    cursor: pointer;
 }
 h4,h5{
     margin: 0;

@@ -84,7 +84,7 @@
                 
               
                 <div class="input-field">  
-                    <input type="mail" id="email" class="input">
+                    <input id="tituloImagen" class="input">
                     <label class="label">Título</label>
                 </div>
 
@@ -98,13 +98,15 @@
             <form id="crearPostForm" class="hidden form-control" enctype="multipart/form-data">
                 <p class="title">Crear Post</p>
                 <label class="label">Elige Usuario</label>
-                <select name="" class="mostrarUsuarioSelect">
-                    
-                </select>
+                <select id="usuarioPost" class="mostrarUsuarioSelect"></select>
               
                 <div class="input-field">  
-                    <input type="mail" id="email" class="input">
+                    <input id="tituloPost" class="input">
                     <label class="label">Título</label>
+                </div>
+                <div class="input-field">  
+                    <textarea id="bodyPost" class="input"></textarea>
+                    <label class="label">Cuerpo</label>
                 </div>
 
                 <button type="submit" id="btnCrearPost" class="submit-btn">Crear Post</button>

@@ -32,14 +32,32 @@ let contenedorformularioCrearImagen = document.getElementById("crearImagen");
 let contenedorformularioCrearTarea = document.getElementById("crearTarea");
 let contenedorformularioCrearPost = document.getElementById("crearPost");
 let formularioCrearTarea = document.getElementById("crearTareaForm");
+let formularioCrearPost = document.getElementById("crearPostForm");
+let formularioCrearImagen = document.getElementById("crearImagenForm");
 let modalBtnSend = document.getElementById("modalBtnSend");
 let divModal = document.getElementById("modalBtnSend");
 let mostrarUsuariosSelect = document.getElementsByClassName("mostrarUsuarioSelect");
 let divModalForm = document.getElementById("formularioSend");
 let divPublicar = document.getElementById("publicacion");
 let ubicacion = "usuarios";
+let btn = document.getElementById('myBtn');
 export let contenedorTareas = document.getElementById("tareas");
 export let contenedorPosts = document.getElementById("posts");
+
+
+formularioCrearPost.addEventListener("submit",(event)=>{
+    event.preventDefault();
+    let userElegido = document.getElementById("usuarioPost");
+    let title = document.getElementById("tituloPost");
+    let body = document.getElementById("bodyPost");
+    let usuario = usuarios.find(usuario => usuario.username == userElegido.value);
+    let nuevaPublicacion = new Post(usuario.id,publicaciones.length,title.value,body.value);
+    usuario.addPost(nuevaPublicacion);
+    publicaciones.unshift(nuevaPublicacion);
+    mostrarDatos(publicaciones);
+    nuevaPublicacion.mostrarSecundario();
+    esconderModal();
+});
 
 formularioCrearTarea.addEventListener("submit",(event)=>{
     event.preventDefault();
@@ -48,8 +66,8 @@ formularioCrearTarea.addEventListener("submit",(event)=>{
     let usuario = usuarios.find(usuario => usuario.username == userElegido.value);
     let nuevaTarea = new Tarea(usuario.id,tareas.length,title.value,false);
     usuario.addTarea(nuevaTarea);
-    tareas.push(nuevaTarea);
-    mostrarDatos(tareas);
+    tareas.unshift(nuevaTarea);
+    mostrarDatos(tareas); 
     esconderModal();
 });
 
@@ -73,8 +91,6 @@ btnPosts.addEventListener("click",()=>{
     contenedorPosts.classList.remove("active");
     contenedor.replaceChildren();
     publicaciones.forEach(post => {
-        contenedor.appendChild(post);
-        post.shadowRoot.querySelector("#autorPostSecundario").textContent = "@"+determinarUser(post.userId);
         contenedor.appendChild(post);
         post.mostrarSecundario();
     });
@@ -174,7 +190,7 @@ btnUsers.addEventListener("click",()=>{
     mostrarDatos(usuarios);
 });
 
-let btn = document.getElementById('myBtn');
+
 
 window.addEventListener('scroll', () => {
     if (window.scrollY > 300) {  
@@ -189,14 +205,6 @@ window.addEventListener('scroll', () => {
 
 cargarDatos();
 mostrarDatos(usuarios);
-
-function determinarUser(userId){
-    let cont = 0;
-    while(cont<usuarios.length-1&&usuarios[cont].id!=userId){
-        cont++;
-    }
-    return usuarios[cont].username;
-}
 
 function generarAlbumes(){
     let cantidadAlbumes = imagenes[imagenes.length-1].albumId;
@@ -250,7 +258,7 @@ function crearUsuario(){
     }
 
     let newUser = new User(usuarios.length+1, nombre.value, username.value, email.value, phone.value, website.value);
-    usuarios.push(newUser);
+    usuarios.unshift(newUser);
     mostrarDatos(usuarios);
     contenedorformularioCrearUsuario.querySelector("form").reset();
     contenedorformularioCrearUsuario.querySelectorAll("input").forEach(element => {
@@ -288,17 +296,18 @@ function mostrarModal(){
 function mostrarDatos(datos){
     contenedor.replaceChildren();
     if (ubicacion == "tareas") {
-        let tareasPorUsuario = [];
-        // Agrupar tareas por usuario
+        let tareasPorUsuario = {};
+        let ordenUsuarios = [];
+
         datos.forEach(tarea => {
             if (!tareasPorUsuario[tarea.userId]) {
                 tareasPorUsuario[tarea.userId] = [];
+                ordenUsuarios.push(tarea.userId);
             }
             tareasPorUsuario[tarea.userId].push(tarea);
         });
 
-        // Crear elementos para cada usuario y sus tareas
-        for (let userId in tareasPorUsuario) {
+        ordenUsuarios.forEach(userId => {
             let usuario = usuarios.find(user => user.id == userId);
             let userDiv = document.createElement("div");
             userDiv.classList.add("user-tasks");
@@ -311,8 +320,8 @@ function mostrarDatos(datos){
             tareasPorUsuario[userId].forEach(tarea => {
                 userDiv.appendChild(tarea);
                 tarea.shadowRoot.querySelector("#btnEliminarTarea").classList.remove("hidden");
-            });            
-        }
+            });
+        });
     } else {
         datos.forEach(dato => {
             contenedor.appendChild(dato);

@@ -14,6 +14,9 @@
 .hidden{
     display: none;
 }
+#postContent{
+    word-wrap: break-word;
+}
 
 .secundario{
     display: flex;
@@ -51,6 +54,7 @@
     font-family: Arial, sans-serif;
     border: solid black 2px;
     border-radius: 0.3rem;
+    width: 775px;
 }
 
 .post-header {
@@ -137,6 +141,7 @@
 .post-content {
     margin: 16px 0;
     font-size: 1.2em;
+    word-wrap: break-word;
 }
 
 .toggle-comments-button {
@@ -168,6 +173,7 @@
     border-radius: 8px;
     padding: 12px;
     margin-bottom: 12px;
+    word-wrap: break-word;
 }
 
 .tituloComentario {

@@ -28,6 +28,7 @@ class Post extends HTMLElement {
 
             contenido2.querySelector("#tituloPostSecundario").textContent = this.title;
             contenido2.querySelector("#contentPostSecundario").textContent = this.body;
+            contenido2.querySelector("#autorPostSecundario").textContent = "@"+usuarios[this.userId - 1].username;
 
             // Configuración del modal de eliminación principal
             const btnEliminar = contenido.querySelector(".btn-eliminar-post");
