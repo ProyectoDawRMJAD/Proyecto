@@ -45,7 +45,8 @@ export let contenedorTareas = document.getElementById("tareas");
 export let contenedorPosts = document.getElementById("posts");
 
 formularioCrearPost.addEventListener("submit",(event)=>{
-    event.preventDefault();
+    event.preventDefault(); 
+    
     let userElegido = document.getElementById("usuarioPost");
     let title = document.getElementById("tituloPost");
     let body = document.getElementById("bodyPost");
@@ -90,18 +91,6 @@ btnPosts.addEventListener("click", () => {
     contenedorPosts.classList.remove("active");
     contenedor.replaceChildren();
     publicaciones.forEach(post => {
-        contenedor.appendChild(post);
-        let shadowRoot = post.shadowRoot;
-        if (shadowRoot) {
-            let autorPostSecundario = shadowRoot.querySelector("#autorPostSecundario");
-            if (autorPostSecundario) {
-                autorPostSecundario.textContent = "@" + determinarUser(post.userId);
-            } else {
-                console.error('Elemento #autorPostSecundario no encontrado en el shadowRoot');
-            }
-        } else {
-            console.error('shadowRoot no encontrado en el post');
-        }
         contenedor.appendChild(post);
         post.mostrarSecundario();
     });
