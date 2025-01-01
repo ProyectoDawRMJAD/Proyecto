@@ -30,7 +30,7 @@ class Tarea extends HTMLElement {
             titulo.textContent = this.title;
             checkBox.checked = this.completed;
             if (this.completed) {
-                contenedor.classList.add("completed");
+                contenedor.classList.add("completed");      
             }
 
             // Función para alternar estado
