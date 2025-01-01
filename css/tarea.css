@@ -26,6 +26,9 @@ input {
 div.completed {
     background-color: rgb(0, 162, 255);
 }
+.hidden {
+    display: none;
+}
 
 #name {
     font-size: 13px;
@@ -63,7 +66,6 @@ div.completed {
 
 .modal.active {
     display: flex; /* Muestra el modal */
-    animation: fadeIn 0.3s ease-in-out;
 }
 
 .modal-content {

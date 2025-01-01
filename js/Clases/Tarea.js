@@ -30,19 +30,19 @@ class Tarea extends HTMLElement {
             titulo.textContent = this.title;
             checkBox.checked = this.completed;
             if (this.completed) {
-                contenedor.classList.add("completed");
+                contenedor.classList.add("completed");      
             }
 
             // Función para alternar estado
             let toggleCompletion = () => {
                 contenedor.classList.toggle("completed");
                 this.completed = !this.completed;
-                checkBox.checked = this.completed; // Sincroniza el estado del checkbox
+                checkBox.checked = this.completed;
             };
             
             // Evento para el checkbox
             checkBox.addEventListener("click", (event) => {
-                event.stopPropagation(); // Evita que el evento "click" del contenedor se dispare
+                event.stopPropagation();
                 toggleCompletion();
             });
             
@@ -53,14 +53,15 @@ class Tarea extends HTMLElement {
 
             // Mostrar modal al hacer clic en el botón de eliminar
             btnEliminarTarea.addEventListener("click", (event) => {
-                event.stopPropagation(); // Evita que el evento "click" del contenedor se dispare
+                event.stopPropagation();
                 modal.classList.add("active");
             });
 
             // Confirmar eliminación
             btnConfirmarEliminar.addEventListener("click", () => {
                 usuarios[this.userId - 1].tareas.splice(usuarios[this.userId - 1].tareas.indexOf(this), 1);
-                this.remove(); // Eliminar el componente del DOM
+                tareas.splice(tareas.indexOf(this), 1);
+                this.remove();
                 contenedorTareas.querySelector("#tareaTitulo").textContent = usuarios[this.userId - 1].tareas.length+" TAREAS";
                 modal.classList.remove("active");
             });

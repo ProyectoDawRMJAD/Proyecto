@@ -84,7 +84,7 @@
                 
               
                 <div class="input-field">  
-                    <input type="mail" id="email" class="input">
+                    <input id="tituloImagen" class="input">
                     <label class="label">Título</label>
                 </div>
 
@@ -98,13 +98,15 @@
             <form id="crearPostForm" class="hidden form-control" enctype="multipart/form-data">
                 <p class="title">Crear Post</p>
                 <label class="label">Elige Usuario</label>
-                <select name="" class="mostrarUsuarioSelect">
-                    
-                </select>
+                <select id="usuarioPost" class="mostrarUsuarioSelect"></select>
               
                 <div class="input-field">  
-                    <input type="mail" id="email" class="input">
+                    <input id="tituloPost" class="input">
                     <label class="label">Título</label>
+                </div>
+                <div class="input-field">  
+                    <textarea id="bodyPost" class="input"></textarea>
+                    <label class="label">Cuerpo</label>
                 </div>
 
                 <button type="submit" id="btnCrearPost" class="submit-btn">Crear Post</button>
@@ -151,14 +153,12 @@
     </div>
 </template>
 
-
-
 <template id="post">
     <div id="contenedorPost" class="contenedorPost">
         <div id="titulos"></div>
         <h4 id="postContent"></h4>
         <!-- Botón de eliminar -->
-        <img src="img/botonEliminar.png" alt="Eliminar post" class="btn-eliminar-post">
+        <img src="img/botonEliminar.png" alt="Eliminar post" class="btn-eliminar-post hidden">
     </div>
 
     <!-- Modal para confirmar eliminación -->
@@ -223,7 +223,7 @@
         <input type="checkbox" id="checkPost">
         <h2 id="name"></h2>
         <!-- Botón de eliminar como imagen -->
-        <img src="./img/botonEliminar.png" id="btnEliminarTarea" alt="Eliminar" class="btn-eliminar">
+        <img src="./img/botonEliminar.png" id="btnEliminarTarea" alt="Eliminar" class="btn-eliminar hidden">
     </div>
     <!-- Modal de confirmación -->
     <div id="modalEliminarTarea" class="modal hidden">

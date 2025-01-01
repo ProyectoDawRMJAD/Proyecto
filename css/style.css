@@ -13,13 +13,11 @@
     font-family: "Sour Gummy", sans-serif;
     padding: 20px;
     background-color: #ffffff;
-    width: 320px;
+    width: 330px;
     height: auto;
     border: solid black 2px;
     border-radius: 0.3rem;
-    flex-wrap: wrap;
-    display: flex;
-    gap:10px;
+    gap: 10px;
     transition: 0.1s;
 }
 
@@ -377,6 +375,25 @@ background-color:  rgb(3, 121, 189);
 scale: 1.05;  
 }
 
+.mostrarUsuarioSelect {
+    background-color: #f9f9f9; /* Blanco claro */
+    color: #000000; /* Negro */
+    border: 1px solid #ccc; /* Gris claro */
+    border-radius: 5px;
+    padding: 10px;
+    font-family: "Sour Gummy", sans-serif;
+    font-size: 16px;
+    width: 300px;
+    box-sizing: border-box;
+    margin: 10px 0;
+    transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.mostrarUsuarioSelect:focus {
+    outline: none;
+    border-color: rgb(3, 121, 189); /* Azul */
+}
+
 .Btn {
     width: 45px;
     height: 45px;
@@ -394,6 +411,7 @@ scale: 1.05;
     pointer-events: none; /* No interactuable */
     transition: opacity 0.5s ease;  /* Transición suave para aparecer */
   }
+
   
   /* Flecha */
   .arrow path {

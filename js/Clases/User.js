@@ -32,6 +32,10 @@ class User extends HTMLElement {
             user.querySelector("#userName").textContent = "@" + this.username;
             btnPosts.textContent = "POSTS 📰";
             btnTareas.textContent = "TAREAS 📋";
+            user.querySelector("#info").addEventListener('click', () => {
+                this.showTareas();
+                this.showPosts();
+            });
 
             shadow.appendChild(estilo);
             shadow.appendChild(user);
@@ -70,49 +74,60 @@ class User extends HTMLElement {
 
             // Mostrar posts y tareas
             btnTareas.addEventListener('click', () => {
-                if (this.tareas.length > 0) {
-                    contenedorTareas.replaceChildren();
-                    contenedorTareas.classList.remove("active");
-                    setTimeout(() => {
-                        let titulo = document.createElement("h1");
-                        titulo.setAttribute("id", "tareaTitulo");
-                        titulo.textContent = this.tareas.length+" TAREAS";
-                        titulo.setAttribute("id", "tareaTitulo");
-                        contenedorTareas.appendChild(titulo);
-                        this.tareas.forEach(tarea => {
-                            contenedorTareas.appendChild(tarea);
-                        });
-                        contenedorTareas.classList.toggle("active");
-                    }, 200);
-                }
+                this.showTareas();
             });
 
             btnPosts.addEventListener('click', () => {
-                if (this.posts.length > 0) {
-                    contenedorPosts.replaceChildren();
-                    contenedorPosts.classList.remove("active");
-                    setTimeout(() => {
-                        let titulo = document.createElement("h1");
-                        titulo.textContent = this.posts.length+" POSTS";
-                        titulo.setAttribute("id", "postTitulo");
-                        contenedorPosts.appendChild(titulo);
-                        this.posts.forEach(post => {
-                            contenedorPosts.appendChild(post);
-                            post.mostrarPrincipal();
-                        });
-                        contenedorPosts.classList.toggle("active");
-                    }, 200);
-                }
+                this.showPosts();
             });
+
+            
         }
     }
 
     addPost(post) {
-        this.posts.push(post);
+        this.posts.unshift(post);
+    }
+
+    showTareas(){
+        if (this.tareas.length > 0) {
+            contenedorTareas.replaceChildren();
+            contenedorTareas.classList.remove("active");
+            setTimeout(() => {
+                let titulo = document.createElement("h1");
+                titulo.setAttribute("id", "tareaTitulo");
+                titulo.textContent = this.tareas.length+" TAREAS";
+                titulo.setAttribute("id", "tareaTitulo");
+                contenedorTareas.appendChild(titulo);
+                this.tareas.forEach(tarea => {
+                    contenedorTareas.appendChild(tarea);
+                    tarea.shadowRoot.querySelector("#btnEliminarTarea").classList.add("hidden");
+                });
+                contenedorTareas.classList.toggle("active");
+            }, 200);
+        }
+    }
+    
+    showPosts(){
+        if (this.posts.length > 0) {
+            contenedorPosts.replaceChildren();
+            contenedorPosts.classList.remove("active");
+            setTimeout(() => {
+                let titulo = document.createElement("h1");
+                titulo.textContent = this.posts.length+" POSTS";
+                titulo.setAttribute("id", "postTitulo");
+                contenedorPosts.appendChild(titulo);
+                this.posts.forEach(post => {
+                    contenedorPosts.appendChild(post);
+                    post.mostrarPrincipal();
+                });
+                contenedorPosts.classList.toggle("active");
+            }, 200);
+        }
     }
 
     addTarea(tarea) {
-        this.tareas.push(tarea);
+        this.tareas.unshift(tarea);
     }
 
     getTareas() {
