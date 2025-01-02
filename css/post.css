@@ -231,6 +231,11 @@
 }
 
 .modal-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
     font-family: "Sour Gummy", sans-serif;
     background-color: #fff;
     padding: 20px;
@@ -282,4 +287,18 @@
 #cancelarEliminarPost:hover, #cancelarEliminarPostSecundario:hover {
     background-color: #95a5a6;
     transform: scale(1.05);
+}
+
+/* Botón de añadir comentario */
+.btn-añadir-comentario {
+    display: block;
+    margin: 0 auto 10px auto; /* Centrado horizontalmente */
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.btn-añadir-comentario:hover {
+    transform: scale(1.1); /* Efecto de hover */
 }

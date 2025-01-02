@@ -1,4 +1,5 @@
 import { contenedorPosts, obtenerUsuarioPorId, publicaciones } from "../main.js";
+import { Comentario } from "./Comentario.js";
 
 class Post extends HTMLElement {
     constructor(userId, id, title, body) {
@@ -55,23 +56,72 @@ class Post extends HTMLElement {
                 modalSecundario.classList.remove("show");
             });
 
-            // Agregar comentarios al post
-            
+            // Modal para añadir comentarios
+            const modalAñadirComentario = document.createElement("div");
+            modalAñadirComentario.classList.add("modal");
+            modalAñadirComentario.setAttribute("id", "modalAñadirComentario");
+            modalAñadirComentario.innerHTML = `
+                <div class="modal-content">
+                    <input type="text" id="nombreComentario" placeholder="Nombre">
+                    <input type="email" id="emailComentario" placeholder="Correo electrónico">
+                    <textarea id="textoComentario" placeholder="Escribe tu comentario aquí..."></textarea>
+                    <button id="confirmarAñadirComentario">Añadir</button>
+                    <button id="cancelarAñadirComentario">Cancelar</button>
+                </div>
+            `;
+            contenido2.appendChild(modalAñadirComentario);
+
+            const btnAñadirComentario = contenido2.querySelector(".btn-añadir-comentario");
+            const btnConfirmarAñadir = modalAñadirComentario.querySelector("#confirmarAñadirComentario");
+            const btnCancelarAñadir = modalAñadirComentario.querySelector("#cancelarAñadirComentario");
+
+            // Contenedor de comentarios
             let comentarios = contenido2.querySelector("#comentarios");
-            this.comments.forEach(comment => {
+            this.comments.forEach((comment) => {
                 comentarios.appendChild(comment);
             });
-            
 
-            // Lógica para mostrar/ocultar comentarios
+            // Mostrar el modal al hacer clic en el botón de añadir comentario
+            btnAñadirComentario.addEventListener("click", (event) => {
+                event.stopPropagation();
+                modalAñadirComentario.classList.add("show");
+            });
+
+            // Confirmar la adición del comentario
+            btnConfirmarAñadir.addEventListener("click", () => {
+                const nombre = modalAñadirComentario.querySelector("#nombreComentario").value.trim();
+                const email = modalAñadirComentario.querySelector("#emailComentario").value.trim();
+                const texto = modalAñadirComentario.querySelector("#textoComentario").value.trim();
+
+                if (nombre && email && texto) {
+                    const nuevoComentario = new Comentario(this.id, this.comments.length + 1, nombre, email, texto);
+                    this.addComment(nuevoComentario);
+                    comentarios.appendChild(nuevoComentario);
+                }
+
+                // Limpiar inputs y cerrar modal
+                modalAñadirComentario.querySelector("#nombreComentario").value = "";
+                modalAñadirComentario.querySelector("#emailComentario").value = "";
+                modalAñadirComentario.querySelector("#textoComentario").value = "";
+                modalAñadirComentario.classList.remove("show");
+            });
+
+            // Cancelar la adición del comentario
+            btnCancelarAñadir.addEventListener("click", () => {
+                modalAñadirComentario.classList.remove("show");
+            });
+
+            // Mostrar/ocultar comentarios
             let toggleButton = contenido2.querySelector("#toggleComentarios");
             if (this.comments.length === 0) {
                 toggleButton.classList.add("hidden");
             }
-            
+
             toggleButton.addEventListener("click", () => {
                 comentarios.classList.toggle("hidden");
-                toggleButton.textContent = comentarios.classList.contains("hidden")? "Mostrar comentarios": "Ocultar comentarios";
+                toggleButton.textContent = comentarios.classList.contains("hidden")
+                    ? "Mostrar comentarios"
+                    : "Ocultar comentarios";
             });
 
             shadow.appendChild(estilo);
