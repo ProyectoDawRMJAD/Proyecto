@@ -106,6 +106,7 @@ class User extends HTMLElement {
                 this.tareas.forEach(tarea => {
                     contenedorTareas.appendChild(tarea);
                     tarea.shadowRoot.querySelector("#btnEliminarTarea").classList.add("hidden");
+                    tarea.shadowRoot.querySelector("#btnEditarTarea").classList.add("hidden");
                 });
                 contenedorTareas.classList.toggle("active");
             }, 200);

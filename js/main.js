@@ -375,6 +375,7 @@ function mostrarDatos(datos){
                 tareasPorUsuario[userId].forEach(tarea => {
                     userDiv.appendChild(tarea);
                     tarea.shadowRoot.querySelector("#btnEliminarTarea").classList.remove("hidden");
+                    tarea.shadowRoot.querySelector("#btnEditarTarea").classList.remove("hidden");
                 });
             }
         });

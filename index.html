@@ -194,16 +194,6 @@
             <!-- Botón para añadir comentario -->
         </div>
 
-                <!-- Modal para añadir comentarios -->
-        <div class="modal" id="modalAñadirComentario">
-            <div class="modal-content">
-                <textarea id="textoComentario" placeholder="Escribe tu comentario aquí..."></textarea>
-                <button id="confirmarAñadirComentario">Añadir</button>
-                <button id="cancelarAñadirComentario">Cancelar</button>
-            </div>
-        </div>
-
-
         <!-- Botón de eliminar -->
         <img src="img/botonEliminar.png" alt="Eliminar post" class="btn-eliminar-post-secundario">
         <img src="img/botonEditar.png" class="btn-editar-post-secundario">
@@ -247,8 +237,11 @@
         <input type="checkbox" id="checkPost">
         <h2 id="name"></h2>
         <!-- Botón de eliminar como imagen -->
-        <img src="img/botonEditar.png" id="btnEditar" class="btn-editar">
-        <img src="./img/botonEliminar.png" id="btnEliminarTarea" alt="Eliminar" class="btn-eliminar hidden">
+        <div class="contenedorBotones">
+            <img src="img/botonEditar.png" id="btnEditarTarea"  class="btn-editar hidden">
+            <img src="./img/botonEliminar.png" id="btnEliminarTarea" class="btn-eliminar hidden">
+        </div>
+        
     </div>
     <!-- Modal de confirmación -->
     <div id="modalEliminarTarea" class="modal hidden">

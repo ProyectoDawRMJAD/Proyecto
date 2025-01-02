@@ -62,6 +62,7 @@ class Post extends HTMLElement {
             modalAñadirComentario.setAttribute("id", "modalAñadirComentario");
             modalAñadirComentario.innerHTML = `
                 <div class="modal-content">
+                    <h2>Añadir comentario</h2>
                     <input type="text" id="nombreComentario" placeholder="Nombre">
                     <input type="email" id="emailComentario" placeholder="Correo electrónico">
                     <textarea id="textoComentario" placeholder="Escribe tu comentario aquí..."></textarea>
