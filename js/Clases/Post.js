@@ -46,7 +46,6 @@ class Post extends HTMLElement {
             btnConfirmarEliminarSecundario.addEventListener("click", () => {
                 obtenerUsuarioPorId(this.userId).posts.splice(obtenerUsuarioPorId(this.userId).posts.indexOf(this), 1);
                 publicaciones.splice(publicaciones.indexOf(this), 1);
-                contenedorPosts.querySelector("#postTitulo").textContent = obtenerUsuarioPorId(this.userId).posts.length+" POSTS";
                 this.remove();
                 modalSecundario.classList.remove("show");
             });

@@ -45,8 +45,7 @@ export let contenedorTareas = document.getElementById("tareas");
 export let contenedorPosts = document.getElementById("posts");
 
 formularioCrearPost.addEventListener("submit",(event)=>{
-    event.preventDefault(); 
-    
+    event.preventDefault();
     let userElegido = document.getElementById("usuarioPost");
     let title = document.getElementById("tituloPost");
     let body = document.getElementById("bodyPost");
@@ -90,10 +89,13 @@ btnPosts.addEventListener("click", () => {
     contenedorTareas.classList.remove("active");
     contenedorPosts.classList.remove("active");
     contenedor.replaceChildren();
-    publicaciones.forEach(post => {
-        contenedor.appendChild(post);
-        post.mostrarSecundario();
+    usuarios.forEach(usuario => {
+        usuario.posts.forEach(post => {
+            contenedor.appendChild(post);
+            post.mostrarSecundario();
+        });
     });
+
     buscador.setAttribute("placeholder", "Buscar Post");
     ubicacion = "posts";
 });
