@@ -53,11 +53,9 @@ formularioCrearPost.addEventListener("submit",(event)=>{
     let nuevaPublicacion = new Post(usuario.id,publicaciones.length,title.value,body.value);
     usuario.addPost(nuevaPublicacion);
     publicaciones.unshift(nuevaPublicacion);
-    usuarios.forEach(usuario => {
-        usuario.posts.forEach(post => {
-            contenedor.appendChild(post);
-            post.mostrarSecundario();
-        });
+    publicaciones.forEach(post => {
+        contenedor.appendChild(post);
+        post.mostrarSecundario();
     });
     nuevaPublicacion.mostrarSecundario();
     esconderModal();
@@ -94,13 +92,10 @@ btnPosts.addEventListener("click", () => {
     contenedorTareas.classList.remove("active");
     contenedorPosts.classList.remove("active");
     contenedor.replaceChildren();
-    usuarios.forEach(usuario => {
-        usuario.posts.forEach(post => {
-            contenedor.appendChild(post);
-            post.mostrarSecundario();
-        });
+    publicaciones.forEach(post => {
+        contenedor.appendChild(post);
+        post.mostrarSecundario();
     });
-
     buscador.setAttribute("placeholder", "Buscar Post");
     ubicacion = "posts";
 });
@@ -200,7 +195,8 @@ btnUsers.addEventListener("click",()=>{
 
 
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {  
+    if (window.scrollY > 300) { 
+        console.log("entra"); 
         btn.style.opacity = 1;  
         btn.style.pointerEvents = 'auto'; 
     } else {
@@ -352,7 +348,16 @@ function busqueda(tipo,busqueda,conjunto){
         }else{
             textNotFound.classList.add("hidden");
         }
-        mostrarDatos(buscados);
+
+        if(ubicacion == "posts"){
+            buscados.forEach(post => {
+                contenedor.appendChild(post);
+                post.mostrarSecundario();
+            });
+        }else{
+            mostrarDatos(buscados);
+        }
+        
     }
     
 }
