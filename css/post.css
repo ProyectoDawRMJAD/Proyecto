@@ -152,7 +152,7 @@
     padding: 10px 16px;
     cursor: pointer;
     font-size: 1em;
-    margin-top: 8px;
+    width: 90%;
 }
 
 .toggle-comments-button:hover {
@@ -229,7 +229,12 @@
     align-items: center;
     z-index: 1000;
 }
-
+.post-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
 .modal-content {
     display: flex;
     align-items: center;
@@ -291,10 +296,8 @@
 
 /* Botón de añadir comentario */
 .btn-añadir-comentario {
-    display: block;
-    margin: 0 auto 10px auto; /* Centrado horizontalmente */
-    width: 32px;
-    height: 32px;
+    width: 37px;
+    height: 37px;
     cursor: pointer;
     transition: transform 0.2s ease;
 }

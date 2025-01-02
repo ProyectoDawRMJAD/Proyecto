@@ -32,10 +32,10 @@ class Post extends HTMLElement {
             contenido2.querySelector("#autorPostSecundario").textContent = obtenerUsuarioPorId(this.userId).shadowRoot.querySelector("#userName").textContent;
 
             // Configuración del modal de eliminación secundario
-            const btnEliminarSecundario = contenido2.querySelector(".btn-eliminar-post-secundario");
-            const modalSecundario = contenido2.querySelector("#modalEliminarPostSecundario");
-            const btnConfirmarEliminarSecundario = modalSecundario.querySelector("#confirmarEliminarPostSecundario");
-            const btnCancelarEliminarSecundario = modalSecundario.querySelector("#cancelarEliminarPostSecundario");
+            let btnEliminarSecundario = contenido2.querySelector(".btn-eliminar-post-secundario");
+            let modalSecundario = contenido2.querySelector("#modalEliminarPostSecundario");
+            let btnConfirmarEliminarSecundario = modalSecundario.querySelector("#confirmarEliminarPostSecundario");
+            let btnCancelarEliminarSecundario = modalSecundario.querySelector("#cancelarEliminarPostSecundario");
 
             // Lógica para mostrar el modal secundario
             btnEliminarSecundario.addEventListener("click", (event) => {
@@ -57,7 +57,7 @@ class Post extends HTMLElement {
             });
 
             // Modal para añadir comentarios
-            const modalAñadirComentario = document.createElement("div");
+            let modalAñadirComentario = document.createElement("div");
             modalAñadirComentario.classList.add("modal");
             modalAñadirComentario.setAttribute("id", "modalAñadirComentario");
             modalAñadirComentario.innerHTML = `
@@ -71,9 +71,9 @@ class Post extends HTMLElement {
             `;
             contenido2.appendChild(modalAñadirComentario);
 
-            const btnAñadirComentario = contenido2.querySelector(".btn-añadir-comentario");
-            const btnConfirmarAñadir = modalAñadirComentario.querySelector("#confirmarAñadirComentario");
-            const btnCancelarAñadir = modalAñadirComentario.querySelector("#cancelarAñadirComentario");
+            let btnAñadirComentario = contenido2.querySelector(".btn-añadir-comentario");
+            let btnConfirmarAñadir = modalAñadirComentario.querySelector("#confirmarAñadirComentario");
+            let btnCancelarAñadir = modalAñadirComentario.querySelector("#cancelarAñadirComentario");
 
             // Contenedor de comentarios
             let comentarios = contenido2.querySelector("#comentarios");
@@ -88,15 +88,19 @@ class Post extends HTMLElement {
             });
 
             // Confirmar la adición del comentario
-            btnConfirmarAñadir.addEventListener("click", () => {
-                const nombre = modalAñadirComentario.querySelector("#nombreComentario").value.trim();
-                const email = modalAñadirComentario.querySelector("#emailComentario").value.trim();
-                const texto = modalAñadirComentario.querySelector("#textoComentario").value.trim();
+            btnConfirmarAñadir.addEventListener("click", (event) => {
+                let nombre = modalAñadirComentario.querySelector("#nombreComentario").value.trim();
+                let email = modalAñadirComentario.querySelector("#emailComentario").value.trim();
+                let texto = modalAñadirComentario.querySelector("#textoComentario").value.trim();
 
                 if (nombre && email && texto) {
-                    const nuevoComentario = new Comentario(this.id, this.comments.length + 1, nombre, email, texto);
+                    toggleButton.classList.remove("hidden");
+                    let nuevoComentario = new Comentario(this.id, this.comments.length + 1, nombre, email, texto);
                     this.addComment(nuevoComentario);
-                    comentarios.appendChild(nuevoComentario);
+                    comentarios.replaceChildren();
+                    this.comments.forEach((comment) => {
+                        comentarios.appendChild(comment);
+                    });
                 }
 
                 // Limpiar inputs y cerrar modal
@@ -136,7 +140,10 @@ class Post extends HTMLElement {
     }
 
     addComment(comment) {
-        this.comments.push(comment);
+        this.comments.unshift(comment);
+    }
+    getComments() {
+        return this.comments;
     }
 
     mostrarPrincipal() {

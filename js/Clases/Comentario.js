@@ -1,3 +1,5 @@
+import { publicaciones } from "../main.js";
+
 class Comentario extends HTMLElement {
     constructor(postId, id, name, email, body) {
         super();
@@ -39,7 +41,9 @@ class Comentario extends HTMLElement {
 
             // Confirmar eliminación
             btnConfirmar.addEventListener("click", () => {
+                publicaciones.find(post => post.id == this.postId).comments.splice(publicaciones.find(post => post.id == this.postId).comments.indexOf(this), 1);
                 this.remove(); // Eliminar el comentario
+                modal.classList.remove("active");
             });
 
             // Cancelar eliminación
