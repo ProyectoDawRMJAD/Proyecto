@@ -80,10 +80,11 @@
 
 .post-title {
     font-family: "Sour Gummy", sans-serif;
-    font-size: 18px;
+    font-size: 28px;
     font-weight: bold;
     margin: 0;
     color: #333;
+    max-width: 650px;
 }
 
 .post-author {
@@ -133,10 +134,6 @@
     margin-right: 16px;
 }
 
-.post-title {
-    font-size: 1.5em;
-    margin: 0;
-}
 
 .post-content {
     margin: 16px 0;

@@ -41,6 +41,9 @@ h4 {
     margin-top: 0px;
     margin-left: 25px;
     margin-right: 25px;
+    word-wrap: break-word;
+    overflow: scroll;
+    max-height: 100px;
 }
 
 

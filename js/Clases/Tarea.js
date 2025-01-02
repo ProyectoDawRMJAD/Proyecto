@@ -62,7 +62,6 @@ class Tarea extends HTMLElement {
                 obtenerUsuarioPorId(this.userId).tareas.splice(obtenerUsuarioPorId(this.userId).tareas.indexOf(this), 1);
                 tareas.splice(tareas.indexOf(this), 1);
                 this.remove();
-                contenedorTareas.querySelector("#tareaTitulo").textContent = obtenerUsuarioPorId(this.userId).tareas.length+" TAREAS";
                 modal.classList.remove("active");
             });
 
