@@ -60,6 +60,20 @@ h4 {
     cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
 }
 
+#btnEditarFoto {
+    width: 24px; /* Ajusta el tamaño del botón */
+    height: 24px;
+    position: absolute; /* Si lo necesitas flotante */
+    top: 15px; /* Ajusta según el diseño */
+    left: 15px;
+    cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
+}
+
+#btnEditarFoto:hover {
+    transform: scale(1.1); /* Efecto al pasar el cursor */
+    opacity: 0.8;
+}
+
 #btnEliminarFoto:hover {
     transform: scale(1.1); /* Efecto al pasar el cursor */
     opacity: 0.8;

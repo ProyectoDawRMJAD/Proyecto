@@ -46,6 +46,20 @@ div.completed {
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+.btn-editar{
+    width: 24px; /* Tamaño del botón */
+    height: 24px;
+    cursor: pointer;
+    margin-left: auto; /* Alinea el botón a la derecha */
+    margin-right: 10px; /* Espaciado con el borde derecho */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.btn-editar:hover {
+    transform: scale(1.2); /* Efecto de aumento más destacado */
+    opacity: 0.7; /* Efecto de opacidad */
+}
+
 .btn-eliminar:hover {
     transform: scale(1.2); /* Efecto de aumento más destacado */
     opacity: 0.7; /* Efecto de opacidad */
