@@ -60,13 +60,11 @@ class User extends HTMLElement {
 
             // Confirmar eliminación
             modal.querySelector("#confirmarEliminar").addEventListener('click', () => {
-                usuarios.splice(usuarios.indexOf(this), 1);
-                publicaciones.forEach(post => {
-                    if (post.userId == this.id) {
-                        publicaciones.splice(publicaciones.indexOf(post), 1);
-                        post.remove();
-                    }
+                this.getPosts().forEach(post => {
+                    post.remove();
+                    publicaciones.splice(publicaciones.indexOf(post), 1);
                 });
+                usuarios.splice(usuarios.indexOf(this), 1);
                 this.remove();
                 contenedorTareas.classList.remove("active");
                 contenedorPosts.classList.remove("active");

@@ -136,11 +136,9 @@ btnPosts.addEventListener("click", () => {
     contenedorTareas.classList.remove("active");
     contenedorPosts.classList.remove("active");
     contenedor.replaceChildren();
-    usuarios.forEach(usuario => {
-        usuario.posts.forEach(post => {
-            contenedor.appendChild(post);
-            post.mostrarSecundario();
-        });
+    publicaciones.forEach(post => {
+        contenedor.appendChild(post);
+        post.mostrarSecundario();
     });
     buscador.setAttribute("placeholder", "Buscar Post");
     ubicacion = "posts";
