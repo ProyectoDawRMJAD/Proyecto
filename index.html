@@ -182,9 +182,21 @@
         </div>
         <h4 id="contentPostSecundario" class="post-content"></h4>
         <button id="toggleComentarios" class="toggle-comments-button">Mostrar comentarios</button>
-        
-        <div id="comentarios" class="post-comments hidden"></div>
-        
+        <img src="img/botonAñadir.png" alt="Añadir comentario" class="btn-añadir-comentario">
+        <div id="comentarios" class="post-comments hidden">
+            <!-- Botón para añadir comentario -->
+        </div>
+
+                <!-- Modal para añadir comentarios -->
+        <div class="modal" id="modalAñadirComentario">
+            <div class="modal-content">
+                <textarea id="textoComentario" placeholder="Escribe tu comentario aquí..."></textarea>
+                <button id="confirmarAñadirComentario">Añadir</button>
+                <button id="cancelarAñadirComentario">Cancelar</button>
+            </div>
+        </div>
+
+
         <!-- Botón de eliminar -->
         <img src="img/botonEliminar.png" alt="Eliminar post" class="btn-eliminar-post-secundario">
     </div>
@@ -198,6 +210,7 @@
         </div>
     </div>
 </template>
+
 
 <template id="comentario">
     <div id="contenedorComentario" class="comentario-container">
