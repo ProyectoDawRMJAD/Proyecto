@@ -37,12 +37,51 @@ let formularioCrearImagen = document.getElementById("crearImagenForm");
 let modalBtnSend = document.getElementById("modalBtnSend");
 let divModal = document.getElementById("modalBtnSend");
 let mostrarUsuariosSelect = document.getElementsByClassName("mostrarUsuarioSelect");
+let albumesSelect = document.getElementById("albumesImagenes");
 let divModalForm = document.getElementById("formularioSend");
 let divPublicar = document.getElementById("publicacion");
+let cantidadAlbumes;
 let ubicacion = "usuarios";
 let btn = document.getElementById('myBtn');
 export let contenedorTareas = document.getElementById("tareas");
 export let contenedorPosts = document.getElementById("posts");
+
+document.getElementById("btnSeleccionarImagen").addEventListener("click", function() {
+    document.getElementById("archivoImagen").click();
+});
+
+document.getElementById("archivoImagen").addEventListener("change", function() {
+    const btnSeleccionarImagen = document.getElementById("btnSeleccionarImagen");
+    if (this.files && this.files.length > 0) {
+        btnSeleccionarImagen.textContent = "Imagen Seleccionada";
+        btnSeleccionarImagen.style.backgroundColor = "#4CAF50";
+        btnSeleccionarImagen.style.color = "#fff"; 
+    } else {
+        btnSeleccionarImagen.textContent = "Seleccionar Imagen";
+        btnSeleccionarImagen.style.backgroundColor = ""; 
+        btnSeleccionarImagen.style.color = ""; 
+    }
+});
+
+formularioCrearImagen.addEventListener("submit",(event)=>{
+    event.preventDefault();
+    
+    let albumId = document.getElementById("albumesImagenes").value;
+    let tituloImagen = document.getElementById("tituloImagen").value;
+    let archivoImagen = document.getElementById("archivoImagen").files[0];
+    if(tituloImagen != "" && archivoImagen != null){
+        contenedor.replaceChildren();
+        let nuevaFoto = new Foto(parseInt(albumId),imagenes.length + 1,tituloImagen,URL.createObjectURL(archivoImagen),URL.createObjectURL(archivoImagen));
+        imagenes.unshift(nuevaFoto);
+        contenedor.appendChild(nuevaFoto);
+        generarAlbumes();
+        formularioCrearImagen.reset();
+        btnSeleccionarImagen.textContent = "Seleccionar Imagen";
+        btnSeleccionarImagen.style.backgroundColor = ""; 
+        btnSeleccionarImagen.style.color = ""; 
+        esconderModal();
+    }
+});
 
 formularioCrearPost.addEventListener("submit",(event)=>{
     event.preventDefault();
@@ -155,6 +194,7 @@ btnCreate.addEventListener("click",()=>{
             contenedorformularioCrearTarea.classList.add("hidden");
             contenedorformularioCrearImagen.classList.remove("hidden");
             contenedorformularioCrearPost.classList.add("hidden");
+            cargarAlbumesSelect();
             break;
         case "tareas":
             contenedorformularioCrearTarea.classList.remove("hidden");
@@ -201,7 +241,6 @@ btnUsers.addEventListener("click",()=>{
 
 window.addEventListener('scroll', () => {
     if (window.scrollY > 300) { 
-        console.log("entra"); 
         btn.style.opacity = 1;  
         btn.style.pointerEvents = 'auto'; 
     } else {
@@ -214,9 +253,18 @@ window.addEventListener('scroll', () => {
 cargarDatos();
 mostrarDatos(usuarios);
 
-function generarAlbumes(){
-    let cantidadAlbumes = imagenes[imagenes.length-1].albumId;
+function cargarAlbumesSelect(){
+    let albumesSelect = document.getElementById("albumesImagenes");
+    for (let i = 0; i < cantidadAlbumes; i++) {
+        let option = document.createElement("option");
+        option.setAttribute("value",i+1);
+        option.textContent = "Album "+(i+1);
+        albumesSelect.appendChild(option);
+    }
+}
 
+function generarAlbumes(){
+    cantidadAlbumes = imagenes[imagenes.length-1].albumId;
     for (let i = 0; i < cantidadAlbumes; i++) {
         let album = document.createElement("div");
         let titulo = document.createElement("h2");
