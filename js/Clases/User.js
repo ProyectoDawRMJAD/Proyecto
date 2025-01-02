@@ -1,4 +1,4 @@
-import { contenedorTareas, contenedorPosts, usuarios } from "../main.js";
+import { contenedorTareas, contenedorPosts, usuarios, publicaciones } from "../main.js";
 
 class User extends HTMLElement {
     constructor(id, name, username, email, phone, website) {
@@ -61,6 +61,12 @@ class User extends HTMLElement {
             // Confirmar eliminación
             modal.querySelector("#confirmarEliminar").addEventListener('click', () => {
                 usuarios.splice(usuarios.indexOf(this), 1);
+                publicaciones.forEach(post => {
+                    if (post.userId == this.id) {
+                        publicaciones.splice(publicaciones.indexOf(post), 1);
+                        post.remove();
+                    }
+                });
                 this.remove();
                 contenedorTareas.classList.remove("active");
                 contenedorPosts.classList.remove("active");
