@@ -50,15 +50,17 @@ formularioCrearPost.addEventListener("submit",(event)=>{
     let title = document.getElementById("tituloPost");
     let body = document.getElementById("bodyPost");
     let usuario = usuarios.find(usuario => usuario.username == userElegido.value);
-    let nuevaPublicacion = new Post(usuario.id,publicaciones.length,title.value,body.value);
-    usuario.addPost(nuevaPublicacion);
-    publicaciones.unshift(nuevaPublicacion);
-    publicaciones.forEach(post => {
-        contenedor.appendChild(post);
-        post.mostrarSecundario();
-    });
-    nuevaPublicacion.mostrarSecundario();
-    esconderModal();
+    if(!(title.value == "" || body.value == "")){
+        let nuevaPublicacion = new Post(usuario.id,publicaciones.length,title.value,body.value);
+        usuario.addPost(nuevaPublicacion);
+        publicaciones.unshift(nuevaPublicacion);
+        publicaciones.forEach(post => {
+            contenedor.appendChild(post);
+            post.mostrarSecundario();
+        });
+        nuevaPublicacion.mostrarSecundario();
+        esconderModal();
+    }    
 });
 
 formularioCrearTarea.addEventListener("submit",(event)=>{
@@ -66,11 +68,14 @@ formularioCrearTarea.addEventListener("submit",(event)=>{
     let userElegido = document.getElementById("usuarioTarea");
     let title = document.getElementById("tituloTarea");
     let usuario = usuarios.find(usuario => usuario.username == userElegido.value);
-    let nuevaTarea = new Tarea(usuario.id,tareas.length,title.value,false);
-    usuario.addTarea(nuevaTarea);
-    tareas.unshift(nuevaTarea);
-    mostrarDatos(tareas); 
-    esconderModal();
+    if(title.value != ""){
+        let nuevaTarea = new Tarea(usuario.id,tareas.length,title.value,false);
+        usuario.addTarea(nuevaTarea);
+        tareas.unshift(nuevaTarea);
+        mostrarDatos(tareas); 
+        esconderModal();
+    }
+    
 });
 
 
