@@ -17,14 +17,33 @@
     height: 30px;
     width: 30px;
     cursor: pointer;
+    margin: 0;
+    padding: 0;
     transition: 0.1s;
+    margin-top: 2.5px;
+    margin-right: 5px;
 }
 #btnEliminar:hover{
     scale: 1.15;
 }
+
+
+.contenedorBotones{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
 #btnEditar{
-    height: 30px;
-    width: 30px; 
+    height: 33px;
+    width: 33px; 
+    cursor: pointer;
+    transition: 0.1s;
+    margin-top: 1px;
+}
+
+#btnEditar:hover{
+    scale: 1.15; 
 }
 #contenedor:hover{
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;

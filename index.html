@@ -132,7 +132,10 @@
                 <h4 id="name"></h4>
                 <h5 id="userName"></h5>
             </div>
-            <img src="img/botonEliminar.png" id="btnEliminar">
+            <div class="contenedorBotones">
+                <img src="img/botonEliminar.png" id="btnEliminar">
+                <img src="img/botonEditar.png" id="btnEditar">
+            </div>  
         </div>
         <div id="botones">
             <button id="btnPost"></button>
@@ -149,6 +152,7 @@
             <h3 id="numId"></h3>
             <h4 id="nombre"></h4>
         </div>
+        <img src="img/botonEditar.png" id="btnEditarFoto" alt="Editar" class="btn-editar">
         <img src="./img/botonEliminar.png" id="btnEliminarFoto" alt="Eliminar" class="btn-eliminar">
     </div>
 </template>
@@ -202,6 +206,7 @@
 
         <!-- Botón de eliminar -->
         <img src="img/botonEliminar.png" alt="Eliminar post" class="btn-eliminar-post-secundario">
+        <img src="img/botonEditar.png" class="btn-editar-post-secundario">
     </div>
 
     <!-- Modal para confirmar eliminación -->
@@ -224,6 +229,7 @@
         <p class="contentComentario"></p>
         <!-- Botón de eliminar -->
         <img src="img/botonEliminar.png" alt="Eliminar comentario" class="btn-eliminar-comentario">
+        <img src="img/botonEditar.png"  class="btn-editar-comentario">
     </div>
 
     <!-- Modal para confirmar eliminación -->
@@ -241,6 +247,7 @@
         <input type="checkbox" id="checkPost">
         <h2 id="name"></h2>
         <!-- Botón de eliminar como imagen -->
+        <img src="img/botonEditar.png" id="btnEditar" class="btn-editar">
         <img src="./img/botonEliminar.png" id="btnEliminarTarea" alt="Eliminar" class="btn-eliminar hidden">
     </div>
     <!-- Modal de confirmación -->

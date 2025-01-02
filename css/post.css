@@ -211,9 +211,35 @@
     transition: opacity 0.3s ease;
 }
 
+.btn-editar-post-secundario {
+    font-family: "Sour Gummy", sans-serif;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: 8.8px;
+    right: 35px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.btn-editar-post-secundario:hover {
+    opacity: 1;
+}
+
 .btn-eliminar-post:hover, .btn-eliminar-post-secundario:hover {
     opacity: 1;
 }
+
+#tituloPostSecundario{
+    font-family: "Sour Gummy", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    margin-top: 20px;
+    width: 80%;
+}
+
 
 /* Estilos para los modales */
 .modal {

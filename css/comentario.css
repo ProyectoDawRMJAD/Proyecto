@@ -67,6 +67,21 @@
     transition: transform 0.2s ease, opacity 0.3s ease;
 }
 
+.btn-editar-comentario{
+    width: 23px;
+    height: 23px;
+    position: absolute;
+    top: 9px;
+    right: 35px;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.3s ease;
+}
+
+.btn-editar-comentario:hover {
+    transform: scale(1.2); /* Efecto de aumento */
+    opacity: 0.8; /* Efecto de opacidad */
+}
+
 .btn-eliminar-comentario:hover {
     transform: scale(1.2); /* Efecto de aumento */
     opacity: 0.8; /* Efecto de opacidad */
