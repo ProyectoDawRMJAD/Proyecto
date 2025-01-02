@@ -37,8 +37,6 @@ Los integrantes del proyecto somos:
 - **Jesús Canicio Ruiz**  
 - **David**  
 
-Juntos colaboraremos en el desarrollo y en la presentación final, dividiendo tareas y mostrando nuestro trabajo al resto de la clase en **10 minutos**.  
-
 ---
 
 ## Requisitos Técnicos ✔️  
