@@ -51,7 +51,7 @@ document.getElementById("btnSeleccionarImagen").addEventListener("click", functi
 });
 
 document.getElementById("archivoImagen").addEventListener("change", function() {
-    const btnSeleccionarImagen = document.getElementById("btnSeleccionarImagen");
+    let btnSeleccionarImagen = document.getElementById("btnSeleccionarImagen");
     if (this.files && this.files.length > 0) {
         btnSeleccionarImagen.textContent = "Imagen Seleccionada";
         btnSeleccionarImagen.style.backgroundColor = "#4CAF50";
@@ -65,7 +65,6 @@ document.getElementById("archivoImagen").addEventListener("change", function() {
 
 formularioCrearImagen.addEventListener("submit",(event)=>{
     event.preventDefault();
-    
     let albumId = document.getElementById("albumesImagenes").value;
     let tituloImagen = document.getElementById("tituloImagen").value;
     let archivoImagen = document.getElementById("archivoImagen").files[0];
@@ -255,6 +254,7 @@ mostrarDatos(usuarios);
 
 function cargarAlbumesSelect(){
     let albumesSelect = document.getElementById("albumesImagenes");
+    albumesSelect.replaceChildren();
     for (let i = 0; i < cantidadAlbumes; i++) {
         let option = document.createElement("option");
         option.setAttribute("value",i+1);
