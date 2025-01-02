@@ -56,13 +56,19 @@ class Post extends HTMLElement {
             });
 
             // Agregar comentarios al post
+            
             let comentarios = contenido2.querySelector("#comentarios");
             this.comments.forEach(comment => {
                 comentarios.appendChild(comment);
             });
+            
 
             // Lógica para mostrar/ocultar comentarios
             let toggleButton = contenido2.querySelector("#toggleComentarios");
+            if (this.comments.length === 0) {
+                toggleButton.classList.add("hidden");
+            }
+            
             toggleButton.addEventListener("click", () => {
                 comentarios.classList.toggle("hidden");
                 toggleButton.textContent = comentarios.classList.contains("hidden")? "Mostrar comentarios": "Ocultar comentarios";
