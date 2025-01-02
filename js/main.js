@@ -53,7 +53,12 @@ formularioCrearPost.addEventListener("submit",(event)=>{
     let nuevaPublicacion = new Post(usuario.id,publicaciones.length,title.value,body.value);
     usuario.addPost(nuevaPublicacion);
     publicaciones.unshift(nuevaPublicacion);
-    mostrarDatos(publicaciones);
+    usuarios.forEach(usuario => {
+        usuario.posts.forEach(post => {
+            contenedor.appendChild(post);
+            post.mostrarSecundario();
+        });
+    });
     nuevaPublicacion.mostrarSecundario();
     esconderModal();
 });
