@@ -152,3 +152,106 @@ h4 {
 
 
 
+/* Modal estilos generales */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro translúcido */
+}
+
+/* Contenido del modal */
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Título del modal */
+.modal-content h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #333;
+}
+
+/* Formularios */
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Etiquetas */
+.modal-content label {
+    font-size: 1em;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Campos de entrada */
+.modal-content input[type="text"],
+.modal-content input[type="file"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Botones */
+.modal-content button {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#confirmarEditarFoto {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#confirmarEditarFoto:hover {
+    background-color: #45a049;
+}
+
+#cancelarEditarFoto {
+    background-color: #f44336;
+    color: white;
+}
+
+#cancelarEditarFoto:hover {
+    background-color: #e53935;
+}
+
+/* Espaciado entre botones */
+.modal-content button + button {
+    margin-left: 10px;
+}

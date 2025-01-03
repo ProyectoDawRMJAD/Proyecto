@@ -29,35 +29,75 @@ class Foto extends HTMLElement {
                 imagen.src = "/img/error.png";
             };
 
-            // Modal de confirmación
-            let modal = document.createElement("div");
-            modal.setAttribute("id", "modalEliminarFoto");
-            modal.setAttribute("class", "modal");
-            modal.innerHTML = `
+            // Modal de confirmación para eliminar
+            let modalEliminar = document.createElement("div");
+            modalEliminar.setAttribute("id", "modalEliminarFoto");
+            modalEliminar.setAttribute("class", "modal");
+            modalEliminar.innerHTML = `
                 <div class="modal-content">
                     <p>¿Estás seguro de que deseas eliminar esta imagen?</p>
                     <button id="confirmarEliminarFoto">Sí</button>
                     <button id="cancelarEliminarFoto">No</button>
                 </div>
             `;
-            shadow.appendChild(modal);
+            shadow.appendChild(modalEliminar);
 
-            // Botón eliminar
-            let btnEliminarFoto = clon.querySelector("#btnEliminarFoto");
-            btnEliminarFoto.addEventListener("click", () => {
-                modal.style.display = "block";
+            // Modal para editar la foto
+            let modalEditar = document.createElement("div");
+            modalEditar.setAttribute("id", "modalEditarFoto");
+            modalEditar.setAttribute("class", "modal");
+            modalEditar.innerHTML = `
+                <div class="modal-content">
+                    <h3>Editar Foto</h3>
+                    <form id="editarFotoForm">
+                        <label for="nuevoTitulo">Nuevo Título:</label>
+                        <input type="text" id="nuevoTitulo" value="${this.title}" required>
+                        
+                        <label for="nuevaImagen">Nueva Imagen:</label>
+                        <input type="file" id="nuevaImagen" accept="image/*">
+                        
+                        <button type="submit" id="confirmarEditarFoto">Guardar Cambios</button>
+                        <button type="button" id="cancelarEditarFoto">Cancelar</button>
+                    </form>
+                </div>
+            `;
+            shadow.appendChild(modalEditar);
+
+            // Abrir modal al hacer clic en el botón editar
+            let btnEditarFoto = clon.querySelector("#btnEditarFoto");
+            btnEditarFoto.addEventListener("click", () => {
+                modalEditar.style.display = "block";
             });
 
-            // Confirmar eliminación
-            modal.querySelector("#confirmarEliminarFoto").addEventListener("click", () => {
-                imagenes.splice(imagenes.indexOf(this), 1);
-                this.remove();
-                modal.style.display = "none";
+            // Manejar la edición de la foto
+            modalEditar.querySelector("#editarFotoForm").addEventListener("submit", (event) => {
+                event.preventDefault();
+
+                // Obtener el nuevo título
+                let nuevoTitulo = modalEditar.querySelector("#nuevoTitulo").value;
+
+                // Manejar la nueva imagen
+                let nuevaImagenInput = modalEditar.querySelector("#nuevaImagen");
+                if (nuevaImagenInput.files.length > 0) {
+                    let nuevaImagen = nuevaImagenInput.files[0];
+                    let reader = new FileReader();
+
+                    reader.onload = () => {
+                        imagen.src = reader.result; // Actualizar la URL con la imagen cargada
+                    };
+                    reader.readAsDataURL(nuevaImagen); // Convertir la imagen a base64
+                }
+
+                // Actualizar el título
+                this.title = nuevoTitulo;
+                this.shadowRoot.querySelector("#nombre").textContent = nuevoTitulo;
+
+                modalEditar.style.display = "none";
             });
 
-            // Cancelar eliminación
-            modal.querySelector("#cancelarEliminarFoto").addEventListener("click", () => {
-                modal.style.display = "none";
+            // Cancelar la edición
+            modalEditar.querySelector("#cancelarEditarFoto").addEventListener("click", () => {
+                modalEditar.style.display = "none";
             });
 
             shadow.appendChild(estilo);
