@@ -288,7 +288,7 @@ function crearUsuario(){
     let phone = document.getElementById("phone");
     let website = document.getElementById("website");
     
-    if(!validacionUsuario()){
+    if(!validacionUsuario(nombre,username,email,phone,website)){
         return;
     }
 
