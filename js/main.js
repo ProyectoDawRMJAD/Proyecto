@@ -287,8 +287,23 @@ function crearUsuario(){
     let email = document.getElementById("email");
     let phone = document.getElementById("phone");
     let website = document.getElementById("website");
-    let valido = true;
+    
+    if(!validacionUsuario()){
+        return;
+    }
 
+    let newUser = new User(usuarios.length+1, nombre.value, username.value, email.value, phone.value, website.value);
+    usuarios.unshift(newUser);
+    mostrarDatos(usuarios);
+    contenedorformularioCrearUsuario.querySelector("form").reset();
+    contenedorformularioCrearUsuario.querySelectorAll("input").forEach(element => {
+        element.style.border = "";
+    });
+    esconderModal();
+}
+
+export function validacionUsuario(nombre,username,email,phone,website){
+    let valido = true;
     // Comprobar datos con regex
     if(!comprobarRegex(nombre, /^[A-Z][a-z]+(\s[A-Z][a-z]+)?$/)){
         valido = false;
@@ -309,18 +324,7 @@ function crearUsuario(){
         valido = false;
     }
     
-    if(!valido){
-        return;
-    }
-
-    let newUser = new User(usuarios.length+1, nombre.value, username.value, email.value, phone.value, website.value);
-    usuarios.unshift(newUser);
-    mostrarDatos(usuarios);
-    contenedorformularioCrearUsuario.querySelector("form").reset();
-    contenedorformularioCrearUsuario.querySelectorAll("input").forEach(element => {
-        element.style.border = "";
-    });
-    esconderModal();
+    return valido;
 }
 
 window.addEventListener('beforeunload', () => {
