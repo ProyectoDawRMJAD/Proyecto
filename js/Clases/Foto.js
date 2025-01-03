@@ -42,6 +42,28 @@ class Foto extends HTMLElement {
             `;
             shadow.appendChild(modalEliminar);
 
+            // Abrir modal al hacer clic en el botón eliminar
+            let btnEliminarFoto = clon.querySelector("#btnEliminarFoto");
+            btnEliminarFoto.addEventListener("click", () => {
+                modalEliminar.style.display = "block";
+            });
+
+            // Confirmar eliminación
+            modalEliminar.querySelector("#confirmarEliminarFoto").addEventListener("click", () => {
+                let index = imagenes.findIndex((img) => img.id === this.id);
+                if (index !== -1) {
+                    imagenes.splice(index, 1); // Eliminar del array
+                }
+
+                this.remove(); // Remover el elemento del DOM
+                modalEliminar.style.display = "none";
+            });
+
+            // Cancelar eliminación
+            modalEliminar.querySelector("#cancelarEliminarFoto").addEventListener("click", () => {
+                modalEliminar.style.display = "none";
+            });
+
             // Modal para editar la foto
             let modalEditar = document.createElement("div");
             modalEditar.setAttribute("id", "modalEditarFoto");
