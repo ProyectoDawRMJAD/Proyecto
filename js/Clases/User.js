@@ -28,6 +28,7 @@ class User extends HTMLElement {
             let btnPosts = user.querySelector("#btnPost");
             let btnTareas = user.querySelector("#btnTarea");
             let btnEditar = user.querySelector("#btnEditar");
+            let btnInfo = user.querySelector("#btnInfo");
 
             user.querySelector("#name").textContent = this.name;
             user.querySelector("#userName").textContent = "@" + this.username;
@@ -41,7 +42,7 @@ class User extends HTMLElement {
             shadow.appendChild(estilo);
             shadow.appendChild(user);
 
-            const modalEliminar = document.createElement("div");
+            let modalEliminar = document.createElement("div");
             modalEliminar.setAttribute("id", "modalEliminar");
             modalEliminar.setAttribute("class", "modal");
             modalEliminar.innerHTML = `
@@ -73,21 +74,21 @@ class User extends HTMLElement {
                 modalEliminar.style.display = "none";
             });
 
-            const modalEditar = document.createElement("div");
+            let modalEditar = document.createElement("div");
             modalEditar.setAttribute("id", "modalEditar");
             modalEditar.setAttribute("class", "modal");
             modalEditar.innerHTML = `
                 <div class="modal-content">
                     <h2>Editar Usuario</h2>
-                    <label for="editName">Nombre:</label>
+                    <label for="editName">Nombre</label>
                     <input type="text" id="editName" value="${this.name}" />
-                    <label for="editUsername">Usuario:</label>
+                    <label for="editUsername">Usuario</label>
                     <input type="text" id="editUsername" value="${this.username}" />
-                    <label for="editEmail">Correo:</label>
+                    <label for="editEmail">Correo</label>
                     <input type="email" id="editEmail" value="${this.email}" />
-                    <label for="editPhone">Teléfono:</label>
+                    <label for="editPhone">Teléfono</label>
                     <input type="text" id="editPhone" value="${this.phone}" />
-                    <label for="editWebsite">Sitio Web:</label>
+                    <label for="editWebsite">Sitio Web</label>
                     <input type="text" id="editWebsite" value="${this.website}" />
                     <button id="guardarCambios">Guardar</button>
                     <button id="cancelarEdicion">Cancelar</button>
@@ -110,11 +111,11 @@ class User extends HTMLElement {
 
             // Guardar cambios de edición
             modalEditar.querySelector("#guardarCambios").addEventListener('click', () => {
-                const newName = modalEditar.querySelector("#editName");
-                const newUsername = modalEditar.querySelector("#editUsername");
-                const newEmail = modalEditar.querySelector("#editEmail");
-                const newPhone = modalEditar.querySelector("#editPhone");
-                const newWebsite = modalEditar.querySelector("#editWebsite");
+                let newName = modalEditar.querySelector("#editName");
+                let newUsername = modalEditar.querySelector("#editUsername");
+                let newEmail = modalEditar.querySelector("#editEmail");
+                let newPhone = modalEditar.querySelector("#editPhone");
+                let newWebsite = modalEditar.querySelector("#editWebsite");
 
                 if(!validacionUsuario(newName, newUsername, newEmail, newPhone, newWebsite)) {
                     return;
@@ -139,11 +140,25 @@ class User extends HTMLElement {
                 modalEditar.style.display = "none";
                 modalConfirmacion.style.display = "block";
 
-                // Ocultar el modal de confirmación después de 1 segundo
                 setTimeout(() => {
                     modalConfirmacion.style.display = "none";
                 }, 900);
             });
+
+            let modalInfo = document.createElement("div");
+            modalInfo.classList.add("modal");
+            modalInfo.innerHTML = `
+                <div class="modal-content">
+                    <h2>Información del Usuario</h2>
+                    <p><strong>Nombre</strong> ${this.name}</p>
+                    <p><strong>Usuario</strong> @${this.username}</p>
+                    <p><strong>Correo</strong> ${this.email}</p>
+                    <p><strong>Teléfono</strong> ${this.phone}</p>
+                    <p><strong>Sitio Web</strong> ${this.website}</p>
+                    <button id="cerrarInfo" class="btn">Cerrar</button>
+                </div>
+            `;
+            shadow.appendChild(modalInfo);
 
             modalEditar.querySelector("#cancelarEdicion").addEventListener('click', () => {
                 modalEditar.style.display = "none";
@@ -203,7 +218,7 @@ class User extends HTMLElement {
     }
 
     addTarea(tarea) {
-        this.tareas.unshift(tarea);
+        this.tareas.push(tarea);
     }
 
     getTareas() {

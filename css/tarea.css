@@ -84,6 +84,7 @@ input {
     background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro */
     justify-content: center;
     align-items: center;
+    z-index: 1000;
 }
 
 .modal.active {

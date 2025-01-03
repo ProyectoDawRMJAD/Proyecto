@@ -105,9 +105,10 @@ class Foto extends HTMLElement {
                     let reader = new FileReader();
 
                     reader.onload = () => {
-                        imagen.src = reader.result; // Actualizar la URL con la imagen cargada
+                        imagen.src = reader.result;
                     };
-                    reader.readAsDataURL(nuevaImagen); // Convertir la imagen a base64
+                    reader.readAsDataURL(nuevaImagen);
+                    this.url = reader.result;
                 }
 
                 // Actualizar el título

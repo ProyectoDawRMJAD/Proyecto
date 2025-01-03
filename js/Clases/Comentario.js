@@ -60,6 +60,10 @@ class Comentario extends HTMLElement {
 
             // Confirmar edición
             modalEditar.querySelector("#confirmarEditarComentario").addEventListener("click", () => {
+                if(this.name == "" || this.email == "" || this.body == "") {
+                    return;
+                }
+
                 this.name = modalEditar.querySelector("#editName").value;
                 this.email = modalEditar.querySelector("#editEmail").value;
                 this.body = modalEditar.querySelector("#editBody").value;
@@ -71,6 +75,17 @@ class Comentario extends HTMLElement {
 
                 modalEditar.style.display = "none";
             });
+
+            let modalConfirmacion = document.createElement("div");
+            modalConfirmacion.classList.add("modal");
+            modalConfirmacion.innerHTML = `
+                <div class="modal-content">
+                    <h1>Confirmación</h2>
+                    <h2>✅ Los cambios se han guardado correctamente.</h3>
+                </div>
+            `;
+
+            
 
             // Cancelar edición
             modalEditar.querySelector("#cancelarEditarComentario").addEventListener("click", () => {
@@ -99,6 +114,7 @@ class Comentario extends HTMLElement {
             shadow.appendChild(estilo);
             shadow.appendChild(contenido);
             shadow.appendChild(modalEditar);
+            shadow.appendChild(modalConfirmacion);
         }
     }
 }

@@ -134,7 +134,7 @@ h2{
     align-items: center;
     height: auto;
     width: 773px;
-    border: solid black 2px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     border-radius: 0.3rem;
 }
 
@@ -193,6 +193,11 @@ h2{
 ::-webkit-scrollbar {
     display: none;
 }
+.tituloAlbum{
+    width: 100%;
+    text-align: center;
+}
+
 #tareaTitulo,#postTitulo{
     font-family: "Sour Gummy", sans-serif;
     display: flex;

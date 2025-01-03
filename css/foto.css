@@ -12,8 +12,7 @@ img{
     width: 200px;
     height: 350px;
     background: #e8e8e8;
-    box-shadow: 5px 5px 6px #dadada,
-    -5px -5px 6px #f6f6f6;
+    border: solid black 2px;
     transition: 0.4s;
     padding: 10px;
     border-radius: 7px;
@@ -52,21 +51,21 @@ h4 {
 }
 
 #btnEliminarFoto {
-    width: 24px; /* Ajusta el tamaño del botón */
+    width: 24px;
     height: 24px;
-    position: absolute; /* Si lo necesitas flotante */
-    top: 15px; /* Ajusta según el diseño */
+    position: absolute; 
+    top: 15px; 
     right: 15px;
-    cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
+    cursor: pointer; 
 }
 
 #btnEditarFoto {
-    width: 24px; /* Ajusta el tamaño del botón */
+    width: 24px;
     height: 24px;
-    position: absolute; /* Si lo necesitas flotante */
-    top: 15px; /* Ajusta según el diseño */
+    position: absolute; 
+    top: 15px;
     left: 15px;
-    cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
+    cursor: pointer;
 }
 
 #btnEditarFoto:hover {
@@ -91,7 +90,7 @@ h4 {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+    background-color: rgba(0, 0, 0, 0.5); 
 }
 
 .modal-content {
@@ -148,11 +147,6 @@ h4 {
     background-color: #bbb; /* Gris más oscuro */
     color: #000; /* Negro más marcado */
 }
-
-
-
-
-/* Modal estilos generales */
 .modal {
     display: none; /* Oculto por defecto */
     position: fixed;

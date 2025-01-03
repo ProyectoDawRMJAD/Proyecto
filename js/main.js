@@ -37,7 +37,6 @@ let formularioCrearImagen = document.getElementById("crearImagenForm");
 let modalBtnSend = document.getElementById("modalBtnSend");
 let divModal = document.getElementById("modalBtnSend");
 let mostrarUsuariosSelect = document.getElementsByClassName("mostrarUsuarioSelect");
-let albumesSelect = document.getElementById("albumesImagenes");
 let divModalForm = document.getElementById("formularioSend");
 let divPublicar = document.getElementById("publicacion");
 let cantidadAlbumes;
@@ -108,7 +107,7 @@ formularioCrearTarea.addEventListener("submit",(event)=>{
     let usuario = usuarios.find(usuario => usuario.username == userElegido.value);
     if(title.value != ""){
         let nuevaTarea = new Tarea(usuario.id,tareas.length,title.value,false);
-        usuario.addTarea(nuevaTarea);
+        usuario.tareas.unshift(nuevaTarea);
         tareas.unshift(nuevaTarea);
         mostrarDatos(tareas); 
         esconderModal();
@@ -127,6 +126,7 @@ btnTareas.addEventListener("click",()=>{
     ubicacion = "tareas";
     mostrarDatos(tareas);
     buscador.setAttribute("placeholder","Buscar Tarea");
+    prueba.style.width = "1600px";
     
 });
 
@@ -141,6 +141,32 @@ btnPosts.addEventListener("click", () => {
     });
     buscador.setAttribute("placeholder", "Buscar Post");
     ubicacion = "posts";
+    prueba.style.width = "775px";
+});
+
+btnImg.addEventListener("click",()=>{
+    contenedor.classList.add("prueba");
+    contenedor.classList.remove("hidden");
+    textNotFound.classList.add("hidden");
+    contenedor.replaceChildren();
+    contenedorTareas.classList.remove("active");
+    contenedorPosts.classList.remove("active");
+    generarAlbumes();
+    buscador.setAttribute("placeholder","Buscar Imágen");
+    ubicacion = "imagenes";
+    prueba.style.width = "775px";
+});
+
+
+btnUsers.addEventListener("click",()=>{
+    textNotFound.classList.add("hidden");
+    contenedor.classList.add("prueba");
+    contenedor.classList.remove("hidden");
+    contenedor.replaceChildren();
+    ubicacion = "usuarios";
+    buscador.setAttribute("placeholder","Buscar Usuario");
+    mostrarDatos(usuarios);
+    prueba.style.width = "775px";
 });
 
 buscador.addEventListener("input",(event)=>{
@@ -213,28 +239,7 @@ btnCreate.addEventListener("click",()=>{
     mostrarModal();
 });
 
-btnImg.addEventListener("click",()=>{
-    contenedor.classList.add("prueba");
-    contenedor.classList.remove("hidden");
-    textNotFound.classList.add("hidden");
-    contenedor.replaceChildren();
-    contenedorTareas.classList.remove("active");
-    contenedorPosts.classList.remove("active");
-    generarAlbumes();
-    buscador.setAttribute("placeholder","Buscar Imágen");
-    ubicacion = "imagenes";
-});
 
-
-btnUsers.addEventListener("click",()=>{
-    textNotFound.classList.add("hidden");
-    contenedor.classList.add("prueba");
-    contenedor.classList.remove("hidden");
-    contenedor.replaceChildren();
-    ubicacion = "usuarios";
-    buscador.setAttribute("placeholder","Buscar Usuario");
-    mostrarDatos(usuarios);
-});
 
 
 
@@ -268,6 +273,8 @@ function generarAlbumes(){
     for (let i = 0; i < cantidadAlbumes; i++) {
         let album = document.createElement("div");
         let titulo = document.createElement("h2");
+        album.appendChild(titulo);
+        titulo.classList.add("tituloAlbum");
         titulo.textContent = "Albúm "+(i+1);
         album.classList.add("album");
         imagenes.forEach(element => {
@@ -275,7 +282,6 @@ function generarAlbumes(){
                 album.appendChild(element);
             }
         });
-        contenedor.appendChild(titulo);
         contenedor.appendChild(album);
         
     }

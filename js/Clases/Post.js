@@ -118,7 +118,7 @@ class Post extends HTMLElement {
 
             // Mostrar/ocultar comentarios
             let toggleButton = contenido2.querySelector("#toggleComentarios");
-            if (this.comments.length === 0) {
+            if (this.comments.length == 0) {
                 toggleButton.classList.add("hidden");
             }
 
