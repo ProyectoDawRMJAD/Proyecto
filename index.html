@@ -39,33 +39,37 @@
             <div id="crearUsuario" class="hidden">
                 <form id="crearUsuarioForm" class="hidden form-control">
                     <p class="title">Crear Usuario</p>
-
+    
                     <div class="input-field">  
                         <input type="text" id="nameForm" class="input">
+                        <p class="infoFormulario">Debe comenzar con una letra mayúscula y puede tener un segundo nombre opcional. Ejemplo: "Juan Pérez".</p>
                         <label for="name" class="label">Nombre</label>    
                     </div>
-
+    
                     <div class="input-field">                  
                         <input type="text" id="username" class="input">
+                        <p class="infoFormulario">Puede contener letras, números y opcionalmente puntos o guiones bajos. Ejemplo: "juan.perez_123".</p>
                         <label for="username" class="label">Nickname</label>
                     </div>
-
+    
                     <div class="input-field">  
                         <input type="mail" id="email" class="input">
+                        <p class="infoFormulario">Debe ser un correo electrónico válido. Ejemplo: "correo@dominio.com".</p>
                         <label for="email" class="label">Email</label>
                     </div>
-
+    
                     <div class="input-field">  
                         <input type="text" id="phone" class="input">
+                        <p class="infoFormulario">Debe contener exactamente 9 dígitos. Ejemplo: "123456789".</p>
                         <label for="phone" class="label">Teléfono</label>
                     </div>
-
-
+    
                     <div class="input-field"> 
                         <input type="text" id="website" class="input">
-                        <label for="phone" class="label">Website</label>
+                        <p class="infoFormulario">Debe ser un dominio válido. Ejemplo: "ejemplo.com".</p>
+                        <label for="website" class="label">Website</label>
                     </div>
-
+    
                     <button type="submit" id="btnCrearUsuario" class="submit-btn">Crear usuario</button>
                 </form>
             </div>

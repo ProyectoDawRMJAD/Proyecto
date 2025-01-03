@@ -15,6 +15,10 @@ customElements.define("template-post",Post);
 customElements.define("template-todo",Tarea);
 customElements.define("template-foto",Foto);
 
+document.addEventListener("click",()=>{
+    console.log(ubicacion);
+})
+
 export let usuarios = [];
 export let imagenes = [];
 export let publicaciones = [];
@@ -152,7 +156,7 @@ btnTareas.addEventListener("click",()=>{
     ubicacion = "tareas";
     mostrarDatos(tareas);
     buscador.setAttribute("placeholder","Buscar Tarea");
-    prueba.style.width = "1600px";
+    prueba.style.width = "100%";
     selectSearch.classList.add("hidden");
 });
 
@@ -280,10 +284,6 @@ btnCreate.addEventListener("click",()=>{
     }
     mostrarModal();
 });
-
-
-
-
 
 window.addEventListener('scroll', () => {
     if (window.scrollY > 300) { 
