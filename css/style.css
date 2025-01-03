@@ -469,3 +469,42 @@ scale: 1.05;
     scroll-behavior: smooth;
   }
   
+
+  .styled-select {
+    font-family: "Sour Gummy", sans-serif;
+    font-size: 16px;
+    border-radius: 2rem;
+    padding: 10px 20px;
+    background-color: rgb(0, 162, 255);
+    color: white;
+    border: none;
+    width: auto;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.styled-select:hover {
+    background-color: rgb(3, 121, 189);
+    scale: 1.05;
+}
+
+.styled-select:focus {
+    outline: none;
+    box-shadow: 0px 0px 0px 3px rgba(3, 121, 189, 0.5);
+}
+
+.styled-select option {
+    font-family: "Sour Gummy", sans-serif;
+    font-size: 16px;
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 2px 0;
+}
+
+.styled-select option:hover {
+    background-color: rgba(0, 162, 255, 0.1);
+    color: rgb(0, 162, 255);
+}
