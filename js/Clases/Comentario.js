@@ -29,31 +29,76 @@ class Comentario extends HTMLElement {
             contenido.querySelector(".contentComentario").textContent = this.body;
 
             let btnEliminar = contenido.querySelector(".btn-eliminar-comentario");
-            let modal = contenido.querySelector("#modalEliminarComentario");
-            let btnConfirmar = contenido.querySelector("#confirmarEliminarComentario");
-            let btnCancelar = contenido.querySelector("#cancelarEliminarComentario");
+            let modalEliminar = contenido.querySelector("#modalEliminarComentario");
+            let btnConfirmarEliminar = contenido.querySelector("#confirmarEliminarComentario");
+            let btnCancelarEliminar = contenido.querySelector("#cancelarEliminarComentario");
 
-            // Mostrar modal al hacer clic en eliminar
+            let btnEditar = contenido.querySelector(".btn-editar-comentario");
+            let modalEditar = document.createElement("div");
+            modalEditar.innerHTML = `
+                <div class="modal active" id="modalEditarComentario">
+                    <div class="modal-content">
+                        <h3>Editar Comentario</h3>
+                        <label for="editName">Nombre:</label>
+                        <input id="editName" type="text" value="${this.name}">
+                        <label for="editEmail">Email:</label>
+                        <input id="editEmail" type="email" value="${this.email}">
+                        <label for="editBody">Comentario:</label>
+                        <textarea id="editBody">${this.body}</textarea>
+                        <button id="confirmarEditarComentario">Guardar</button>
+                        <button id="cancelarEditarComentario">Cancelar</button>
+                    </div>
+                </div>
+            `;
+            modalEditar.style.display = "none";
+
+            // Mostrar modal de edición
+            btnEditar.addEventListener("click", (event) => {
+                event.stopPropagation();
+                modalEditar.style.display = "block";
+            });
+
+            // Confirmar edición
+            modalEditar.querySelector("#confirmarEditarComentario").addEventListener("click", () => {
+                this.name = modalEditar.querySelector("#editName").value;
+                this.email = modalEditar.querySelector("#editEmail").value;
+                this.body = modalEditar.querySelector("#editBody").value;
+
+                // Actualizar los elementos visibles
+                this.shadowRoot.querySelector(".tituloComentario").textContent = this.name;
+                this.shadowRoot.querySelector(".autorComentario").textContent = this.email;
+                this.shadowRoot.querySelector(".contentComentario").textContent = this.body;
+
+                modalEditar.style.display = "none";
+            });
+
+            // Cancelar edición
+            modalEditar.querySelector("#cancelarEditarComentario").addEventListener("click", () => {
+                modalEditar.style.display = "none";
+            });
+
+            // Mostrar modal de eliminación
             btnEliminar.addEventListener("click", (event) => {
                 event.stopPropagation();
-                modal.classList.add("active");
+                modalEliminar.classList.add("active");
             });
 
             // Confirmar eliminación
-            btnConfirmar.addEventListener("click", () => {
+            btnConfirmarEliminar.addEventListener("click", () => {
                 publicaciones.find(post => post.id == this.postId).comments.splice(publicaciones.find(post => post.id == this.postId).comments.indexOf(this), 1);
                 this.remove(); // Eliminar el comentario
-                modal.classList.remove("active");
+                modalEliminar.classList.remove("active");
             });
 
             // Cancelar eliminación
-            btnCancelar.addEventListener("click", () => {
-                modal.classList.remove("active");
+            btnCancelarEliminar.addEventListener("click", () => {
+                modalEliminar.classList.remove("active");
             });
 
             // Añadir al Shadow DOM
             shadow.appendChild(estilo);
             shadow.appendChild(contenido);
+            shadow.appendChild(modalEditar);
         }
     }
 }

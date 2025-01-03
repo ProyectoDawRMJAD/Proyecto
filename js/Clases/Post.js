@@ -129,6 +129,52 @@ class Post extends HTMLElement {
                     : "Ocultar comentarios";
             });
 
+            // Modal para editar post
+            let modalEditarPost = document.createElement("div");
+            modalEditarPost.classList.add("modal");
+            modalEditarPost.setAttribute("id", "modalEditarPost");
+            modalEditarPost.innerHTML = `
+                <div class="modal-content">
+                    <h2>Editar Post</h2>
+                    <input type="text" id="editarTituloPost" placeholder="Nuevo título" value="${this.title}">
+                    <textarea id="editarBodyPost" placeholder="Nuevo contenido">${this.body}</textarea>
+                    <button id="confirmarEditarPost">Guardar cambios</button>
+                    <button id="cancelarEditarPost">Cancelar</button>
+                </div>
+            `;
+            contenido2.appendChild(modalEditarPost);
+
+            let btnEditarPost = contenido2.querySelector(".btn-editar-post-secundario");
+            let btnConfirmarEditarPost = modalEditarPost.querySelector("#confirmarEditarPost");
+            let btnCancelarEditarPost = modalEditarPost.querySelector("#cancelarEditarPost");
+
+            // Mostrar el modal de edición
+            btnEditarPost.addEventListener("click", (event) => {
+                event.stopPropagation();
+                modalEditarPost.classList.add("show");
+            });
+
+            // Confirmar la edición del post
+            btnConfirmarEditarPost.addEventListener("click", () => {
+                let nuevoTitulo = modalEditarPost.querySelector("#editarTituloPost").value.trim();
+                let nuevoContenido = modalEditarPost.querySelector("#editarBodyPost").value.trim();
+
+                if (nuevoTitulo || nuevoContenido) {
+                    this.title = nuevoTitulo;
+                    this.body = nuevoContenido;
+
+                    this.shadowRoot.querySelector("#tituloPostSecundario").textContent = this.title;
+                    this.shadowRoot.querySelector("#contentPostSecundario").textContent = this.body;
+
+                    modalEditarPost.classList.remove("show");
+                }
+            });
+
+            // Cancelar la edición del post
+            btnCancelarEditarPost.addEventListener("click", () => {
+                modalEditarPost.classList.remove("show");
+            });
+
             shadow.appendChild(estilo);
             shadow.appendChild(contenido);
             shadow.appendChild(contenido2);
