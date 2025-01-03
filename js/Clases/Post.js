@@ -189,6 +189,9 @@ class Post extends HTMLElement {
     addComment(comment) {
         this.comments.unshift(comment);
     }
+    insertarComentarios() {
+        
+    }
     getComments() {
         return this.comments;
     }

@@ -42,8 +42,34 @@ let divPublicar = document.getElementById("publicacion");
 let cantidadAlbumes;
 let ubicacion = "usuarios";
 let btn = document.getElementById('myBtn');
+let selectSearch = document.getElementById("tipoBusquedaPostComentarios");
 export let contenedorTareas = document.getElementById("tareas");
 export let contenedorPosts = document.getElementById("posts");
+
+selectSearch.addEventListener("change",(event)=>{
+    if(event.target.value == "Comentarios"){
+        contenedor.replaceChildren();
+        ubicacion = "comentarios"; 
+        publicaciones.forEach(post => {
+            post.comments.forEach(comentario => {
+                console.log(comentario);
+                contenedor.appendChild(comentario);
+            });
+        });
+        buscador.setAttribute("placeholder","Buscar Comentario");
+    }else{
+        contenedor.replaceChildren();
+        ubicacion = "posts";
+        publicaciones.forEach(post => {
+            contenedor.appendChild(post);
+            post.mostrarSecundario();
+            post.comments.forEach(element => {
+                post.shadowRoot.querySelector("#comentarios").appendChild(element);
+            });
+        });
+        buscador.setAttribute("placeholder","Buscar Post");
+    }
+});
 
 document.getElementById("btnSeleccionarImagen").addEventListener("click", function() {
     document.getElementById("archivoImagen").click();
@@ -127,7 +153,7 @@ btnTareas.addEventListener("click",()=>{
     mostrarDatos(tareas);
     buscador.setAttribute("placeholder","Buscar Tarea");
     prueba.style.width = "1600px";
-    
+    selectSearch.classList.add("hidden");
 });
 
 btnPosts.addEventListener("click", () => {
@@ -142,6 +168,7 @@ btnPosts.addEventListener("click", () => {
     buscador.setAttribute("placeholder", "Buscar Post");
     ubicacion = "posts";
     prueba.style.width = "775px";
+    selectSearch.classList.remove("hidden");
 });
 
 btnImg.addEventListener("click",()=>{
@@ -151,6 +178,7 @@ btnImg.addEventListener("click",()=>{
     contenedor.replaceChildren();
     contenedorTareas.classList.remove("active");
     contenedorPosts.classList.remove("active");
+    selectSearch.classList.add("hidden");
     generarAlbumes();
     buscador.setAttribute("placeholder","Buscar Imágen");
     ubicacion = "imagenes";
@@ -163,6 +191,7 @@ btnUsers.addEventListener("click",()=>{
     contenedor.classList.add("prueba");
     contenedor.classList.remove("hidden");
     contenedor.replaceChildren();
+    selectSearch.classList.add("hidden");
     ubicacion = "usuarios";
     buscador.setAttribute("placeholder","Buscar Usuario");
     mostrarDatos(usuarios);
@@ -183,8 +212,21 @@ buscador.addEventListener("input",(event)=>{
         case "posts":
             busqueda("title",event.target.value,publicaciones);
             break;
+        case "comentarios":
+            busqueda("name",event.target.value,getComentarios());
+            break;
     }
 });
+
+function getComentarios(){
+    let comentarios = [];
+    publicaciones.forEach(post => {
+        post.comments.forEach(comentario => {
+            comentarios.push(comentario);
+        });
+    });
+    return comentarios;
+}
 
 //Comprobaciones
 contenedorformularioCrearUsuario.addEventListener("submit", (event) => {
@@ -283,7 +325,6 @@ function generarAlbumes(){
             }
         });
         contenedor.appendChild(album);
-        
     }
 }
 
@@ -412,7 +453,6 @@ function busqueda(tipo,busqueda,conjunto){
         }else{
             textNotFound.classList.add("hidden");
         }
-
         if(ubicacion == "posts"){
             buscados.forEach(post => {
                 contenedor.appendChild(post);

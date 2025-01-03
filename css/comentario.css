@@ -39,6 +39,7 @@
     flex-direction: column;
     position: relative;
     gap: 5px;
+    width: 730px;
 }
 
 .tituloComentario {
